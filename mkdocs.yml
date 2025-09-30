@@ -13,12 +13,18 @@ theme:
 
 nav:
   - Home: index.md
-  - Test Page: test.md
+  - Test Page: px4_survey.md
+
+plugins:
+  - search
+  - bibtex:
+      bib_file: "docs/references.bib"
 
 markdown_extensions:
   - pymdownx.highlight
   - pymdownx.superfences
   - pymdownx.tabbed
+  - footnotes
   - tables
   - toc:
       permalink: true

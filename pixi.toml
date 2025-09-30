@@ -9,3 +9,6 @@ platforms = ["win-64", "linux-64", "osx-64"]
 python = ">=3.8"
 requests = "*"
 beautifulsoup4 = "*"
+mkdocs-bibtex = ">=4.4.0,<5"
+pypandoc = ">=1.15,<2"
+mkdocs-material = ">=9.6.20,<10"
