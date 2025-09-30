@@ -1,4 +1,4 @@
-# Forum Analysis: PX4 Simulation Integration Issues
+# PX4 Forum Analysis
 
 ## Executive Summary
 
