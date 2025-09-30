@@ -1,0 +1,11 @@
+[project]
+name = "research_reports"
+description = "Research reports generator"
+authors = ["kimbe <kimbe@example.com>"]
+channels = ["conda-forge"]
+platforms = ["win-64", "linux-64", "osx-64"]
+
+[dependencies]
+python = ">=3.8"
+requests = "*"
+beautifulsoup4 = "*"
