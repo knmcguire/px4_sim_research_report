@@ -12,3 +12,6 @@ beautifulsoup4 = "*"
 mkdocs-bibtex = ">=4.4.0,<5"
 pypandoc = ">=1.15,<2"
 mkdocs-material = ">=9.6.20,<10"
+
+[pypi-dependencies]
+mkdocs-print-site-plugin = ">=2.8, <3"

@@ -19,6 +19,7 @@ plugins:
   - search
   - bibtex:
       bib_file: "docs/references.bib"
+  - print-site
 
 markdown_extensions:
   - pymdownx.highlight
