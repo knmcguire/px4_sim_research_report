@@ -1,295 +1,170 @@
-# PX4 Simulator Community Survey - Pilot
+# PX4 Simulator Community Survey
 
-This survey aims to understand the developer needs of PX4 users and their simulation experiences. We're hoping to improve the current situation and make things better for everyone.
+This survey aims to understand PX4 users' simulation experiences and needs. Your feedback will help improve simulation tools for the entire community.
 
-This survey should take only 10-15 minutes to fill in.
-
-**Draft V3**
+**This survey takes approximately 10-15 minutes to complete.**
 
 ---
 
-## Getting to Know You
+## About You
 
-*We'd like to understand your background and experience level to better contextualize your feedback.*
-
-**1. What is your primary profession?**
-- Student (BSc/MSc)
+**1. What is your primary role?**
+- Student
 - Researcher (Academic/Industry)
-- Educator/Teacher
-- Professional Engineer / Technical Consultant
+- Professional Engineer/Developer
+- Hobbyist
 - Other: ___________
 
-**2. What is your level of expertise regarding robotic simulators?**
-- Novice
-- Intermediate
-- Advanced
-- Expert
-
-**3. How long have you been working with PX4?**
-- I haven't worked with PX4
-- I just started working with PX4 (< 1 month)
-- 1 month - 1 year
-- 1-3 years
-- 3-5 years
+**2. How long have you been working with PX4?**
+- Just started (< 6 months)
+- 6 months - 2 years
+- 2-5 years
 - 5+ years
+
+**3. What domain are you working in?**
+- Academia/Education
+- Commercial Aerospace/Drones
+- Defense/Government
+- Hobby/Personal projects
+- Other: ___________
 
 ---
 
 ## Current Simulator Usage
 
-*This section helps us understand which tools you're using and how you're using them in your current workflow.*
-
-**4. Which simulators have you worked with in your setup? (Select all that apply)**
-- Nvidia Isaac Sim
-- Gazebo (formerly known as Ignition)
+**4. Which simulators do you currently use with PX4? (Select all that apply)**
+- Gazebo (Harmonic/Garden)
 - Gazebo Classic
 - AirSim
-- MuJoCo
-- Pybullet
+- jMAVSim
 - FlightGear
-- JSBSim
-- Other: ___________
+- Custom/Other: ___________
 
-**5. What was your primary purpose for using simulators? (Select all that apply)**
-- Academic research
-- Education/learning
-- Robot prototyping/design
+**5. What is your primary use case for simulation? (Select up to 3)**
 - Algorithm development
 - Testing before real flights
-- Demonstration/presentation
-- Competition preparation
-- Commercial product development
-- Flight tooling design
+- Academic research
+- Education/learning
+- Multi-agent/swarm testing
+- Machine learning/data generation
+- CI/CD testing
 - Other: ___________
 
-**6. For which goals are you using simulators? (Select all that apply)**
-- Development tool for robotic systems
-- Quality assurance in continuous integration
-- Data generation for machine learning
-- Mission planning and validation
-- Training pilots/operators
-- Safety
-- Regulatory compliance testing
-- Other: ___________
-
-**7. What type of aerial robotic vehicle are you working with?**
-- Helicopter
-- Quadcopter
-- Multicopters (more than 4 propellers)
-- Fixed wing
-- Hybrid / VTOL vehicles
-- Blimps
-- Other: ___________
-
-**8. Does your platform have additional equipment or payloads? (Select all that apply)**
-- Manipulator arm
-- Gripper/claw
-- Gimbal
-- Camera
-- Cargo hook/winch
-- Perception Sensors (lidar, sonar, etc.)
-- Communication equipment
-- None of the above
-- Other: ___________
-
-**9. How many robots/UAVs do you typically simulate simultaneously?**
+**6. How many robots/UAVs do you typically simulate simultaneously?**
 - Just one (1)
 - 2-4
 - 5-10
-- 10-100
-- 100+
+- 10+
 
 ---
 
-## Technical Setup & Constraints
+## PX4-Simulator Integration & Setup
 
-*Understanding your hardware setup and limitations helps us design tools that work for everyone's environment.*
-
-**10. Did you have to purchase/upgrade your computer specifically for simulation?**
-- Yes, bought entirely new system
-- Yes, upgraded existing system
-- No, used existing hardware
-- Using cloud/remote computing
-- Other: ___________
-
-**11. What operating system do you primarily use for simulation?**
-- Ubuntu
-- Arch Linux
-- Fedora Linux
+**7. What operating system do you primarily use?**
+- Ubuntu/Debian Linux
+- Other Linux
 - Windows
-- MacOS
+- macOS
 - Other: ___________
 
-**12. Which version of the operating system have you selected above?**
-___________
+**8. Rate your experience with PX4-simulator integration:**
 
-**13. Do you use a GPU enabled computer, and if so, what kind of specifications does it have?**
-___________
+Rate on scale: 1 (Strongly Disagree) to 5 (Strongly Agree)
 
-**14. What's your biggest hardware limitation?**
-- CPU performance
-- GPU/graphics performance
-- RAM capacity
-- Storage space
-- Network bandwidth
-- No significant limitations
+- "Setting up SITL with my simulator was straightforward"
+- "Simulation behavior matches real flight adequately for my needs"
+- "I can easily test the same code in simulation and on hardware"
+
+**9. What's your biggest challenge with PX4-simulator integration?** (Select up to 2)
+- Complex setup/installation
+- Poor documentation
+- Simulation doesn't match real-world behavior
+- Missing sensors/features I need
+- Performance/speed issues
+- Multi-vehicle simulation difficulties
+- ROS/ROS2 integration problems
+- Hardware limitations (CPU/GPU/RAM)
 - Other: ___________
 
-**15. Do you find the necessary hardware/computer specifications for simulation acceptable or workable?**
-- Yes
-- No
-
-**16. Anything to add to any of the questions answered in this section regarding computer specifications?**
+**10. If you could improve ONE thing about PX4 simulation, what would it be?**
 ___________
 
 ---
 
 ## Current Simulator Experience
 
-*Here we dive deep into your experience with simulators - what works well and what doesn't. This feedback is crucial for identifying the biggest areas for improvement.*
+**Answer based on the simulator you use most frequently with PX4**
 
-**Please fill in the survey based on your first instinct (don't linger too long per question)**
-
-**17. Which simulator have you used most recently?**
+**11. Which simulator is this?**
 ___________
 
-**18. Setup and Installation Experience**
+**12. Rate your experience:**
 
-Rate on scale: 1 (I agree) to 5 (I do not agree)
+Rate on scale: 1 (Strongly Disagree) to 5 (Strongly Agree)
 
-- "The simulator was easy to install."
-- "I had to install too many external dependencies"
-- "The error and debug messages were easy to understand"
+- "The simulator was easy to install"
+- "The documentation was clear and helpful"
+- "Using the simulator is a smooth experience"
+- "Performance meets my needs"
+- "I experienced frequent crashes or bugs"
+- "The community/support is helpful"
 
-**19. User Experience**
-
-Rate on scale: 1 (I agree) to 5 (I do not agree)
-
-- "I needed to use an extensive guide to navigate through the GUI"
-- "Using the simulator was a smooth experience."
-- "The user interface felt cluttered and complex."
-- "The error/bug messages were easy to read"
-
-**20. Technical Performance**
-
-Rate on scale: 1 (I agree) to 5 (I do not agree)
-
-- "Objects in the simulation didn't behave realistically."
-- "The simulator can run simulations faster than real-time."
-- "The simulation's graphics were very photo-realistic."
-- "I experienced frequent crashes and freezes."
-
-**21. Feature Support**
-
-Rate on scale: 1 (I agree) to 5 (I do not agree)
-
-- "The simulator offered a wide variety of sensors."
-- "I can not easily make a custom drone in this simulator"
-- "I'm able to use this simulator easily with swarms"
-
-**22. Documentation and Tutorials**
-
-Rate on scale: 1 (I agree) to 5 (I do not agree)
-
-- "The documentation/website was easy to find."
-- "The documentation was difficult to follow."
-- "There were plenty of tutorials available."
-
-**23. Community and Support**
-
-Rate on scale: 1 (I agree) to 5 (I do not agree)
-
-- "It was hard to find a clear way to get help or ask questions."
-- "The community and support forums were helpful."
-- "It took too long to get my questions answered."
-
-**24. What do you like the most about current/latest simulator you are using?**
+**13. What do you like most about this simulator?**
 ___________
 
-**25. What's your biggest frustration with current/latest simulator you are using?**
-___________
-
-**26. Anything else to add?**
+**14. What's your biggest frustration with this simulator?**
 ___________
 
 ---
 
-## Desired Features & Priorities
+## Priority Features
 
-*This section helps us prioritize development efforts by understanding which features matter most to different types of users.*
+**15. Rate the importance of these capabilities for YOUR work:**
 
-**Please fill in the survey based on your first instinct (don't linger too long per question)**
+Rate on scale: 1 (Not Important) to 5 (Very Important)
 
-**27. Please rate the preferred Technical Capabilities**
-
-Rate on scale: 1 (Not important) to 5 (Very important), or No preference/opinion
-
-- Hardware-in-the-loop support
-- Software-in-the-loop support
-- Faster than real-time simulation
-- Photorealistic rendering
-- Realistic physics simulation
-- Weather/environmental simulation
-- Failure mode simulation
-- Communication simulation
-
-**28. Please rate the preferred Platform & Compatibility**
-
-Rate on scale: 1 (Not important) to 5 (Very important), or No opinion or preference
-
-- Multiple OS support
-- ROS/ROS 2 integration
-- Cloud simulation capabilities
-- Docker/containerization support
-
-**29. Please rate the preferred Usability & Accessibility**
-
-Rate on scale: 1 (Not important) to 5 (Very important), or No opinion or preference
-
-- Beginner-friendly interface
-- Easy installation process
-- Drag-and-drop model capability
-- Template/example library availability
-- Real-time parameter tuning
-
-**30. Please rate the preferred Advanced Features**
-
-Rate on scale: 1 (Not important) to 5 (Very important), or No opinion or preference
-
+- Faster-than-real-time simulation
+- Realistic physics/sensor simulation
 - Multi-agent/swarm simulation
-- Machine learning integration
-- Custom sensor model creation
-- Easy robot model creation
-- Scenario scripting/automation
-- Performance benchmarking tools
-- CAD program integration for custom models
+- ROS/ROS2 integration
+- Easy custom model creation
+- Headless/CI support
+- Hardware-in-the-loop (HITL) support
+- Better documentation/examples
 
-**31. Any more features that we should pay attention too as well?**
+**16. Additional features we should prioritize?**
 ___________
 
 ---
 
-## Final Questions
+## PX4 Simulation Future
 
-*Final thoughts and opportunities for deeper engagement with our improvement efforts.*
+**17. What should be the TOP priority for PX4 simulation development?**
+- Improve stability of existing simulator integrations
+- Better documentation and examples
+- Support for more simulators
+- More realistic physics/sensors
+- Better multi-vehicle/swarm support
+- Easier setup and installation
+- Better hardware-to-simulation transition tools
+- Other: ___________
 
-**32. What's the most important improvement needed in simulation supported in the PX4-ecosystem?**
+**18. Why is this your top priority?**
 ___________
 
-**33. Any additional comments or suggestions?**
+---
+
+## Final Thoughts
+
+**19. Any additional comments or suggestions?**
 ___________
 
-**34. Would you be willing to participate in follow-up interviews?**
-- Yes
+**20. Would you be willing to participate in a brief follow-up if we have any follow-up questions?**
+- Yes (provide email): ___________
 - No
 
-**35. If yes, please provide on which email address we can contact you. Your email address will only be used for this exact purpose.**
-___________
-
 ---
 
-## Thank you!
+**Thank you for your feedback! Your input will help improve PX4 simulation for everyone.**
 
-Thank you for taking the time to share your experiences! Your feedback will help improve simulation tools for the entire PX4 community.
-
-**Please press next to submit the form**
+**Press Submit to complete the survey**
