@@ -120,28 +120,3 @@ Change the HTML theme in `_quarto.yml`. Available themes:
 ✅ **Academic Quality**: Publication-ready output with proper formatting
 ✅ **Simpler Setup**: No complex plugin configuration needed
 ✅ **Cross-platform**: Works on Windows, macOS, and Linux
-
-- Generate a References section at the end
-- Create hyperlinks between citations and references
-
-## Project Structure
-
-```
-.
-├── docs/
-│   ├── index.md       # Home page
-│   └── test.md        # Test page
-├── mkdocs.yml         # MkDocs configuration
-├── requirements.txt   # Python dependencies
-└── README.md          # This file
-```
-
-## Customization
-
-Edit `mkdocs.yml` to customize:
-- Site name and description
-- Navigation structure
-- Theme settings
-- Markdown extensions
-
-Add new pages by creating markdown files in the `docs/` directory and updating the `nav` section in `mkdocs.yml`.
