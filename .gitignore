@@ -1,6 +1,11 @@
 # MkDocs build output
 site/
 
+# Quarto output
+_output/
+*.pdf
+*.tex
+
 # Python
 __pycache__/
 *.py[cod]
@@ -19,3 +24,6 @@ ENV/
 *.swo
 *~
 .DS_Store
+
+/.quarto/
+**/*.quarto_ipynb

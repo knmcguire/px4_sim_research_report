@@ -1,4 +1,18 @@
-# PX4 Forum Analysis
+---
+title: "PX4 Forum Analysis"
+author: "Your Name"
+date: today
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+  pdf:
+    toc: true
+    number-sections: true
+bibliography: references.bib
+link-citations: true
+---
 
 ## Short Summary
 

@@ -1,0 +1,27 @@
+project:
+  type: default
+  output-dir: _output
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    code-fold: true
+    code-tools: true
+    css: styles.css
+  pdf:
+    documentclass: article
+    toc: true
+    number-sections: true
+    colorlinks: true
+    geometry:
+      - margin=1in
+  docx:
+    toc: true
+    number-sections: true
+
+bibliography: docs/references.bib
+csl: https://www.zotero.org/styles/apa
+link-citations: true

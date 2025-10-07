@@ -9,9 +9,24 @@ platforms = ["win-64", "linux-64", "osx-64"]
 python = ">=3.8"
 requests = "*"
 beautifulsoup4 = "*"
-mkdocs-bibtex = ">=4.4.0,<5"
-pypandoc = ">=1.15,<2"
-mkdocs-material = ">=9.6.20,<10"
+quarto = ">=1.4"
+pandoc = ">=3.0"
 
-[pypi-dependencies]
-mkdocs-print-site-plugin = ">=2.8, <3"
+[tasks]
+# Render the report to HTML
+render = "quarto render docs/px4_survey.md --to html"
+
+# Install TinyTeX for PDF support (run this once)
+install-latex = "quarto install tinytex"
+
+# Render to PDF (requires LaTeX - run install-latex first)
+render-pdf = "quarto render docs/px4_survey.md --to pdf"
+
+# Render to Word
+render-docx = "quarto render docs/px4_survey.md --to docx"
+
+# Preview with live reload
+preview = "quarto preview docs/px4_survey.md"
+
+# Render all formats (HTML + Word, skip PDF if no LaTeX)
+render-all = "quarto render docs/px4_survey.md"
