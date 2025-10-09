@@ -52,6 +52,7 @@ This survey should take only 10-15 minutes to fill in.
 - Nvidia Isaac Sim
 - Gazebo (formerly known as Ignition)
 - Gazebo Classic
+- JMAVSim
 - AirSim
 - MuJoCo
 - Pybullet
@@ -98,7 +99,6 @@ This survey should take only 10-15 minutes to fill in.
 - Cargo hook/winch
 - Perception Sensors (lidar, sonar, etc.)
 - Communication equipment
-- None of the above
 - Other: ___________
 
 **10. How many robots/UAVs do you typically simulate simultaneously?**
@@ -116,20 +116,26 @@ This survey should take only 10-15 minutes to fill in.
 - API/scripting
 - Other: ___________
 
+**12. What's do you like the most with current/latest simulator you are using?**
+
+____ 
+**13. What's your biggest frustration with current/latest simulator you are using?**
+
+____ 
 ---
 
 ## Technical Setup & Constraints
 
 *Understanding your hardware setup and limitations helps us design tools that work for everyone's environment.*
 
-**12. Did you have to purchase/upgrade your computer specifically for simulation?**
+**14. Did you have to purchase/upgrade your computer specifically for simulation?**
 - Yes, bought entirely new system
 - Yes, upgraded existing system
 - No, used existing hardware
 - Using cloud/remote computing
 - Other: ___________
 
-**13. What operating system do you primarily use for simulation?**
+**15. What operating system do you primarily use for simulation?**
 - Ubuntu
 - Arch Linux
 - Fedora Linux
@@ -137,21 +143,21 @@ This survey should take only 10-15 minutes to fill in.
 - MacOS
 - Other: ___________
 
-**14. What operating system version are you using for the above selection?**
+**15. What operating system version are you using for the above selection?**
 ___________
 
-**15. Do you run simulations locally on your machine?**
-- Yes, with a GPU
-- Yes, without a GPU
-- No, I don't run locally
+**16. Do you run simulations locally or remotely**
+- Locally on my machine
+- On remote machines
+- In the cloud
+- other
 
-**16. Do you run simulations on cloud/remote machines?**
-- Yes, with a GPU
-- Yes, without a GPU
-- No, I don't use cloud/remote
+**17. Is your machine on which you run your simulation on, GPU-enabled?**
+- Yes
+- No
 - Other: ___________
 
-**17. What's your biggest hardware limitation?**
+**18. What's your biggest hardware limitation?**
 - CPU performance
 - GPU/graphics performance
 - RAM capacity
@@ -160,79 +166,7 @@ ___________
 - No significant limitations
 - Other: ___________
 
-**18. Anything to add to any of the questions answered in this section regarding computer specifications?**
-___________
-
----
-
-## Current Simulator Experience
-
-*Here we dive deep into your experience with simulators - what works well and what doesn't. This feedback is crucial for identifying the biggest areas for improvement.*
-
-**Please fill in the survey based on your first instinct (don't linger too long per question)**
-
-**19. Which simulator have you used most recently?**
-___________
-
-**20. Setup and Installation Experience**
-
-*Note: This refers to setting up the complete PX4 simulation environment (PX4 + simulator)*
-
-Rate on scale: 1 (Strongly disagree) to 5 (Strongly agree)
-
-- "The simulator was easy to install and set up with PX4"
-- "I had to install too many external dependencies"
-- "The error and debug messages were easy to understand"
-
-**21. User Experience**
-
-Rate on scale: 1 (Strongly disagree) to 5 (Strongly agree)
-
-- "I needed to use an extensive guide to navigate through the GUI"
-- "Using the simulator was a smooth experience"
-- "The user interface felt cluttered and complex"
-- "The error/bug messages were easy to read"
-
-**22. Technical Performance**
-
-Rate on scale: 1 (Strongly disagree) to 5 (Strongly agree)
-
-- "Objects in the simulation didn't behave realistically"
-- "The simulator can run simulations faster than real-time"
-- "The simulation's graphics were very photo-realistic"
-- "I experienced frequent crashes and freezes"
-
-**23. Feature Support**
-
-Rate on scale: 1 (Strongly disagree) to 5 (Strongly agree)
-
-- "The simulator offered a wide variety of sensors"
-- "I cannot easily make a custom drone in this simulator"
-- "I'm able to use this simulator easily with swarms"
-
-**24. Documentation and Tutorials**
-
-Rate on scale: 1 (Strongly disagree) to 5 (Strongly agree)
-
-- "The documentation/website was easy to find"
-- "The documentation was difficult to follow"
-- "There were plenty of tutorials available"
-
-**25. Community and Support**
-
-Rate on scale: 1 (Strongly disagree) to 5 (Strongly agree)
-
-- "It was hard to find a clear way to get help or ask questions"
-- "The community and support forums were helpful"
-- "It took too long to get my questions answered"
-
-**26. What do you like the most about current/latest simulator you are using?**
-___________
-
-**27. What's your biggest frustration with current/latest simulator you are using?**
-___________
-
-**28. Anything else to add?**
+**19. Anything to add to any of the questions answered in this section regarding computer specifications?**
 ___________
 
 ---
@@ -243,7 +177,7 @@ ___________
 
 **Please fill in the survey based on your first instinct (don't linger too long per question)**
 
-**29. Please rate the preferred Technical Capabilities**
+**20. Please rate the preferred Technical Capabilities**
 
 Rate on scale: 1 (Not important) to 5 (Very important), or No preference/opinion
 
@@ -256,7 +190,7 @@ Rate on scale: 1 (Not important) to 5 (Very important), or No preference/opinion
 - Failure mode simulation
 - Communication simulation
 
-**30. Please rate the preferred Platform & Compatibility**
+**21. Please rate the preferred Platform & Compatibility**
 
 Rate on scale: 1 (Not important) to 5 (Very important), or No opinion or preference
 
@@ -266,7 +200,7 @@ Rate on scale: 1 (Not important) to 5 (Very important), or No opinion or prefere
 - Docker/containerization support
 - Network capability (PX4 and simulator on different machines)
 
-**31. Please rate the preferred Usability & Accessibility**
+**22. Please rate the preferred Usability & Accessibility**
 
 Rate on scale: 1 (Not important) to 5 (Very important), or No opinion or preference
 
@@ -278,7 +212,7 @@ Rate on scale: 1 (Not important) to 5 (Very important), or No opinion or prefere
 - Real-time debug support (pause, step through simulation)
 - Simulation snapshot/hotstart capability
 
-**32. Please rate the preferred Advanced Features**
+**23. Please rate the preferred Advanced Features**
 
 Rate on scale: 1 (Not important) to 5 (Very important), or No opinion or preference
 
@@ -290,16 +224,16 @@ Rate on scale: 1 (Not important) to 5 (Very important), or No opinion or prefere
 - Performance benchmarking tools
 - CAD program integration for custom models
 
-**33. Any more features that we should pay attention to as well?**
+**24. Any more features that we should pay attention to as well?**
 ___________
 
 ---
 
-## PX4 Simulation Roadmap
+## PX4 Simulation Roadmap Development roadmap
 
 *This section helps us understand what strategic direction would best serve the PX4 community.*
 
-**34. For the PX4 simulation roadmap, what should be the TOP priority?**
+**25. If there was one thing you'd like the PX4 simulation development team to work on, what would it be?**
 - Improve stability/performance of existing simulator integrations
 - Add support for more simulators
 - Better documentation and examples
@@ -308,7 +242,7 @@ ___________
 - More realistic sensor/physics models
 - Other: ___________
 
-**35. Why is this your top priority?**
+**26. Why is this your top priority?**
 ___________
 
 ---
@@ -317,17 +251,17 @@ ___________
 
 *Final thoughts and opportunities for deeper engagement with our improvement efforts.*
 
-**36. What's the most important improvement needed in simulation supported in the PX4-ecosystem?**
+**27. What's the most important improvement needed in simulation supported in the PX4-ecosystem?**
 ___________
 
-**37. Any additional comments or suggestions?**
+**28. Any additional comments or suggestions?**
 ___________
 
-**38. Would you be willing to participate in follow-up interviews?**
+**29. Would you be willing to participate in follow-up interviews?**
 - Yes
 - No
 
-**39. If yes, please provide on which email address we can contact you. Your email address will only be used for this exact purpose.**
+**30. If yes, please provide on which email address we can contact you. Your email address will only be used for this exact purpose.**
 ___________
 
 ---
