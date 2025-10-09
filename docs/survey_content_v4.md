@@ -1,10 +1,10 @@
-# PX4 Simulator Community Survey - Pilot
+# PX4 Simulator Community Survey
 
 This survey aims to understand the developer needs of PX4 users and their simulation experiences. We're hoping to improve the current situation and make things better for everyone.
 
 This survey should take only 10-15 minutes to fill in.
 
-**Draft V3**
+**Draft V4**
 
 ---
 
@@ -17,15 +17,24 @@ This survey should take only 10-15 minutes to fill in.
 - Researcher (Academic/Industry)
 - Educator/Teacher
 - Professional Engineer / Technical Consultant
+- Hobbyist / Independent Developer
 - Other: ___________
 
-**2. What is your level of expertise regarding robotic simulators?**
+**2. What domain are you working in?**
+- Academia/Education
+- Aerospace/Drones (Commercial)
+- Aerospace/Drones (Hobbyist)
+- Defense/Government
+- Research Institution
+- Other: ___________
+
+**3. What is your level of expertise regarding robotic simulators?**
 - Novice
 - Intermediate
 - Advanced
 - Expert
 
-**3. How long have you been working with PX4?**
+**4. How long have you been working with PX4?**
 - I haven't worked with PX4
 - I just started working with PX4 (< 1 month)
 - 1 month - 1 year
@@ -39,7 +48,7 @@ This survey should take only 10-15 minutes to fill in.
 
 *This section helps us understand which tools you're using and how you're using them in your current workflow.*
 
-**4. Which simulators have you worked with in your setup? (Select all that apply)**
+**5. Which simulators have you worked with in your setup? (Select all that apply)**
 - Nvidia Isaac Sim
 - Gazebo (formerly known as Ignition)
 - Gazebo Classic
@@ -50,7 +59,7 @@ This survey should take only 10-15 minutes to fill in.
 - JSBSim
 - Other: ___________
 
-**5. What was your primary purpose for using simulators? (Select all that apply)**
+**6. What was your primary purpose for using simulators? (Select all that apply)**
 - Academic research
 - Education/learning
 - Robot prototyping/design
@@ -62,7 +71,7 @@ This survey should take only 10-15 minutes to fill in.
 - Flight tooling design
 - Other: ___________
 
-**6. For which goals are you using simulators? (Select all that apply)**
+**7. For which goals are you using simulators? (Select all that apply)**
 - Development tool for robotic systems
 - Quality assurance in continuous integration
 - Data generation for machine learning
@@ -72,7 +81,7 @@ This survey should take only 10-15 minutes to fill in.
 - Regulatory compliance testing
 - Other: ___________
 
-**7. What type of aerial robotic vehicle are you working with?**
+**8. What type of aerial robotic vehicle are you working with? (Select all that apply)**
 - Helicopter
 - Quadcopter
 - Multicopters (more than 4 propellers)
@@ -81,7 +90,7 @@ This survey should take only 10-15 minutes to fill in.
 - Blimps
 - Other: ___________
 
-**8. Does your platform have additional equipment or payloads? (Select all that apply)**
+**9. Does your platform have additional equipment or payloads? (Select all that apply)**
 - Manipulator arm
 - Gripper/claw
 - Gimbal
@@ -92,12 +101,20 @@ This survey should take only 10-15 minutes to fill in.
 - None of the above
 - Other: ___________
 
-**9. How many robots/UAVs do you typically simulate simultaneously?**
+**10. How many robots/UAVs do you typically simulate simultaneously?**
 - Just one (1)
 - 2-4
 - 5-10
 - 10-100
 - 100+
+
+**11. How do you typically interact with your simulator? (Select all that apply)**
+- Mainly through GUI
+- Headless/CI environments
+- Custom plugins/extensions
+- ROS/ROS2 integration
+- API/scripting
+- Other: ___________
 
 ---
 
@@ -105,14 +122,14 @@ This survey should take only 10-15 minutes to fill in.
 
 *Understanding your hardware setup and limitations helps us design tools that work for everyone's environment.*
 
-**10. Did you have to purchase/upgrade your computer specifically for simulation?**
+**12. Did you have to purchase/upgrade your computer specifically for simulation?**
 - Yes, bought entirely new system
 - Yes, upgraded existing system
 - No, used existing hardware
 - Using cloud/remote computing
 - Other: ___________
 
-**11. What operating system do you primarily use for simulation?**
+**13. What operating system do you primarily use for simulation?**
 - Ubuntu
 - Arch Linux
 - Fedora Linux
@@ -120,13 +137,21 @@ This survey should take only 10-15 minutes to fill in.
 - MacOS
 - Other: ___________
 
-**12. Which version of the operating system have you selected above?**
+**14. What operating system version are you using for the above selection?**
 ___________
 
-**13. Do you use a GPU enabled computer, and if so, what kind of specifications does it have?**
-___________
+**15. Do you run simulations locally on your machine?**
+- Yes, with a GPU
+- Yes, without a GPU
+- No, I don't run locally
 
-**14. What's your biggest hardware limitation?**
+**16. Do you run simulations on cloud/remote machines?**
+- Yes, with a GPU
+- Yes, without a GPU
+- No, I don't use cloud/remote
+- Other: ___________
+
+**17. What's your biggest hardware limitation?**
 - CPU performance
 - GPU/graphics performance
 - RAM capacity
@@ -135,11 +160,7 @@ ___________
 - No significant limitations
 - Other: ___________
 
-**15. Do you find the necessary hardware/computer specifications for simulation acceptable or workable?**
-- Yes
-- No
-
-**16. Anything to add to any of the questions answered in this section regarding computer specifications?**
+**18. Anything to add to any of the questions answered in this section regarding computer specifications?**
 ___________
 
 ---
@@ -150,66 +171,68 @@ ___________
 
 **Please fill in the survey based on your first instinct (don't linger too long per question)**
 
-**17. Which simulator have you used most recently?**
+**19. Which simulator have you used most recently?**
 ___________
 
-**18. Setup and Installation Experience**
+**20. Setup and Installation Experience**
 
-Rate on scale: 1 (I agree) to 5 (I do not agree)
+*Note: This refers to setting up the complete PX4 simulation environment (PX4 + simulator)*
 
-- "The simulator was easy to install."
+Rate on scale: 1 (Strongly disagree) to 5 (Strongly agree)
+
+- "The simulator was easy to install and set up with PX4"
 - "I had to install too many external dependencies"
 - "The error and debug messages were easy to understand"
 
-**19. User Experience**
+**21. User Experience**
 
-Rate on scale: 1 (I agree) to 5 (I do not agree)
+Rate on scale: 1 (Strongly disagree) to 5 (Strongly agree)
 
 - "I needed to use an extensive guide to navigate through the GUI"
-- "Using the simulator was a smooth experience."
-- "The user interface felt cluttered and complex."
+- "Using the simulator was a smooth experience"
+- "The user interface felt cluttered and complex"
 - "The error/bug messages were easy to read"
 
-**20. Technical Performance**
+**22. Technical Performance**
 
-Rate on scale: 1 (I agree) to 5 (I do not agree)
+Rate on scale: 1 (Strongly disagree) to 5 (Strongly agree)
 
-- "Objects in the simulation didn't behave realistically."
-- "The simulator can run simulations faster than real-time."
-- "The simulation's graphics were very photo-realistic."
-- "I experienced frequent crashes and freezes."
+- "Objects in the simulation didn't behave realistically"
+- "The simulator can run simulations faster than real-time"
+- "The simulation's graphics were very photo-realistic"
+- "I experienced frequent crashes and freezes"
 
-**21. Feature Support**
+**23. Feature Support**
 
-Rate on scale: 1 (I agree) to 5 (I do not agree)
+Rate on scale: 1 (Strongly disagree) to 5 (Strongly agree)
 
-- "The simulator offered a wide variety of sensors."
-- "I can not easily make a custom drone in this simulator"
+- "The simulator offered a wide variety of sensors"
+- "I cannot easily make a custom drone in this simulator"
 - "I'm able to use this simulator easily with swarms"
 
-**22. Documentation and Tutorials**
+**24. Documentation and Tutorials**
 
-Rate on scale: 1 (I agree) to 5 (I do not agree)
+Rate on scale: 1 (Strongly disagree) to 5 (Strongly agree)
 
-- "The documentation/website was easy to find."
-- "The documentation was difficult to follow."
-- "There were plenty of tutorials available."
+- "The documentation/website was easy to find"
+- "The documentation was difficult to follow"
+- "There were plenty of tutorials available"
 
-**23. Community and Support**
+**25. Community and Support**
 
-Rate on scale: 1 (I agree) to 5 (I do not agree)
+Rate on scale: 1 (Strongly disagree) to 5 (Strongly agree)
 
-- "It was hard to find a clear way to get help or ask questions."
-- "The community and support forums were helpful."
-- "It took too long to get my questions answered."
+- "It was hard to find a clear way to get help or ask questions"
+- "The community and support forums were helpful"
+- "It took too long to get my questions answered"
 
-**24. What do you like the most about current/latest simulator you are using?**
+**26. What do you like the most about current/latest simulator you are using?**
 ___________
 
-**25. What's your biggest frustration with current/latest simulator you are using?**
+**27. What's your biggest frustration with current/latest simulator you are using?**
 ___________
 
-**26. Anything else to add?**
+**28. Anything else to add?**
 ___________
 
 ---
@@ -220,7 +243,7 @@ ___________
 
 **Please fill in the survey based on your first instinct (don't linger too long per question)**
 
-**27. Please rate the preferred Technical Capabilities**
+**29. Please rate the preferred Technical Capabilities**
 
 Rate on scale: 1 (Not important) to 5 (Very important), or No preference/opinion
 
@@ -233,7 +256,7 @@ Rate on scale: 1 (Not important) to 5 (Very important), or No preference/opinion
 - Failure mode simulation
 - Communication simulation
 
-**28. Please rate the preferred Platform & Compatibility**
+**30. Please rate the preferred Platform & Compatibility**
 
 Rate on scale: 1 (Not important) to 5 (Very important), or No opinion or preference
 
@@ -241,8 +264,9 @@ Rate on scale: 1 (Not important) to 5 (Very important), or No opinion or prefere
 - ROS/ROS 2 integration
 - Cloud simulation capabilities
 - Docker/containerization support
+- Network capability (PX4 and simulator on different machines)
 
-**29. Please rate the preferred Usability & Accessibility**
+**31. Please rate the preferred Usability & Accessibility**
 
 Rate on scale: 1 (Not important) to 5 (Very important), or No opinion or preference
 
@@ -251,8 +275,10 @@ Rate on scale: 1 (Not important) to 5 (Very important), or No opinion or prefere
 - Drag-and-drop model capability
 - Template/example library availability
 - Real-time parameter tuning
+- Real-time debug support (pause, step through simulation)
+- Simulation snapshot/hotstart capability
 
-**30. Please rate the preferred Advanced Features**
+**32. Please rate the preferred Advanced Features**
 
 Rate on scale: 1 (Not important) to 5 (Very important), or No opinion or preference
 
@@ -264,7 +290,25 @@ Rate on scale: 1 (Not important) to 5 (Very important), or No opinion or prefere
 - Performance benchmarking tools
 - CAD program integration for custom models
 
-**31. Any more features that we should pay attention too as well?**
+**33. Any more features that we should pay attention to as well?**
+___________
+
+---
+
+## PX4 Simulation Roadmap
+
+*This section helps us understand what strategic direction would best serve the PX4 community.*
+
+**34. For the PX4 simulation roadmap, what should be the TOP priority?**
+- Improve stability/performance of existing simulator integrations
+- Add support for more simulators
+- Better documentation and examples
+- A new PX4-optimized simulator
+- Better sim-to-real transfer tools
+- More realistic sensor/physics models
+- Other: ___________
+
+**35. Why is this your top priority?**
 ___________
 
 ---
@@ -273,17 +317,17 @@ ___________
 
 *Final thoughts and opportunities for deeper engagement with our improvement efforts.*
 
-**32. What's the most important improvement needed in simulation supported in the PX4-ecosystem?**
+**36. What's the most important improvement needed in simulation supported in the PX4-ecosystem?**
 ___________
 
-**33. Any additional comments or suggestions?**
+**37. Any additional comments or suggestions?**
 ___________
 
-**34. Would you be willing to participate in follow-up interviews?**
+**38. Would you be willing to participate in follow-up interviews?**
 - Yes
 - No
 
-**35. If yes, please provide on which email address we can contact you. Your email address will only be used for this exact purpose.**
+**39. If yes, please provide on which email address we can contact you. Your email address will only be used for this exact purpose.**
 ___________
 
 ---
