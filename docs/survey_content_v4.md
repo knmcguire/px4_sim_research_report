@@ -13,6 +13,7 @@ This survey should take only 10-15 minutes to fill in.
 *We'd like to understand your background and experience level to better contextualize your feedback.*
 
 **1. What is your primary profession?**
+
 - Student (BSc/MSc)
 - Researcher (Academic/Industry)
 - Educator/Teacher
@@ -21,6 +22,7 @@ This survey should take only 10-15 minutes to fill in.
 - Other: ___________
 
 **2. What domain are you working in?**
+
 - Academia/Education
 - Aerospace/Drones (Commercial)
 - Aerospace/Drones (Hobbyist)
@@ -29,12 +31,14 @@ This survey should take only 10-15 minutes to fill in.
 - Other: ___________
 
 **3. What is your level of expertise regarding robotic simulators?**
+
 - Novice
 - Intermediate
 - Advanced
 - Expert
 
 **4. How long have you been working with PX4?**
+
 - I haven't worked with PX4
 - I just started working with PX4 (< 1 month)
 - 1 month - 1 year
@@ -49,6 +53,7 @@ This survey should take only 10-15 minutes to fill in.
 *This section helps us understand which tools you're using and how you're using them in your current workflow.*
 
 **5. Which simulators have you worked with in your setup? (Select all that apply)**
+
 - Nvidia Isaac Sim
 - Gazebo (formerly known as Ignition)
 - Gazebo Classic
@@ -61,6 +66,7 @@ This survey should take only 10-15 minutes to fill in.
 - Other: ___________
 
 **6. What was your primary purpose for using simulators? (Select all that apply)**
+
 - Academic research
 - Education/learning
 - Robot prototyping/design
@@ -73,6 +79,7 @@ This survey should take only 10-15 minutes to fill in.
 - Other: ___________
 
 **7. For which goals are you using simulators? (Select all that apply)**
+
 - Development tool for robotic systems
 - Quality assurance in continuous integration
 - Data generation for machine learning
@@ -83,6 +90,7 @@ This survey should take only 10-15 minutes to fill in.
 - Other: ___________
 
 **8. What type of aerial robotic vehicle are you working with? (Select all that apply)**
+
 - Helicopter
 - Quadcopter
 - Multicopters (more than 4 propellers)
@@ -92,6 +100,7 @@ This survey should take only 10-15 minutes to fill in.
 - Other: ___________
 
 **9. Does your platform have additional equipment or payloads? (Select all that apply)**
+
 - Manipulator arm
 - Gripper/claw
 - Gimbal
@@ -102,6 +111,7 @@ This survey should take only 10-15 minutes to fill in.
 - Other: ___________
 
 **10. How many robots/UAVs do you typically simulate simultaneously?**
+
 - Just one (1)
 - 2-4
 - 5-10
@@ -109,6 +119,7 @@ This survey should take only 10-15 minutes to fill in.
 - 100+
 
 **11. How do you typically interact with your simulator? (Select all that apply)**
+
 - Mainly through GUI
 - Headless/CI environments
 - Custom plugins/extensions
@@ -119,6 +130,7 @@ This survey should take only 10-15 minutes to fill in.
 **12. What's do you like the most with current/latest simulator you are using?**
 
 ____ 
+
 **13. What's your biggest frustration with current/latest simulator you are using?**
 
 ____ 
@@ -129,6 +141,7 @@ ____
 *Understanding your hardware setup and limitations helps us design tools that work for everyone's environment.*
 
 **14. Did you have to purchase/upgrade your computer specifically for simulation?**
+
 - Yes, bought entirely new system
 - Yes, upgraded existing system
 - No, used existing hardware
@@ -136,6 +149,7 @@ ____
 - Other: ___________
 
 **15. What operating system do you primarily use for simulation?**
+
 - Ubuntu
 - Arch Linux
 - Fedora Linux
@@ -144,20 +158,24 @@ ____
 - Other: ___________
 
 **15. What operating system version are you using for the above selection?**
+
 ___________
 
 **16. Do you run simulations locally or remotely**
+
 - Locally on my machine
 - On remote machines
 - In the cloud
 - other
 
-**17. Is your machine on which you run your simulation on, GPU-enabled?**
+**17. Is your machine on which you run your simulation on GPU-enabled?**
+
 - Yes
 - No
 - Other: ___________
 
 **18. What's your biggest hardware limitation?**
+
 - CPU performance
 - GPU/graphics performance
 - RAM capacity
@@ -167,6 +185,7 @@ ___________
 - Other: ___________
 
 **19. Anything to add to any of the questions answered in this section regarding computer specifications?**
+
 ___________
 
 ---
@@ -225,15 +244,17 @@ Rate on scale: 1 (Not important) to 5 (Very important), or No opinion or prefere
 - CAD program integration for custom models
 
 **24. Any more features that we should pay attention to as well?**
+
 ___________
 
 ---
 
-## PX4 Simulation Roadmap Development roadmap
+## Final Questions
 
-*This section helps us understand what strategic direction would best serve the PX4 community.*
+*Final thoughts and opportunities for deeper engagement with our improvement efforts.*
 
 **25. If there was one thing you'd like the PX4 simulation development team to work on, what would it be?**
+
 - Improve stability/performance of existing simulator integrations
 - Add support for more simulators
 - Better documentation and examples
@@ -243,25 +264,16 @@ ___________
 - Other: ___________
 
 **26. Why is this your top priority?**
+
 ___________
 
----
 
-## Final Questions
+**29. Any additional comments or suggestions?**
 
-*Final thoughts and opportunities for deeper engagement with our improvement efforts.*
-
-**27. What's the most important improvement needed in simulation supported in the PX4-ecosystem?**
 ___________
 
-**28. Any additional comments or suggestions?**
-___________
+**30. Would you be willing to participate in follow-up interviews? If yes, please provide on which email address we can contact you. Your email address will only be used for this exact purpose.**
 
-**29. Would you be willing to participate in follow-up interviews?**
-- Yes
-- No
-
-**30. If yes, please provide on which email address we can contact you. Your email address will only be used for this exact purpose.**
 ___________
 
 ---

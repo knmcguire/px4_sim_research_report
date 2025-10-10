@@ -13,6 +13,7 @@ This survey should take only 10-15 minutes to fill in.
 *We'd like to understand your background and experience level to better contextualize your feedback.*
 
 **1. What is your primary profession?**
+
 - Student (BSc/MSc)
 - Researcher (Academic/Industry)
 - Educator/Teacher
@@ -20,12 +21,14 @@ This survey should take only 10-15 minutes to fill in.
 - Other: ___________
 
 **2. What is your level of expertise regarding robotic simulators?**
+
 - Novice
 - Intermediate
 - Advanced
 - Expert
 
 **3. How long have you been working with PX4?**
+
 - I haven't worked with PX4
 - I just started working with PX4 (< 1 month)
 - 1 month - 1 year
@@ -40,6 +43,7 @@ This survey should take only 10-15 minutes to fill in.
 *This section helps us understand which tools you're using and how you're using them in your current workflow.*
 
 **4. Which simulators have you worked with in your setup? (Select all that apply)**
+
 - Nvidia Isaac Sim
 - Gazebo (formerly known as Ignition)
 - Gazebo Classic
@@ -51,6 +55,7 @@ This survey should take only 10-15 minutes to fill in.
 - Other: ___________
 
 **5. What was your primary purpose for using simulators? (Select all that apply)**
+
 - Academic research
 - Education/learning
 - Robot prototyping/design
@@ -63,6 +68,7 @@ This survey should take only 10-15 minutes to fill in.
 - Other: ___________
 
 **6. For which goals are you using simulators? (Select all that apply)**
+
 - Development tool for robotic systems
 - Quality assurance in continuous integration
 - Data generation for machine learning
@@ -73,6 +79,7 @@ This survey should take only 10-15 minutes to fill in.
 - Other: ___________
 
 **7. What type of aerial robotic vehicle are you working with?**
+
 - Helicopter
 - Quadcopter
 - Multicopters (more than 4 propellers)
@@ -82,6 +89,7 @@ This survey should take only 10-15 minutes to fill in.
 - Other: ___________
 
 **8. Does your platform have additional equipment or payloads? (Select all that apply)**
+
 - Manipulator arm
 - Gripper/claw
 - Gimbal
@@ -93,6 +101,7 @@ This survey should take only 10-15 minutes to fill in.
 - Other: ___________
 
 **9. How many robots/UAVs do you typically simulate simultaneously?**
+
 - Just one (1)
 - 2-4
 - 5-10
@@ -106,6 +115,7 @@ This survey should take only 10-15 minutes to fill in.
 *Understanding your hardware setup and limitations helps us design tools that work for everyone's environment.*
 
 **10. Did you have to purchase/upgrade your computer specifically for simulation?**
+
 - Yes, bought entirely new system
 - Yes, upgraded existing system
 - No, used existing hardware
@@ -113,6 +123,7 @@ This survey should take only 10-15 minutes to fill in.
 - Other: ___________
 
 **11. What operating system do you primarily use for simulation?**
+
 - Ubuntu
 - Arch Linux
 - Fedora Linux
@@ -127,6 +138,7 @@ ___________
 ___________
 
 **14. What's your biggest hardware limitation?**
+
 - CPU performance
 - GPU/graphics performance
 - RAM capacity
@@ -136,6 +148,7 @@ ___________
 - Other: ___________
 
 **15. Do you find the necessary hardware/computer specifications for simulation acceptable or workable?**
+
 - Yes
 - No
 

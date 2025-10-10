@@ -32,6 +32,11 @@ The questions are: Should we stay with the current simulation setup or do we hav
 * Results Main survey
 * recommendations.
 
+
+## Pilot survey
+
+\autoref{Pilot survey}
+
 ## PX4 Forum Analysis
 
 ### Short Summary
@@ -127,28 +132,23 @@ Parameter access and modification during simulation have been reported to cause 
 Simulation-specific configurations seem to cause confusion. One user[@px4-42119] requests the ability to disable failsafes during testing but finds no supported mechanism. Another user[@px4-42015] asks whether drone instances can start in "clean state" regardless of previous flights, important for reproducible experiments. A forum post[@px4-42586] describes time synchronization problems between components, while another[@px4-41998] questions network configuration options. A user[@px4-42754] requests GPS disabling for VIO testing, while another[@px4-43097] addresses external odometry configuration, and another user[@px4-47082] seeks to disable Gazebo's odometry publisher. Several other (support) request have been made like highlights sensor frame orientation challenges[@px4-46035],  arbitrary state initialization for ML[@px4-43846], and  external vision aiding issues [@px4-44400]. Several users are addressing data-bridging issues [@px4-43777; @px4-46164; @px4-46632; @px4-46694]. Additional configuration issues are reported as well[@px4-46698; @px4-46856; @px4-44060; @px4-46000; @px4-47434]. 
 
 
-## Survey setup
+
+## Pilot survey setup
+
+
 
 The survey is setup as follows:
 
-1. Getting to know you
-1. Current simulator usages
-1. Technical Setup and Contstraints
-1. Current simulator experience
-1. Desired Features and priorities 
-1. Final questions
-
-### Getting to know you
-
-This section is to understand the background of the users implementing the px4 intergration. It is known that PX4 is used by people in both industry and academia in various roles. Then it would be important tos ee what their experience is with robotic simulators and how much of a core developer they are in the px4 community itself. 
-
-* What is your Primary Profession 
-    * Student/Researcher/Educator/Professional engineer
-* What is your level of expertise rgarding robot simulatorss?
-    * Novice/Intermediate/Advanced/expert
-* Howlong have you been working with PX4
-    * None(/less than one moenth, 1m - 1j, 1-3j, 3-5j, 5+j)
 
 
 
 ## References
+
+
+{{< pagebreak >}}
+
+{{< include survey_content_v3.md >}}
+{{< pagebreak >}}
+
+{{< include survey_content_v4.md >}}
+{{< pagebreak >}}
