@@ -32,20 +32,19 @@ The purpose of the survey study is to find the next and most pressing developer 
 * recommendations.
 
 
-
-
-## PX4 Forum Analysis
-
 {{< include forum_investigation.md >}}
 
-## Pilot survey
 
 {{< include pilot_survey.md >}}
 
 
+{{< include final_survey.md >}}
+
 
 
 {{< pagebreak >}}
+
+## Appendix 
 
 {{< include survey_content_v3.md >}}
 {{< pagebreak >}}
