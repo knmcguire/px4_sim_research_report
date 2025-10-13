@@ -32,26 +32,17 @@ The purpose of the survey study is to find the next and most pressing developer 
 * recommendations.
 
 
-## Pilot survey
 
-\autoref{Pilot survey}
 
 ## PX4 Forum Analysis
 
 {{< include forum_investigation.md >}}
 
+## Pilot survey
+
+{{< include pilot_survey.md >}}
 
 
-## Pilot survey setup
-
-
-
-The survey is setup as follows:
-
-
-
-
-## References
 
 
 {{< pagebreak >}}
@@ -61,3 +52,5 @@ The survey is setup as follows:
 
 {{< include survey_content_v4.md >}}
 {{< pagebreak >}}
+
+## References
