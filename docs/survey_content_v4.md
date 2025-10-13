@@ -74,6 +74,7 @@ We're gathering feedback from the PX4 community to inform our simulation integra
 - Pybullet
 - FlightGear
 - JSBSim
+- Simulink
 - Other: ___________
 
 **6. What was your primary purpose for using simulators? (Select all that apply)**
@@ -230,6 +231,7 @@ Rate on scale: 1 (Not important) to 5 (Very important), or No opinion or prefere
 - Cloud simulation capabilities
 - Docker/containerization support
 - Network capability (PX4 and simulator on different machines)
+- Compatibility between different versions of  PX4 and simulators
 
 **23. Please rate the preferred Usability & Accessibility**
 
@@ -237,7 +239,6 @@ Rate on scale: 1 (Not important) to 5 (Very important), or No opinion or prefere
 
 - Beginner-friendly interface
 - Easy installation process
-- Drag-and-drop model capability
 - Template/example library availability
 - Real-time parameter tuning
 - Real-time debug support (pause, step through simulation)
@@ -266,20 +267,21 @@ ___________
 *This section helps us understand what strategic direction would best serve the PX4 community.*
 
 **26. If there was one thing you'd like the PX4 simulation development team to work on, what would it be?**
+- Improving the current Gazebo simulator intergration
+- A new PX4-optimized simulator
+- Add support for more simulators for PX4
+- Better documentation and examples for existing PX4 simulation
+- More simulation model creation capabilities (more types of vehicles)
+- More realistic sensor/physics models
 - Improve stability/performance of existing simulator integrations
 - Better PX4-simulator integration (easier SITL setup, better parameter mapping)
-- Add support for more simulators
-- Better documentation and examples for PX4 simulation
-- Improved debugging tools (pause, step-through, hotstart capabilities)
-- Better sim-to-real transfer (reduce simulation gap)
-- More realistic sensor/physics models
-- Multi-vehicle/swarm simulation support
-- Better CI/CD integration for automated testing
+- More realistic sensor/physics models (Sim2Real gap)
+- Better multi-vehicle/swarm simulation support
 - Improved ROS/ROS2 integration with PX4 simulation
-- A new PX4-optimized simulator
-- Other: ___________
+- Fixing PX4 - Simulator version compatibility issues
+- Other
 
-**27. Why is this your top priority?**
+**27. Why is this choice your top priority?**
 
 ___________
 
