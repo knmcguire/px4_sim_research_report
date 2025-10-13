@@ -2,7 +2,18 @@
 
 This survey aims to understand the developer needs of PX4 users and their simulation experiences. We're hoping to improve the current situation and make things better for everyone.
 
-This survey should take only 10-15 minutes to fill in.
+**This survey should take only 10-15 minutes to fill in.**
+
+## About This Survey
+
+We're gathering feedback from the PX4 community to inform our simulation integration roadmap. Your input will help us prioritize which simulators to support, what features to develop, and where to focus our documentation efforts.
+
+**Who should take this survey:**
+- Anyone who has used or is interested in using simulation with PX4
+- Users of any experience level, from beginners to experts
+- Whether you're in academia, industry, or working as a hobbyist
+
+**Your responses are anonymous.** We'll only collect email addresses if you volunteer for follow-up interviews.
 
 **Draft V4**
 
@@ -108,6 +119,7 @@ This survey should take only 10-15 minutes to fill in.
 - Cargo hook/winch
 - Perception Sensors (lidar, sonar, etc.)
 - Communication equipment
+- None of the above
 - Other: ___________
 
 **10. How many robots/UAVs do you typically simulate simultaneously?**
@@ -157,24 +169,24 @@ ____
 - MacOS
 - Other: ___________
 
-**15. What operating system version are you using for the above selection?**
+**16. What operating system version are you using for the above selection?**
 
 ___________
 
-**16. Do you run simulations locally or remotely**
+**17. Do you run simulations locally or remotely?**
 
 - Locally on my machine
 - On remote machines
 - In the cloud
-- other
+- Other: ___________
 
-**17. Is your machine on which you run your simulation on GPU-enabled?**
+**18. Is your machine on which you run your simulation GPU-enabled?**
 
 - Yes
 - No
-- Other: ___________
+- Not sure
 
-**18. What's your biggest hardware limitation?**
+**19. What's your biggest hardware limitation?**
 
 - CPU performance
 - GPU/graphics performance
@@ -184,7 +196,7 @@ ___________
 - No significant limitations
 - Other: ___________
 
-**19. Anything to add to any of the questions answered in this section regarding computer specifications?**
+**20. Anything to add to any of the questions answered in this section regarding computer specifications?**
 
 ___________
 
@@ -196,7 +208,7 @@ ___________
 
 **Please fill in the survey based on your first instinct (don't linger too long per question)**
 
-**20. Please rate the preferred Technical Capabilities**
+**21. Please rate the preferred Technical Capabilities**
 
 Rate on scale: 1 (Not important) to 5 (Very important), or No preference/opinion
 
@@ -209,7 +221,7 @@ Rate on scale: 1 (Not important) to 5 (Very important), or No preference/opinion
 - Failure mode simulation
 - Communication simulation
 
-**21. Please rate the preferred Platform & Compatibility**
+**22. Please rate the preferred Platform & Compatibility**
 
 Rate on scale: 1 (Not important) to 5 (Very important), or No opinion or preference
 
@@ -219,7 +231,7 @@ Rate on scale: 1 (Not important) to 5 (Very important), or No opinion or prefere
 - Docker/containerization support
 - Network capability (PX4 and simulator on different machines)
 
-**22. Please rate the preferred Usability & Accessibility**
+**23. Please rate the preferred Usability & Accessibility**
 
 Rate on scale: 1 (Not important) to 5 (Very important), or No opinion or preference
 
@@ -231,7 +243,7 @@ Rate on scale: 1 (Not important) to 5 (Very important), or No opinion or prefere
 - Real-time debug support (pause, step through simulation)
 - Simulation snapshot/hotstart capability
 
-**23. Please rate the preferred Advanced Features**
+**24. Please rate the preferred Advanced Features**
 
 Rate on scale: 1 (Not important) to 5 (Very important), or No opinion or preference
 
@@ -243,7 +255,31 @@ Rate on scale: 1 (Not important) to 5 (Very important), or No opinion or prefere
 - Performance benchmarking tools
 - CAD program integration for custom models
 
-**24. Any more features that we should pay attention to as well?**
+**25. Any more features that we should pay attention to as well?**
+
+___________
+
+---
+
+## PX4 Simulation Roadmap
+
+*This section helps us understand what strategic direction would best serve the PX4 community.*
+
+**26. If there was one thing you'd like the PX4 simulation development team to work on, what would it be?**
+- Improve stability/performance of existing simulator integrations
+- Better PX4-simulator integration (easier SITL setup, better parameter mapping)
+- Add support for more simulators
+- Better documentation and examples for PX4 simulation
+- Improved debugging tools (pause, step-through, hotstart capabilities)
+- Better sim-to-real transfer (reduce simulation gap)
+- More realistic sensor/physics models
+- Multi-vehicle/swarm simulation support
+- Better CI/CD integration for automated testing
+- Improved ROS/ROS2 integration with PX4 simulation
+- A new PX4-optimized simulator
+- Other: ___________
+
+**27. Why is this your top priority?**
 
 ___________
 
@@ -253,26 +289,11 @@ ___________
 
 *Final thoughts and opportunities for deeper engagement with our improvement efforts.*
 
-**25. If there was one thing you'd like the PX4 simulation development team to work on, what would it be?**
-
-- Improve stability/performance of existing simulator integrations
-- Add support for more simulators
-- Better documentation and examples
-- A new PX4-optimized simulator
-- Better sim-to-real transfer tools
-- More realistic sensor/physics models
-- Other: ___________
-
-**26. Why is this your top priority?**
+**28. Any additional comments or suggestions?**
 
 ___________
 
-
-**29. Any additional comments or suggestions?**
-
-___________
-
-**30. Would you be willing to participate in follow-up interviews? If yes, please provide on which email address we can contact you. Your email address will only be used for this exact purpose.**
+**29. Would you be willing to participate in follow-up interviews? If yes, please provide an email address where we can contact you. Your email address will only be used for this exact purpose.**
 
 ___________
 
