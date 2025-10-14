@@ -2,86 +2,32 @@
 
 ## Summary
 
-A pilot survey was conducted with 6 PX4 developers to validate the survey instrument before wider distribution. Respondents were primarily professional engineers (66.7%) with advanced to expert-level simulator expertise (83.3%), and most have 5+ years of PX4 experience (66.7%). The pilot revealed strong consensus on critical priorities while identifying gaps between developer perspectives and broader user needs documented in forum analysis.
+A pilot survey was conducted with 6 PX4 developers to validate the survey instrument before wider distribution. Respondents were primarily professional engineerswith advanced to expert-level simulator expertise, and most have 5+ years of PX4 experience. The result of this pilot survey will be used to fine tune the final survey before it is being send out to the rest of the community.
 
-## Respondent Profile
-
-The pilot group represents highly experienced users: two-thirds are professional engineers, half have advanced simulator expertise, and two-thirds have 5+ years with PX4. This experienced cohort is ideal for validating technical questions but may not reflect novice user perspectives—an important consideration for final survey distribution.
 
 ## Simulator Usage and Goals
 
-All respondents use Gazebo (Classic or Harmonic), confirming its dominance in the PX4 ecosystem. However, 50% also use AirSim, FlightGear, or JSBSim, indicating demand for alternative simulator support. Primary use cases center on algorithm development (66.7%), pre-flight testing (66.7%), and quality assurance in CI pipelines (83.3%). Notably, all respondents simulate only single vehicles, which contrasts sharply with forum analysis showing multi-vehicle simulation as a critical pain point for the broader community.
+All pilot participants use Gazebo (Classic or Harmonic), confirming its dominance in the PX4 ecosystem. However, about half also use AirSim, FlightGear, or JSBSim, indicating demand for alternative simulator support. Primary use cases center on algorithm development, pre-flight testing and quality assurance in CI pipelines. Notably, all respondents simulate only single vehicles. This is a sharp contrast with forum analysis showing multi-vehicle simulation as a critical pain point for the broader community.
 
-Vehicle types are dominated by quadcopters (83.3%) and fixed-wing aircraft (66.7%), with VTOL and specialized vehicles showing lower representation. Equipment focuses heavily on cameras (83.3%) and perception sensors (83.3%), aligning with autonomous systems development priorities.
+Vehicle types are dominated by quadcopters being the biggest group, and fixed-wing aircraft afterwards, with VTOL and specialized vehicles showing lower representation. The carried equipment by these quadcotpers are predominatly cameras and perception sensors.
 
 ## Technical Infrastructure
 
-Hardware requirements prove significant: 83.3% purchased new systems or upgraded existing ones specifically for simulation. Ubuntu dominates (83.3%) with minimal Windows usage. Despite substantial hardware investment, 50% report no significant limitations, suggesting current system requirements are acceptable to experienced users. However, one respondent noted that users processing high-resolution images may need more capable specifications than their own setup.
+Hardware requirements prove significant: almost all had to purchased new systems or upgraded existing ones specifically for simulation. Ubuntu dominates with minimal Windows usage. Despite substantial hardware investment, half report no significant limitations, suggesting current system requirements are acceptable to experienced users. 
 
 ## Current Simulator Experience
 
-Respondents evaluated their most recent simulator (primarily Gazebo variants) across multiple dimensions:
+Respondents evaluated their most recent simulator (primarily Gazebo variants) across multiple dimensions. For installation ease, there were mixed difficulties with that reported. But in general, the user experience for experience developers for these simulation intergration is possitive, but the opinion on the quality of documentation and tutorials varies quite a bit. Also it is unclear if they are referringn to the PX4 documentation or the documentation of the simulator itself.
 
-**Installation:** Mixed difficulty reported, with error messages particularly problematic—dependency management and debugging information rated poorly.
+Importantly, there seems to have been quite some comments on the physics realism, in particular in gazebo itself. The variety of sensors is received positive, but the sensor models and the interactive phycics in the simulator gets quite a lot of negative feedback, and is linked by som directly to the usefullness of the simulator itself. 
 
-**User Experience:** Generally neutral to positive, with most finding simulators usable but acknowledging complexity. Interface clutter and documentation clarity received mixed feedback.
+There have been some open-ended questions answered here and there that mentioned about the PX4 versioning issues with the simulators, that it was difficult to know which version worked with what (or that it was inconcistent). This goes in line with what has been observed in the forum analysis.
 
-**Technical Performance:** Significant concerns emerged around physics realism and crash frequency. Respondents split on whether simulators can run faster than real-time. Photo-realism was not prioritized by this technical audience.
+## Desired Features and Priority 
 
-**Feature Support:** Sensor variety received positive ratings, but custom drone creation and swarm support showed weaknesses—particularly concerning given forum analysis priorities.
+From the Desired Features and Priority section, there were several items that the pilot participants very important. Software in the loop  (SITL) is considered very important feature, even more so than Hardware in the loop (HITL), ROS/ROS2 intergration has a clear consensus that it needs to always be included too, and wanted the simulator to be run from a docker container.
 
-**Documentation and Community:** Documentation accessibility rated positively, but quality and tutorial availability showed room for improvement. Community support forums rated helpful, though response time satisfaction varied.
+Interestingly, having realistic phycis models is much more important than having photo realistic rendering, eventhough most of the pilot participants used cameras as main driving sensors. Also, multiagent-simulation was veery important to half of the pilot participants, eventhough they indicated that they usually only simulate one vehicle at the time, and there was a varied response on communication/network simulation (an important feature in swarms).
 
-## Priority Features
+It oes seem that there is also a preference an the ability of creating their own sensor models into the simulators, and that it is easy to create a robot model as well. However, easy GUI intergrations as drag-en-drop capabilities or beginner friendliness scored low on the importance chart.
 
-Clear consensus emerged on critical capabilities:
-
-**Highest Priorities:**
-- Software-in-the-loop support (5/6 rated "Very Important")
-- ROS/ROS2 integration (5/6 rated "Very Important")
-- Multi-agent/swarm simulation (3/6 rated "Very Important")
-- Realistic physics simulation (3/6 rated "Very Important")
-
-**Lower Priorities:**
-- Photorealistic rendering (low importance)
-- Beginner-friendly interfaces (surprisingly low)
-- Drag-and-drop capabilities (low importance)
-
-Respondents emphasized the critical need for physics realism for CI testing and highlighted desires for simulation hotstart/snapshot capabilities and better PX4 version management within simulators.
-
-## Key Open-Ended Feedback
-
-**Strengths identified:**
-
-- "Interfaces nicely with ROS 2"
-- "Reliable, does not do magic but I can use it pretty easily"
-- "Open source, tight ROS2 integration"
-
-**Major frustrations:**
-
-- "Startup and shutdown time"
-- "Difficulty creating realistic flight dynamics models"
-- "Lack of resources and misleading docs can be annoying"
-- Extensive critique of Gazebo naming confusion, poor documentation, sensor plugin gaps, multi-vehicle performance issues, and repository fragmentation
-
-**Most important improvements needed:**
-
-- macOS support
-- Better compatibility across PX4/simulator/ROS2 versions
-- Migration from Gazebo Classic to Gazebo Harmonic
-- Improved sensor physics (barometers unaffected by wind)
-- Multi-vehicle performance (20+ vehicles)
-- Failure injection and CI test improvements
-
-## Key Findings for Final Survey
-
-Based on pilot results and comparison with forum analysis, the final survey should:
-
-- **Expand audience beyond core developers** to capture novice/intermediate users experiencing multi-vehicle, installation, and documentation issues not reflected in pilot
-- **Add explicit questions about multi-vehicle challenges** (startup time, configuration complexity, swarm performance) since pilot respondents don't use this but forum shows it's critical
-- **Include platform-specific issue questions** for macOS, Docker, and Windows to validate forum-identified barriers
-- **Add version compatibility and migration questions** (Gazebo Classic → Harmonic, PX4 version stability)
-- **Validate physics realism requirements** across different use cases (CI/CD vs. development vs. demonstration)
-- **Clarify simulator-specific terminology** (e.g., "Gazebo" naming confusion) and separate questions by simulator rather than "most recent"
-- **Probe documentation quality vs. accessibility gap** since docs are findable but content accuracy problematic
-- **Include questions on simulation state management** (hotstart, snapshots) and alternative simulator integration depth
