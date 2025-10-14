@@ -30,32 +30,17 @@ This reports describe the research efforts conducted to the user experiences of 
 
 ## Changelog Report
 
-### October 13, 2025
-- Added final survey changes and justifications
+| Date | Changes |
+|------|---------|
+| October 14, 2025 | Improved editing pilot survey results |
+| October 13, 2025 | Added final survey changes and justifications |
+| October 9, 2025 | Analysis pilot survey |
+| September 30, 2025 | Forum analysis report |
+| September 23, 2025 | Send out pilot survey |
+| September 7, 2025 | Improvements to pilot survey (Jay) |
+| August 28, 2025 | Started draft pilot survey |
+| July 31, 2025 | Project description formalized |
 
-### October 9, 2025
-- Analysis pilot survey section
-
-### September 30, 2025
-- Forum analysis report
-
-### September 23, 2025
-- Rational pilot survey section
-- Send out pilot survey
-
-### September 7, 2025
-- Meeting with Jay
-- Improvements to pilot survey
-
-### August 28, 2025
-- Started draft pilot survey
-
-### July 31, 2025
-- Project description formalized
-
-
-
-(to be enhanced)
 
 {{< include first_survey.md >}}
 
