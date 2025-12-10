@@ -59,7 +59,7 @@ October 15, 2025 |	Send out final survey |
 {{< include results.md >}}
 
 
-
+<!-- Appendices -->
 {{< include survey_content_pilot.md >}}
 
 {{< include survey_content_final.md >}}
@@ -67,4 +67,4 @@ October 15, 2025 |	Send out final survey |
 {{< include forum_investigation.md >}}
 
 
-# References
+# References forum investigation

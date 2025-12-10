@@ -1,4 +1,4 @@
-# PX4 Simulator Community Survey - Final
+# B. PX4 Simulator Community Survey - Final {#sec-final}
 
 This survey aims to understand the developer needs of PX4 users and their simulation experiences. We're hoping to improve the current situation and make things better for everyone.
 

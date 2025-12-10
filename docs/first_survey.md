@@ -34,4 +34,4 @@ The survey concludes with open-ended questions soliciting input on the most impo
 
 This survey will first be tested out to a handfull of core-developers within the PX4 communinity to see if this survey needs any further improvement. In the mean time, more investigations in the PX4 community will also be conducted (as in support forums) to see if there is anything that the initial survey has missed as well. 
 
-The first version of the survey can be found in the appendix ( @sec-pilot )
+The first version of the survey can be found in the Appendix ( @sec-pilot )

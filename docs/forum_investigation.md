@@ -1,4 +1,4 @@
-# Forum Analysis: PX4 Simulation Integration Issues
+# C. Forum Analysis: PX4 Simulation Integration Issues {#sec-forum}
 
 ## Summary
 
