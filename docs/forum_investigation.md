@@ -4,8 +4,6 @@
 
 This analysis examines 152 forum posts from the PX4 discussion forum (discuss.px4.io) spanning September 2024 through September 2025 to identify pressing issues in simulation integration. Several representative forum messages are referenced throughout this text, but the full list of forum posts evaluated is available upon request.
 
-## Key Findings
-
 Several categories emerged from this investigation, which will be discussed here.
 
 ### Version Stability and Platform Support
@@ -35,15 +33,3 @@ Camera streams fail to initialize properly[@px4-42909], documented features like
 ### Deployment and Containerization
 
 Docker-based deployments face systematic issues including connection failures, missing video feeds, and rendering problems[@px4-46059; @px4-45983; @px4-44619]. These challenges limit adoption in cloud-based CI/CD pipelines and distributed development environments, which is why developers need to use local development setups.
-
-## Key Findings
-
-- **Multi-vehicle simulation:** Users report startup times exceeding 20 minutes for multiple drones, with complex port and topic management suggesting the system was designed for single vehicles and extended incrementally rather than architected for swarm applications.
-
-- **Core simulation reliability:** The Extended Kalman Filter exhibits severe position drift (50+ meters during hovering), flight dynamics frequently malfunction, and the inability to run simulations slower than real-time prevents integration with high-fidelity physics engines.
-
-- **ROS2 integration:** The ROS2 bridge shows persistent problems where sensor data visible in Gazebo fails to reach ROS2 topics, and offboard control behaves inconsistently, undermining a key integration path for modern robotics development.
-
-- **Breaking changes and platform fragmentation create instability:** PX4 updates occasionally remove critical parameters without alternatives and break existing functionality, while macOS users (especially Apple Silicon) and Docker deployments face systematic platform-specific issues.
-
-- **Custom development lacks proper support:** Users modifying physical properties encounter unpredictable flight behavior, specialized vehicle types show dangerous behaviors like uncontrolled dives, and the framework appears optimized primarily for standard quadcopters with inadequate documentation for custom models.
