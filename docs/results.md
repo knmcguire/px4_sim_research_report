@@ -10,9 +10,9 @@ The survey revealed that the largest respondent group consisted of "Professional
 
 ::: {#fig-proffdomains layout-ncol=2}
 
-![ ](images\1a_pie_primary_professions.png)
+![](images/1a_pie_primary_professions.png)
 
-![](images\1b_pi_domains.png)
+![](images/1b_pi_domains.png)
 
 (Left) Pie-chart showing the primary professions of the survey's participants and (right) pie-chart with the distribution of domains of the survey participants.
 :::
@@ -23,7 +23,7 @@ In terms of PX4 autopilot experience, the largest group of participants had 1-3 
 
 ::: {#fig-experience layout-ncol=2}
 
-![ ](images/2a_pi_px4_experience.png)
+![](images/2a_pi_px4_experience.png)
 
 ![](images/2b_simulation_experience.png)
 
@@ -32,24 +32,24 @@ In terms of PX4 autopilot experience, the largest group of participants had 1-3 
 
 ## Profile of Personas
 
-Based on these responses, we identified five distinct user personas depicted in Figure 3: "Senior Engineers (P1)," "Junior Engineers (P2)," "Academic Researchers (P3)," "Academic Students (P4)," and "Independent Hobbyists (P5)."
-These personas will be used to analyze and interpret the survey results in subsequent sections as depected in @fig-personas.
+Based on these responses, we identified five distinct user personas depicted in @fig-personas: "Senior Engineers (P1)," "Junior Engineers (P2)," "Academic Researchers (P3)," "Academic Students (P4)," and "Independent Hobbyists (P5)."
+These personas will be used to analyze and interpret the survey results in subsequent sections.
 
 ![Pie-chart with the types of personas selected from the profiles.](images/3_pie_personas.png){#fig-personas}
 
-### P1 -  Senior engineers
+### P1 - Senior Engineers
 Highly experienced professional engineers with advanced to expert-level simulation expertise. These are the power users who deploy PX4 simulators in production environments for commercial products, defense systems, and critical applications.
 
 * Profession: Professional Engineer / Technical Consultant
 * Expertise Level: Advanced: 27 (75%) / Expert: 9 (25%)
 * Primary Domains: Aerospace/Drones (Commercial): 24 (67%), Defense/Government: 10 (28%), Research Institutions: 1 (3%), Other: 1 (2%)
 
-### P2 -  Junior Engineers
+### P2 - Junior Engineers
 Professional engineers in commercial or defense settings who are building their drone and simulation expertise. This includes career switchers, new hires at drone companies, and engineers expanding their skillset to include simulation tools.
 
 * Profession: Professional Engineer / Technical Consultant
 * Expertise Level: Intermediate: 20 (69%), Novice: 9 (31%)
-* Primary Domains: Aerospace/Drones (Commercial): 18 (62%), Defense/Government: 6 (21%), Research Institutions: 2 (7%) and Other: 3 (10%)
+* Primary Domains: Aerospace/Drones (Commercial): 18 (62%), Defense/Government: 6 (21%), Research Institutions: 2 (7%), Other: 3 (10%)
 
 ### P3 - Academic Researchers
 Academic and industry researchers using PX4 simulators for cutting-edge research, publications, and experimental work. This group spans university researchers, PhD students/postdocs, and R&D engineers at companies and research institutions.
@@ -58,19 +58,19 @@ Academic and industry researchers using PX4 simulators for cutting-edge research
 * Expertise Level: Intermediate: 14 (50%), Advanced: 11 (39%), Expert: 2 (7%), Novice: 1 (4%)
 * Primary Domains: Academia/Education: 10 (36%), Aerospace/Drones (Commercial): 7 (25%), Research Institutions: 7 (25%), Defense/Government: 3 (11%), Aerospace/Drones (Hobbyist): 1 (3%)
 
-### P4 -  Academic Researchers
+### P4 - Academic Students
 University students (BSc/MSc level) learning drone simulation as part of their coursework, research projects, or thesis work. This is the entry-level academic segment that represents the future pipeline of PX4 developers and users.
 
 * Profession: Student (BSc/MSc)
-* Expertise Level: Intermediate: 7 (39%), Novice: 8 (44%), Advanced: 2 (11%) and Expert: 1 (6%)
-* Primary Domains: Academia/Education: 12 (67%), Aerospace/Drones (Hobbyist): 3 (17%), Aerospace/Drones (Commercial): 2 (11%) and Other: 1 (5%)
+* Expertise Level: Intermediate: 7 (39%), Novice: 8 (44%), Advanced: 2 (11%), Expert: 1 (6%)
+* Primary Domains: Academia/Education: 12 (67%), Aerospace/Drones (Hobbyist): 3 (17%), Aerospace/Drones (Commercial): 2 (11%), Other: 1 (5%)
 
 ### P5 - Independent Hobbyists
 Drone enthusiasts, hobbyists, and independent developers exploring PX4 for personal projects, skill development, or potential commercial opportunities. This small but passionate group contributes to community growth and grassroots adoption.
 
 * Profession: Hobbyist / Independent Developer / Non-professional
-* Expertise Level: Intermediate: 5 (63%), Novice: 2 (25%) and Advanced: 1 (12%)
-* Primary Domains: Aerospace/Drones (Hobbyist): 6 (75%), Aerospace/Drones (Commercial): 1 (12%) and Robotics: 1 (12%)
+* Expertise Level: Intermediate: 5 (63%), Novice: 2 (25%), Advanced: 1 (12%)
+* Primary Domains: Aerospace/Drones (Hobbyist): 6 (75%), Aerospace/Drones (Commercial): 1 (12%), Robotics: 1 (12%)
 
 ## Participants Experience with Simulation
 
@@ -89,7 +89,7 @@ Participants listed all simulators they had previously used, as shown in @fig-si
 * Participants with experience only in Gazebo New were classified as currently using Gazebo New
 * Participants who specified "gz sim," version names (Harmonic/Ionic), or clarified in comments were classified as Gazebo New
 
-After this classification, 30 participants who had used both versions could not be definitively categorized. These are shown in light red in Figure 5, with the assumption they likely use the most current and recommended simulator (Gazebo New), though this metric should be interpreted with caution.
+After this classification, 30 participants who had used both versions could not be definitively categorized. These are shown in light red in @fig-sim-experience, with the assumption they likely use the most current and recommended simulator (Gazebo New), though this metric should be interpreted with caution.
 Overall, Gazebo New remains the most widely used simulator (46 confirmed users), followed by Gazebo Classic (19). AirSim and its forks account for 5 current users, while Simulink and JSBSim each have 4 users.
 
 ### Summary of Comments on Gazebo New
@@ -100,43 +100,43 @@ However, users identified several areas needing improvement. Multiple participan
 Academic researchers (P3) specifically noted that Gazebo is not well-suited for reinforcement learning applications, leading them to use alternative simulators for this purpose. They also requested better multi-vehicle simulation support, such as the ability to simplify or disable physics for certain vehicles. Additionally, while some users praised the updated physics, others reported that flight dynamics and environmental variables still fall short of requirements.
 
 
-### Simualated Vehicles
+### Simulated Vehicles
 
-Participants indicated which vehicle types and payloads they typically simulate (fig-simulated-robots). Quadcopters are the most commonly simulated vehicle type (104), followed by multicopters (52), with fixed-wing and VTOL vehicles tied for third (50 each). For payloads, cameras are most prevalent (103), followed by range sensors such as LiDAR/ToF sensors (88), with gimbals and communication equipment sharing third place.
+Participants indicated which vehicle types and payloads they typically simulate (@fig-simulated-robots). Quadcopters are the most commonly simulated vehicle type (104), followed by multicopters (52), with fixed-wing and VTOL vehicles tied for third (50 each). For payloads, cameras are most prevalent (103), followed by range sensors such as LiDAR/ToF sensors (88), with gimbals and communication equipment sharing third place.
 
-Regarding the number of vehicles simulated simultaneously, the majority simulate only one vehicle (63%), followed by those who typically simulate 5-10 vehicles (26%), and 7% who simulate teams of 2-4 vehicles.
+Regarding the number of vehicles simulated simultaneously, the majority simulate only one vehicle (63%), followed by those who typically simulate 5-10 vehicles (26%), and 7% who simulate teams of 2-4 vehicles (see @fig-swarms).
 
-@fig-swarms shows the hardware specifications participants use to run their simulators. The majority use PCs with dedicated GPUs, with Ubuntu as the dominant operating system. Most participants run simulators locally on their machines rather than on remote servers.
+
 
 ::: {#fig-simulated-robots layout-ncol=2}
 
-![ ](images/5a_bar_simulated_vehicles.png)
+![](images/5a_bar_simulated_vehicles.png)
 
 ![](images/5b_bar_simulated_payloads.png)
 
 (Left) Bar graph with the different types simulated vehicles and (right) bar graph with the distribution of type of payloads simulated.
 :::
 
-![Pie-chart of the amount of simulated vehicles that participants usually simulate](Images/6_pie_swarms.png){#fig-swarms}
+![Pie-chart of the amount of simulated vehicles that participants usually simulate.](images/6_pie_swarms.png){#fig-swarms}
 
-### Simulation Hosts Specifications
+### Simulation Host Specifications
 
-The survey also had some questions about the host computers that is running the simulation, in terms of GPU-enabled, OS distribution, or the actual location of the simulation compared to the development PC. These are vizualized in @fig-simulation-hosts. 
+The survey also asked questions about the host computers running the simulation, including GPU-enabled systems, OS distribution, and whether the simulation runs locally or remotely. @fig-simulation-hosts shows the hardware specifications participants use to run their simulators. The majority use PCs with dedicated GPUs, with Ubuntu as the dominant operating system. Most participants run simulators locally on their machines rather than on remote servers.
 
 ::: {#fig-simulation-hosts layout-ncol=3}
 
-![ ](images/7a_GPU.png)
+![](images/7a_GPU.png)
 
 ![](images/7b_os.png)
 
 ![](images/7c_locally_remotely.png)
 
 
-Pie- charts with the (left) GPU-enabled machines, the OS distribution (middle) and running location of the simulation (right).
+Pie-charts with the (left) GPU-enabled machines, the OS distribution (middle) and running location of the simulation (right).
 
 :::
 
-## Purpose and goals
+## Purpose and Goals
 
 ### Purpose for Using Simulators
 
@@ -146,13 +146,13 @@ The radar graph on the right of @fig-purposes shows that both academic researche
 
 ::: {#fig-purposes layout-ncol=2}
 
-![ ](images/8a_bar_purposes.png)
+![](images/8a_bar_purposes.png)
 
 ![](images/8b_radar_purposes_persona.png)
 
 
 
-(Left) the bar graph with the count of indicated purposes of using simulators for all participants and (right) the radar graph with the purposes plotted per persona.
+(Left) The bar graph with the count of indicated purposes of using simulators for all participants and (right) the radar graph with the purposes plotted per persona.
 
 :::
 
@@ -162,7 +162,7 @@ The bar graph on the left of @fig-goals shows that all participants use simulato
 
 ::: {#fig-goals layout-ncol=2}
 
-![ ](images/9a_bar_goals.png)
+![](images/9a_bar_goals.png)
 
 ![](images/9a_bar_goals_personas.png)
 
@@ -201,26 +201,26 @@ Participants rated the perceived importance of simulator features on a scale fro
 
 ![The average perceived importance of advanced features of simulation per profile and for all participants overall.](images/tab4_advanced.png){#tbl-adv}
 
-### Top wanted functionalities
+### Top Wanted Functionalities
 
 Across all personas, the top 5 most important features are:
 
-1.	Software-in-the-loop support
-2.	Realistic physics simulation
-3.	Custom sensor model creation
-4.	Template/example library availability
-5.	Easy robot model creation
+1. Software-in-the-loop support
+2. Realistic physics simulation
+3. Custom sensor model creation
+4. Template/example library availability
+5. Easy robot model creation
 
-@tbl-top breaks down the top 5 features by persona. Software-in-the-loop capabilities are considered essential by all personas except students (P4), who prioritize template and example library availability and real-time parameter tuning more highly. Realistic physics simulation is universally valued, though independent developers/hobbyists (P5) rated network capabilities and template availability higher. ROS/ROS2 integration is more important to advanced simulator users (senior engineers (P1) and academic researchers (P3)) while both junior (P2) and senior engineers (P1) rated custom sensor creation and easy robot model creation as equally important.
+@tbl-top breaks down the top 5 features by persona. Software-in-the-loop capabilities are considered essential by all personas except students (P4), who prioritize template and example library availability and real-time parameter tuning more highly. Realistic physics simulation is universally valued, though independent developers/hobbyists (P5) rated network capabilities and template availability higher. ROS/ROS2 integration is more important to advanced simulator users (senior engineers (P1) and academic researchers (P3)), while both junior (P2) and senior engineers (P1) rated custom sensor creation and easy robot model creation as equally important.
 
 ![Top 5 wanted features per profile.](images/tab5_top5_persona.png){#tbl-top}
 
-## Final choice for Priority Roadmap
+## Final Choice for Priority Roadmap
 
 In a final single-choice question, participants selected the one feature they would prioritize if only one item could be on the roadmap (see @fig-final). The largest group (18%) requested improvements to the current Gazebo integration with PX4 autopilot. Another 17% prioritized better documentation and examples for existing simulators, while 16% wanted more realistic physics and higher-quality sensor models.
 
 ![Pie-chart with the distribution of the final priority question of all participants.](images/10_final_priority_question.png){#fig-final}
 
-@fig-final-per presents a bar chart showing how each persona influenced the roadmap priorities. Professional engineers, both senior (P1) and junior (P2), voted for improved Gazebo integration with PX4. Academic researchers (P3) prioritized more realistic sensor and physics models along with better multi-vehicle/swarm simulation support. A significant portion of senior engineers (P1) also voted for reducing the sim-to-real gap, while some advocated for a new PX4-optimized simulator. Junior engineers (P2) emphasized enhanced simulation creation capabilities. Both junior engineers (P2) and academic students (P4, representing novice and intermediate users, indicated they would benefit most from better documentation and examples for existing PX4 simulation integrations. Finally, both senior engineers (P1) and academic students (P4) requested improved ROS/ROS2 integration with PX4 simulation.
+@fig-final-per presents a bar chart showing how each persona influenced the roadmap priorities. Professional engineers, both senior (P1) and junior (P2), voted for improved Gazebo integration with PX4. Academic researchers (P3) prioritized more realistic sensor and physics models along with better multi-vehicle/swarm simulation support. A significant portion of senior engineers (P1) also voted for reducing the sim-to-real gap, while some advocated for a new PX4-optimized simulator. Junior engineers (P2) emphasized enhanced simulation creation capabilities. Both junior engineers (P2) and academic students (P4), representing novice and intermediate users, indicated they would benefit most from better documentation and examples for existing PX4 simulation integrations. Finally, both senior engineers (P1) and academic students (P4) requested improved ROS/ROS2 integration with PX4 simulation.
 
 ![Bar chart to indicate the differences per persona on the final roadmap priority choice of the survey.](images/11_final_priority_question_personas.png){#fig-final-per}
