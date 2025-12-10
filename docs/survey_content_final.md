@@ -15,8 +15,6 @@ We're gathering feedback from the PX4 community to inform our simulation integra
 
 **Your responses are anonymous.** We'll only collect email addresses if you volunteer for follow-up interviews.
 
-**Draft V4**
-
 ---
 
 ## Getting to Know You
