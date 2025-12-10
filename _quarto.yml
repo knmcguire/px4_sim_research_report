@@ -1,6 +1,10 @@
 project:
-  type: default
+  type: website
   output-dir: _output
+
+website:
+  title: "PX4 Simulation Integration Survey"
+  page-navigation: true
 
 format:
   html:
