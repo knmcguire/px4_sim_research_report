@@ -25,8 +25,8 @@ render-pdf = "quarto render docs/main.md --to pdf"
 # Render to Word
 render-docx = "quarto render docs/main.md --to docx"
 
-# Preview with live reload (watches all files in docs/)
-preview = "quarto preview"
+# Preview with live reload
+preview = "quarto preview docs/main.md"
 
 # Render all formats (HTML + Word, skip PDF if no LaTeX)
 render-all = "quarto render docs/main.md"
