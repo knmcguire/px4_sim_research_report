@@ -17,7 +17,7 @@ We're gathering feedback from the PX4 community to inform our simulation integra
 
 ---
 
-## Getting to Know You
+<p style="font-size: 1.2em;"><strong>Getting to Know You</strong></p>
 
 *We'd like to understand your background and experience level to better contextualize your feedback.*
 
@@ -57,7 +57,7 @@ We're gathering feedback from the PX4 community to inform our simulation integra
 
 ---
 
-## Current Simulator Usage
+<p style="font-size: 1.2em;"><strong>Current Simulator Usage</strong></p>
 
 *This section helps us understand which tools you're using and how you're using them in your current workflow.*
 
@@ -147,7 +147,7 @@ ____
 ____ 
 ---
 
-## Technical Setup & Constraints
+<p style="font-size: 1.2em;"><strong>Technical Setup & Constraints</strong></p>
 
 *Understanding your hardware setup and limitations helps us design tools that work for everyone's environment.*
 
@@ -201,7 +201,7 @@ ___________
 
 ---
 
-## Desired Features & Priorities
+<p style="font-size: 1.2em;"><strong>Desired Features & Priorities</strong></p>
 
 *This section helps us prioritize development efforts by understanding which features matter most to different types of users.*
 
@@ -260,7 +260,7 @@ ___________
 
 ---
 
-## PX4 Simulation Roadmap
+<p style="font-size: 1.2em;"><strong>PX4 Simulation Roadmap</strong></p>
 
 *This section helps us understand what strategic direction would best serve the PX4 community.*
 
@@ -285,7 +285,7 @@ ___________
 
 ---
 
-## Final Questions
+<p style="font-size: 1.2em;"><strong>Final Questions</strong></p>
 
 *Final thoughts and opportunities for deeper engagement with our improvement efforts.*
 
@@ -299,7 +299,7 @@ ___________
 
 ---
 
-## Thank you!
+<p style="font-size: 1.2em;"><strong>Thank you!</strong></p>
 
 Thank you for taking the time to share your experiences! Your feedback will help improve simulation tools for the entire PX4 community.
 

@@ -32,6 +32,7 @@ This reports describe the research efforts conducted to the user experiences of 
 
 | Date | Changes |
 |------|---------|
+| December 10, 2025 | All preperation in single chapter (including forum) |
 | November 28, 2025 |	Forum to appendix, written recommendations. |
 | November 26, 2025 |	Adding evaluation of results |
 | November 24, 2025 |	Adjusting of figures and tables |
