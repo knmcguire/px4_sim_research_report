@@ -48,13 +48,7 @@ October 15, 2025 |	Send out final survey |
 | July 31, 2025 | Project description formalized |
 
 
-{{< include first_survey.md >}}
-
-
-{{< include pilot_survey.md >}}
-
-
-{{< include final_survey.md >}}
+{{< include preperation_survey.md >}}
 
 {{< include results.md >}}
 
@@ -65,6 +59,3 @@ October 15, 2025 |	Send out final survey |
 
 {{< include survey_content_final.md >}}
 
-{{< include forum_investigation.md >}}
-
-s
