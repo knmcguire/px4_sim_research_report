@@ -32,6 +32,12 @@ This reports describe the research efforts conducted to the user experiences of 
 
 | Date | Changes |
 |------|---------|
+| November 28, 2025 |	Forum to appendix, written recommendations. |
+| November 26, 2025 |	Adding evaluation of results |
+| November 24, 2025 |	Adjusting of figures and tables |
+| November 20, 2025 |	Final result ROS-aerial group |
+| November 11, 2025 |	Preliminary results PX4 summit |
+October 15, 2025 |	Send out final survey |
 | October 14, 2025 | Improved editing pilot survey results |
 | October 13, 2025 | Added final survey changes and justifications |
 | October 9, 2025 | Analysis pilot survey |
@@ -53,11 +59,10 @@ This reports describe the research efforts conducted to the user experiences of 
 
 {{< include final_survey.md >}}
 
+{{< include results.md >}}
 
 
-{{< pagebreak >}}
-
-# Appendix 
+{{< pagebreak >}} 
 
 {{< include survey_content_v3.md >}}
 {{< pagebreak >}}
