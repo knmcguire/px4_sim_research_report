@@ -1,0 +1,1922 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Kimberly McGuire">
+<meta name="dcterms.date" content="2025-12-11">
+
+<title>PX4 Simulation Integration Survey</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-3ee09d218e5cb07634f343b39aada8de.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a>
+  <ul class="collapse">
+  <li><a href="#changelog-report" id="toc-changelog-report" class="nav-link" data-scroll-target="#changelog-report"><span class="header-section-number">1.1</span> Changelog Report</a></li>
+  </ul></li>
+  <li><a href="#survey-preparation" id="toc-survey-preparation" class="nav-link" data-scroll-target="#survey-preparation"><span class="header-section-number">2</span> Survey Preparation</a>
+  <ul class="collapse">
+  <li><a href="#survey-design-and-methodology" id="toc-survey-design-and-methodology" class="nav-link" data-scroll-target="#survey-design-and-methodology"><span class="header-section-number">2.1</span> Survey Design and Methodology</a></li>
+  <li><a href="#pilot-survey-analysis" id="toc-pilot-survey-analysis" class="nav-link" data-scroll-target="#pilot-survey-analysis"><span class="header-section-number">2.2</span> Pilot Survey Analysis</a></li>
+  <li><a href="#sec-forum" id="toc-sec-forum" class="nav-link" data-scroll-target="#sec-forum"><span class="header-section-number">2.3</span> Forum Analysis: PX4 Simulation Integration Issues</a></li>
+  <li><a href="#changes-and-additions-for-final-version-survey" id="toc-changes-and-additions-for-final-version-survey" class="nav-link" data-scroll-target="#changes-and-additions-for-final-version-survey"><span class="header-section-number">2.4</span> Changes and Additions for Final Version Survey</a></li>
+  </ul></li>
+  <li><a href="#survey-results" id="toc-survey-results" class="nav-link" data-scroll-target="#survey-results"><span class="header-section-number">3</span> Survey Results</a>
+  <ul class="collapse">
+  <li><a href="#professions-and-domains" id="toc-professions-and-domains" class="nav-link" data-scroll-target="#professions-and-domains"><span class="header-section-number">3.1</span> Professions and Domains</a></li>
+  <li><a href="#experience" id="toc-experience" class="nav-link" data-scroll-target="#experience"><span class="header-section-number">3.2</span> Experience</a></li>
+  <li><a href="#profile-of-personas" id="toc-profile-of-personas" class="nav-link" data-scroll-target="#profile-of-personas"><span class="header-section-number">3.3</span> Profile of Personas</a></li>
+  <li><a href="#participants-experience-with-simulation" id="toc-participants-experience-with-simulation" class="nav-link" data-scroll-target="#participants-experience-with-simulation"><span class="header-section-number">3.4</span> Participants Experience with Simulation</a></li>
+  <li><a href="#purpose-and-goals" id="toc-purpose-and-goals" class="nav-link" data-scroll-target="#purpose-and-goals"><span class="header-section-number">3.5</span> Purpose and Goals</a></li>
+  <li><a href="#features-and-priorities" id="toc-features-and-priorities" class="nav-link" data-scroll-target="#features-and-priorities"><span class="header-section-number">3.6</span> Features and Priorities</a></li>
+  <li><a href="#final-choice-for-priority-roadmap" id="toc-final-choice-for-priority-roadmap" class="nav-link" data-scroll-target="#final-choice-for-priority-roadmap"><span class="header-section-number">3.7</span> Final Choice for Priority Roadmap</a></li>
+  </ul></li>
+  <li><a href="#brief-discussion-and-recommendation" id="toc-brief-discussion-and-recommendation" class="nav-link" data-scroll-target="#brief-discussion-and-recommendation"><span class="header-section-number">4</span> Brief Discussion and Recommendation</a>
+  <ul class="collapse">
+  <li><a href="#reflections-on-the-survey-results" id="toc-reflections-on-the-survey-results" class="nav-link" data-scroll-target="#reflections-on-the-survey-results"><span class="header-section-number">4.1</span> Reflections on the Survey Results</a></li>
+  <li><a href="#recommendation" id="toc-recommendation" class="nav-link" data-scroll-target="#recommendation"><span class="header-section-number">4.2</span> Recommendation</a></li>
+  </ul></li>
+  <li><a href="#sec-pilot" id="toc-sec-pilot" class="nav-link" data-scroll-target="#sec-pilot"><span class="header-section-number">5</span> A. PX4 Simulator Community Survey - Pilot</a></li>
+  <li><a href="#sec-final" id="toc-sec-final" class="nav-link" data-scroll-target="#sec-final"><span class="header-section-number">6</span> B. PX4 Simulator Community Survey - Final</a>
+  <ul class="collapse">
+  <li><a href="#about-this-survey" id="toc-about-this-survey" class="nav-link" data-scroll-target="#about-this-survey"><span class="header-section-number">6.1</span> About This Survey</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">6.2</span> ____</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">PX4 Simulation Integration Survey</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<p class="subtitle lead">Report on survey and investigation into the PX4 community’s preferences for robotic simulation intergration</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Kimberly McGuire </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 11, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><img src="images/front_image.jpg" class="img-fluid"></p>
+<blockquote class="blockquote">
+<p>This work has been sponsored by Dronecode Foundation <img src="images/dronecode.png" class="img-fluid" alt="Dronecode"></p>
+</blockquote>
+<section id="introduction" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
+<p>This report describes the research efforts conducted to assess user experiences of PX4 and simulation integration. The purpose of the survey study is to identify the most pressing developer goals for the PX4 simulation integration roadmap, based on the needs of the PX4 user community.</p>
+<section id="changelog-report" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="changelog-report"><span class="header-section-number">1.1</span> Changelog Report</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 40%">
+<col style="width: 60%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Date</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>December 10, 2025</td>
+<td>All preperation in single chapter (including forum)</td>
+</tr>
+<tr class="even">
+<td>November 28, 2025</td>
+<td>Forum to appendix, written recommendations.</td>
+</tr>
+<tr class="odd">
+<td>November 26, 2025</td>
+<td>Adding evaluation of results</td>
+</tr>
+<tr class="even">
+<td>November 24, 2025</td>
+<td>Adjusting of figures and tables</td>
+</tr>
+<tr class="odd">
+<td>November 20, 2025</td>
+<td>Final result ROS-aerial group</td>
+</tr>
+<tr class="even">
+<td>November 11, 2025</td>
+<td>Preliminary results PX4 summit</td>
+</tr>
+<tr class="odd">
+<td>October 15, 2025</td>
+<td>Send out final survey</td>
+</tr>
+<tr class="even">
+<td>October 14, 2025</td>
+<td>Improved editing pilot survey results</td>
+</tr>
+<tr class="odd">
+<td>October 13, 2025</td>
+<td>Added final survey changes and justifications</td>
+</tr>
+<tr class="even">
+<td>October 9, 2025</td>
+<td>Analysis pilot survey</td>
+</tr>
+<tr class="odd">
+<td>September 30, 2025</td>
+<td>Forum analysis report</td>
+</tr>
+<tr class="even">
+<td>September 23, 2025</td>
+<td>Send out pilot survey</td>
+</tr>
+<tr class="odd">
+<td>September 7, 2025</td>
+<td>Improvements to pilot survey (Jay)</td>
+</tr>
+<tr class="even">
+<td>August 28, 2025</td>
+<td>Started draft pilot survey</td>
+</tr>
+<tr class="odd">
+<td>July 31, 2025</td>
+<td>Project description formalized</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="survey-preparation" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Survey Preparation</h1>
+<section id="survey-design-and-methodology" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="survey-design-and-methodology"><span class="header-section-number">2.1</span> Survey Design and Methodology</h2>
+<section id="survey-structure" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="survey-structure"><span class="header-section-number">2.1.1</span> Survey Structure</h3>
+<p>The PX4 Simulator Community Survey was designed to gather feedback from users across all aspects of their simulation experience. The survey is set up in six main sections: demographic background, current simulator usage patterns, technical infrastructure, simulator experience evaluation, feature priorities, and strategic recommendations. The survey uses a mixed-methods approach combining quantitative Likert-scale ratings with qualitative open-ended questions.</p>
+<p>The survey begins by establishing user segments through profession, simulator expertise level, and PX4 experience duration. This segmentation allows analysis of how different user groups (students, researchers, commercial engineers) experience simulation and what improvements they prioritize.</p>
+<p>Questions about which simulators users employ, their purposes (research, testing, commercial development), vehicle types, and scale (single vs.&nbsp;multi-vehicle) help map the current PX4 simulation landscape. This information provides insight into how the community currently uses simulation tools.</p>
+<p>Hardware and infrastructure questions examine potential barriers to adoption. The survey asks whether users have purchased new systems, what operating systems they use, and where they encounter limitations (CPU, GPU, RAM). This data provides information about current hardware requirements and performance constraints.</p>
+<p>The survey uses detailed Likert-scale assessments across five dimensions: installation experience, user interface, technical performance, feature support, and community resources. This structured approach allows users to provide feedback on specific aspects of their simulation experience. Open-ended questions at the end allow participants to share observations that may not be captured by the structured questions.</p>
+<p>Users rate importance of potential improvements across technical capabilities, platform compatibility (OS support, ROS integration), usability, and advanced features. This provides a prioritization matrix showing which capabilities matter most to different segments of the community.</p>
+<p>The survey concludes with open-ended questions soliciting input on the most important improvements needed and offering opportunities for follow-up interviews. This acknowledges that while quantitative data identifies patterns, qualitative discussion often reveals underlying causes and context that ratings alone cannot capture.</p>
+<p>The pilot version of the survey can be found in the Appendix ( <a href="#sec-pilot" class="quarto-xref">Section&nbsp;5</a> )</p>
+</section>
+</section>
+<section id="pilot-survey-analysis" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="pilot-survey-analysis"><span class="header-section-number">2.2</span> Pilot Survey Analysis</h2>
+<p>A pilot survey was conducted with 6 PX4 developers to validate the survey instrument before wider distribution. Respondents were primarily professional engineers with advanced to expert-level simulator expertise, and most have 5+ years of PX4 experience. The results of this pilot survey will be used to fine-tune the final survey before it is sent out to the rest of the community.</p>
+<section id="simulator-usage-and-goals" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="simulator-usage-and-goals"><span class="header-section-number">2.2.1</span> Simulator Usage and Goals</h3>
+<p>All pilot participants use Gazebo (Classic or Harmonic). About half also use AirSim, FlightGear, or JSBSim. Primary use cases center on algorithm development, pre-flight testing, and quality assurance in CI pipelines. All respondents simulate only single vehicles, which differs from forum analysis (<a href="#sec-forum" class="quarto-xref">Section&nbsp;2.3</a>) where multi-vehicle simulation appears as a recurring topic in the broader community. Vehicle types are dominated by quadcopters, followed by fixed-wing aircraft, with VTOL and specialized vehicles showing lower representation. The equipment carried by these quadcopters is predominantly cameras and perception sensors.</p>
+</section>
+<section id="technical-infrastructure" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="technical-infrastructure"><span class="header-section-number">2.2.2</span> Technical Infrastructure</h3>
+<p>Almost all pilot participants had purchased new systems or upgraded existing ones specifically for simulation. Ubuntu dominates the operating system distribution with minimal Windows usage. Despite substantial hardware investment, half report no significant limitations.</p>
+</section>
+<section id="current-simulator-experience" class="level3" data-number="2.2.3">
+<h3 data-number="2.2.3" class="anchored" data-anchor-id="current-simulator-experience"><span class="header-section-number">2.2.3</span> Current Simulator Experience</h3>
+<p>Respondents evaluated their most recent simulator (primarily Gazebo variants) across multiple dimensions. Installation ease received mixed feedback. The overall user experience for experienced developers appeared positive, though opinions on documentation and tutorials quality varied considerably. It is unclear whether respondents were referring to PX4 documentation or simulator documentation. Several comments addressed physics realism, particularly in Gazebo itself. While sensor variety was received positively, sensor models and physics simulation received negative feedback from multiple respondents, with some linking this directly to simulator usefulness. Several open-ended responses mentioned PX4 versioning issues with simulators, noting difficulty in determining compatible version combinations. This observation aligns with patterns observed in the forum analysis (found in <a href="#sec-forum" class="quarto-xref">Section&nbsp;2.3</a>).</p>
+</section>
+<section id="desired-features-and-priority" class="level3" data-number="2.2.4">
+<h3 data-number="2.2.4" class="anchored" data-anchor-id="desired-features-and-priority"><span class="header-section-number">2.2.4</span> Desired Features and Priority</h3>
+<p>In the Desired Features and Priority section, pilot participants rated several items as very important. Software-in-the-loop (SITL) received higher importance ratings than Hardware-in-the-loop (HITL). ROS/ROS2 integration showed clear consensus as essential. Participants also indicated preference for Docker container support.</p>
+<p>Realistic physics models received higher importance ratings than photorealistic rendering, despite most pilot participants using cameras as main sensors. Multi-agent simulation was rated as very important by half of the pilot participants, though they indicated typically simulating only single vehicles. Communication/network simulation received varied responses.</p>
+<p>Participants showed preference for the ability to create custom sensor models and easily create robot models. GUI features such as drag-and-drop capabilities or beginner-friendly interfaces scored lower on importance ratings.</p>
+</section>
+</section>
+<section id="sec-forum" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="sec-forum"><span class="header-section-number">2.3</span> Forum Analysis: PX4 Simulation Integration Issues</h2>
+<p>This analysis examines 152 forum posts from the PX4 discussion forum (discuss.px4.io) spanning September 2024 through September 2025 to identify pressing issues in simulation integration. Several representative forum messages are referenced throughout this text, but the full list of forum posts evaluated is available upon request.</p>
+<p>Several categories emerged from this investigation, which will be discussed here.</p>
+<section id="version-stability-and-platform-support" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="version-stability-and-platform-support"><span class="header-section-number">2.3.1</span> Version Stability and Platform Support</h3>
+<p>Forum posts indicate that some PX4 updates have introduced breaking changes. Users report that critical parameters for custom spawn positions were removed without alternatives<span class="citation" data-cites="px4-41925"><a href="#ref-px4-41925" role="doc-biblioref">[1]</a></span>, and Hardware-in-the-Loop functionality broke in newer versions<span class="citation" data-cites="px4-46594"><a href="#ref-px4-46594" role="doc-biblioref">[2]</a></span>. Platform-specific issues appear more frequently for macOS users, especially those on Apple Silicon<span class="citation" data-cites="px4-45887"><a href="#ref-px4-45887" role="doc-biblioref">[3]</a></span>.</p>
+</section>
+<section id="core-simulation-reliability" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="core-simulation-reliability"><span class="header-section-number">2.3.2</span> Core Simulation Reliability</h3>
+<p>Users report problems with simulation accuracy and stability. Some posts describe Extended Kalman Filter position drift exceeding 50 meters during simple hovering<span class="citation" data-cites="px4-40657"><a href="#ref-px4-40657" role="doc-biblioref">[4]</a></span>, particularly when using custom worlds or external sensors. Flight dynamics issues appear in multiple posts: drones arm correctly but fail to take off, or cannot climb beyond minimal altitudes<span class="citation" data-cites="px4-43349 px4-44266"><a href="#ref-px4-43349" role="doc-biblioref">[5]</a>, <a href="#ref-px4-44266" role="doc-biblioref">[6]</a></span>. One post identifies an architectural limitation preventing custom simulators from running slower than real-time<span class="citation" data-cites="px4-47188"><a href="#ref-px4-47188" role="doc-biblioref">[7]</a></span>.</p>
+</section>
+<section id="multi-vehicle-scalability" class="level3" data-number="2.3.3">
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="multi-vehicle-scalability"><span class="header-section-number">2.3.3</span> Multi-Vehicle Scalability</h3>
+<p>For multi-vehicle simulation, users report startup times exceeding 20 minutes for multiple drones<span class="citation" data-cites="px4-47532"><a href="#ref-px4-47532" role="doc-biblioref">[8]</a></span>. Configuration complexity appears in multiple posts, including managing unique ports, distinguishing sensor topics, and coordinating spawn positions<span class="citation" data-cites="px4-41744 px4-40885 px4-40847"><a href="#ref-px4-41744" role="doc-biblioref">[9]</a>, <a href="#ref-px4-40885" role="doc-biblioref">[10]</a>, <a href="#ref-px4-40847" role="doc-biblioref">[11]</a></span>. Posts also describe communication failures between ground control stations and multiple vehicles<span class="citation" data-cites="px4-42697 px4-44693"><a href="#ref-px4-42697" role="doc-biblioref">[12]</a>, <a href="#ref-px4-44693" role="doc-biblioref">[13]</a></span>.</p>
+</section>
+<section id="ecosystem-integration" class="level3" data-number="2.3.4">
+<h3 data-number="2.3.4" class="anchored" data-anchor-id="ecosystem-integration"><span class="header-section-number">2.3.4</span> Ecosystem Integration</h3>
+<p>Multiple posts describe ROS2 bridge reliability issues where sensor data visible in Gazebo fails to reach ROS2 topics<span class="citation" data-cites="px4-44447 px4-47421"><a href="#ref-px4-44447" role="doc-biblioref">[14]</a>, <a href="#ref-px4-47421" role="doc-biblioref">[15]</a></span>. Offboard control through ROS2 shows inconsistent behavior in several posts, including frame convention problems and actuator control failures<span class="citation" data-cites="px4-45073 px4-44630"><a href="#ref-px4-45073" role="doc-biblioref">[16]</a>, <a href="#ref-px4-44630" role="doc-biblioref">[17]</a></span>. Beyond ROS2, posts describe difficulties integrating alternative simulators like Unity, AirSim, and MATLAB/Simulink<span class="citation" data-cites="px4-42508 px4-45970 px4-42303"><a href="#ref-px4-42508" role="doc-biblioref">[18]</a>, <a href="#ref-px4-45970" role="doc-biblioref">[19]</a>, <a href="#ref-px4-42303" role="doc-biblioref">[20]</a></span>.</p>
+</section>
+<section id="custom-model-development" class="level3" data-number="2.3.5">
+<h3 data-number="2.3.5" class="anchored" data-anchor-id="custom-model-development"><span class="header-section-number">2.3.5</span> Custom Model Development</h3>
+<p>Posts describe unpredictable flight behavior when modifying physical properties<span class="citation" data-cites="px4-43417"><a href="#ref-px4-43417" role="doc-biblioref">[21]</a></span>, and unclear physical meaning in the motor control interface<span class="citation" data-cites="px4-46132"><a href="#ref-px4-46132" role="doc-biblioref">[22]</a></span>. Specialized vehicle types (VTOLs, coaxial configurations, fixed-wing aircraft) appear in several posts describing issues, including dangerous behaviors like uncontrolled dives during transitions<span class="citation" data-cites="px4-46487 px4-46582"><a href="#ref-px4-46487" role="doc-biblioref">[23]</a>, <a href="#ref-px4-46582" role="doc-biblioref">[24]</a></span>.</p>
+</section>
+<section id="sensor-and-environment-fidelity" class="level3" data-number="2.3.6">
+<h3 data-number="2.3.6" class="anchored" data-anchor-id="sensor-and-environment-fidelity"><span class="header-section-number">2.3.6</span> Sensor and Environment Fidelity</h3>
+<p>Posts describe camera streams failing to initialize properly<span class="citation" data-cites="px4-42909"><a href="#ref-px4-42909" role="doc-biblioref">[25]</a></span>, documented features like terrain following not working<span class="citation" data-cites="px4-43683"><a href="#ref-px4-43683" role="doc-biblioref">[26]</a></span>, and environmental effects such as wind failing to manifest despite available commands<span class="citation" data-cites="px4-45696"><a href="#ref-px4-45696" role="doc-biblioref">[27]</a></span>. Multiple posts report connection failures with ground control stations when using custom worlds<span class="citation" data-cites="px4-46990"><a href="#ref-px4-46990" role="doc-biblioref">[28]</a></span>, with some requiring undocumented workarounds<span class="citation" data-cites="px4-47409"><a href="#ref-px4-47409" role="doc-biblioref">[29]</a></span>.</p>
+</section>
+<section id="deployment-and-containerization" class="level3" data-number="2.3.7">
+<h3 data-number="2.3.7" class="anchored" data-anchor-id="deployment-and-containerization"><span class="header-section-number">2.3.7</span> Deployment and Containerization</h3>
+<p>Posts report Docker-based deployment issues including connection failures, missing video feeds, and rendering problems<span class="citation" data-cites="px4-46059 px4-45983 px4-44619"><a href="#ref-px4-46059" role="doc-biblioref">[30]</a>, <a href="#ref-px4-45983" role="doc-biblioref">[31]</a>, <a href="#ref-px4-44619" role="doc-biblioref">[32]</a></span>.</p>
+</section>
+</section>
+<section id="changes-and-additions-for-final-version-survey" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="changes-and-additions-for-final-version-survey"><span class="header-section-number">2.4</span> Changes and Additions for Final Version Survey</h2>
+<p>The final version of the PX4 Simulator Community Survey incorporates changes based on pilot feedback and forum analysis. The survey was reduced from approximately 35 questions with over 70 individual items to 29 questions with fewer than 40 items for participants to answer.</p>
+<section id="survey-length-and-structure" class="level3" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="survey-length-and-structure"><span class="header-section-number">2.4.1</span> Survey Length and Structure</h3>
+<p>The most significant change was removing the entire “Current Simulator Experience” section, which contained 30+ Likert-scale items asking respondents to rate installation ease, user experience, performance, and documentation. Pilot respondents mentioned survey length concerns, and these quantitative ratings showed less consensus compared to open-ended feedback. The survey now retains two open-ended questions asking what users like most and their biggest frustration. The Gazebo team will be conducting their own survey on Gazebo simulator issues separately.</p>
+</section>
+<section id="audience-expansion" class="level3" data-number="2.4.2">
+<h3 data-number="2.4.2" class="anchored" data-anchor-id="audience-expansion"><span class="header-section-number">2.4.2</span> Audience Expansion</h3>
+<p>The pilot survey participants were primarily experienced, industrial-oriented developers, all simulating only single vehicles. Forum analysis showed issues (installation problems, multi-vehicle challenges, documentation gaps) that appear to affect novice and intermediate users. The final version adds explicit language in the introduction stating the survey is for “anyone who has used or is interested in using simulation with PX4” and adds “Hobbyist / Independent Developer” as a profession option.</p>
+</section>
+<section id="version-compatibility-and-integration" class="level3" data-number="2.4.3">
+<h3 data-number="2.4.3" class="anchored" data-anchor-id="version-compatibility-and-integration"><span class="header-section-number">2.4.3</span> Version Compatibility and Integration</h3>
+<p>Forum analysis (<a href="#sec-forum" class="quarto-xref">Section&nbsp;2.3</a>) revealed version compatibility as a recurring topic, with posts describing breaking changes between PX4 releases removing critical features like custom spawn positions. Multiple users expressed frustration that “things worked in one configuration, but does not in another.” The final survey adds explicit questions about version compatibility issues and importance.</p>
+</section>
+<section id="multi-vehicle-and-advanced-features" class="level3" data-number="2.4.4">
+<h3 data-number="2.4.4" class="anchored" data-anchor-id="multi-vehicle-and-advanced-features"><span class="header-section-number">2.4.4</span> Multi-Vehicle and Advanced Features</h3>
+<p>While pilot respondents all simulated single vehicles, forum analysis identified multi-vehicle simulation as a recurring topic. The final survey retains questions about the importance of multi-vehicle simulation and networking communication simulation.</p>
+</section>
+<section id="strategic-roadmap-priority" class="level3" data-number="2.4.5">
+<h3 data-number="2.4.5" class="anchored" data-anchor-id="strategic-roadmap-priority"><span class="header-section-number">2.4.5</span> Strategic Roadmap Priority</h3>
+<p>A new section asks respondents to select their single top priority for PX4 simulation development and justify why. This forced-choice question aims to identify what participants consider the most important issue in their workflow regarding PX4 simulation integration.</p>
+<p><em>The final survey can be found in the Appendix ( <a href="#sec-final" class="quarto-xref">Section&nbsp;6</a> )</em></p>
+</section>
+</section>
+</section>
+<section id="survey-results" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Survey Results</h1>
+<p>The survey ran for approximately one month (October 14 – November 16, 2025) and received 120 responses. Only 2 participants submitted incomplete forms, representing a 98.3% completion rate.</p>
+<p>With an estimated PX4 autopilot user base of 15,000, this sample size yields a margin of error of 9% at a 95% confidence interval. This exceeds the commonly recommended 5% margin of error for surveys, which should be considered when interpreting results and developing recommendations.</p>
+<blockquote class="blockquote">
+<p>Out of privacy considerations, the survey results will only be shown in the form of the graphs presented in this report. If you’d like extra clarification or any specific results, please reach out to the author.</p>
+</blockquote>
+<section id="professions-and-domains" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="professions-and-domains"><span class="header-section-number">3.1</span> Professions and Domains</h2>
+<p>The survey revealed that the largest respondent group consisted of “Professional Engineers/Technical Consultants” (54%), followed by “Researchers” (23%) and “Students” (15%) (see <a href="#fig-proffdomains" class="quarto-xref">Figure&nbsp;1</a>). By domain, 44% of respondents worked in commercial aerospace or drone businesses, followed by “Academia and Education” (18%) and “Defense/Government” (16%).</p>
+<div id="fig-proffdomains" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-proffdomains-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/1a_pie_primary_professions.png" class="img-fluid figure-img"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/1b_pi_domains.png" class="img-fluid figure-img"></p>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-proffdomains-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: (Left) Pie-chart showing the primary professions of the survey’s participants and (right) pie-chart with the distribution of domains of the survey participants.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="experience" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="experience"><span class="header-section-number">3.2</span> Experience</h2>
+<p>In terms of PX4 autopilot experience, the largest group of participants had 1-3 years of experience (33%), followed by those with 1 month to 1 year (20%), and those with over 5 years (17%). Regarding simulator expertise, most respondents rated themselves as intermediate users (39%), followed by advanced users (34%), with novices comprising the third-largest group (17%). Please see <a href="#fig-experience" class="quarto-xref">Figure&nbsp;2</a>.</p>
+<div id="fig-experience" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-experience-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/2a_pi_px4_experience.png" class="img-fluid figure-img"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/2b_simulation_experience.png" class="img-fluid figure-img"></p>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-experience-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: (Left) Pie-chart showing the PX4 experience of the participants and (right) pie-chart showing the robot simulation experience.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="profile-of-personas" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="profile-of-personas"><span class="header-section-number">3.3</span> Profile of Personas</h2>
+<p>Based on these responses, we identified five distinct user personas depicted in <a href="#fig-personas" class="quarto-xref">Figure&nbsp;3</a>: “Senior Engineers (P1),” “Junior Engineers (P2),” “Academic Researchers (P3),” “Academic Students (P4),” and “Independent Hobbyists (P5).” These personas will be used to analyze and interpret the survey results in subsequent sections.</p>
+<div id="fig-personas" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-personas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/3_pie_personas.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-personas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Pie-chart with the types of personas selected from the profiles.
+</figcaption>
+</figure>
+</div>
+<section id="p1---senior-engineers" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="p1---senior-engineers"><span class="header-section-number">3.3.1</span> P1 - Senior Engineers</h3>
+<p>Highly experienced professional engineers with advanced to expert-level simulation expertise. These are the power users who deploy PX4 simulators in production environments for commercial products, defense systems, and critical applications.</p>
+<ul>
+<li>Profession: Professional Engineer / Technical Consultant</li>
+<li>Expertise Level: Advanced: 27 (75%) / Expert: 9 (25%)</li>
+<li>Primary Domains: Aerospace/Drones (Commercial): 24 (67%), Defense/Government: 10 (28%), Research Institutions: 1 (3%), Other: 1 (2%)</li>
+</ul>
+</section>
+<section id="p2---junior-engineers" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="p2---junior-engineers"><span class="header-section-number">3.3.2</span> P2 - Junior Engineers</h3>
+<p>Professional engineers in commercial or defense settings who are building their drone and simulation expertise. This includes career switchers, new hires at drone companies, and engineers expanding their skillset to include simulation tools.</p>
+<ul>
+<li>Profession: Professional Engineer / Technical Consultant</li>
+<li>Expertise Level: Intermediate: 20 (69%), Novice: 9 (31%)</li>
+<li>Primary Domains: Aerospace/Drones (Commercial): 18 (62%), Defense/Government: 6 (21%), Research Institutions: 2 (7%), Other: 3 (10%)</li>
+</ul>
+</section>
+<section id="p3---academic-researchers" class="level3" data-number="3.3.3">
+<h3 data-number="3.3.3" class="anchored" data-anchor-id="p3---academic-researchers"><span class="header-section-number">3.3.3</span> P3 - Academic Researchers</h3>
+<p>Academic and industry researchers using PX4 simulators for cutting-edge research, publications, and experimental work. This group spans university researchers, PhD students/postdocs, and R&amp;D engineers at companies and research institutions.</p>
+<ul>
+<li>Profession: Researcher (Academic/Industry)</li>
+<li>Expertise Level: Intermediate: 14 (50%), Advanced: 11 (39%), Expert: 2 (7%), Novice: 1 (4%)</li>
+<li>Primary Domains: Academia/Education: 10 (36%), Aerospace/Drones (Commercial): 7 (25%), Research Institutions: 7 (25%), Defense/Government: 3 (11%), Aerospace/Drones (Hobbyist): 1 (3%)</li>
+</ul>
+</section>
+<section id="p4---academic-students" class="level3" data-number="3.3.4">
+<h3 data-number="3.3.4" class="anchored" data-anchor-id="p4---academic-students"><span class="header-section-number">3.3.4</span> P4 - Academic Students</h3>
+<p>University students (BSc/MSc level) learning drone simulation as part of their coursework, research projects, or thesis work. This is the entry-level academic segment that represents the future pipeline of PX4 developers and users.</p>
+<ul>
+<li>Profession: Student (BSc/MSc)</li>
+<li>Expertise Level: Intermediate: 7 (39%), Novice: 8 (44%), Advanced: 2 (11%), Expert: 1 (6%)</li>
+<li>Primary Domains: Academia/Education: 12 (67%), Aerospace/Drones (Hobbyist): 3 (17%), Aerospace/Drones (Commercial): 2 (11%), Other: 1 (5%)</li>
+</ul>
+</section>
+<section id="p5---independent-hobbyists" class="level3" data-number="3.3.5">
+<h3 data-number="3.3.5" class="anchored" data-anchor-id="p5---independent-hobbyists"><span class="header-section-number">3.3.5</span> P5 - Independent Hobbyists</h3>
+<p>Drone enthusiasts, hobbyists, and independent developers exploring PX4 for personal projects, skill development, or potential commercial opportunities. This small but passionate group contributes to community growth and grassroots adoption.</p>
+<ul>
+<li>Profession: Hobbyist / Independent Developer / Non-professional</li>
+<li>Expertise Level: Intermediate: 5 (63%), Novice: 2 (25%), Advanced: 1 (12%)</li>
+<li>Primary Domains: Aerospace/Drones (Hobbyist): 6 (75%), Aerospace/Drones (Commercial): 1 (12%), Robotics: 1 (12%)</li>
+</ul>
+</section>
+</section>
+<section id="participants-experience-with-simulation" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="participants-experience-with-simulation"><span class="header-section-number">3.4</span> Participants Experience with Simulation</h2>
+<p>This section presents results on participants’ past simulation experience and currently used simulators, as well as data on simulated vehicle types and hardware specifications.</p>
+<div id="fig-sim-experience" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sim-experience-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/4_bar_simulator_experienced.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sim-experience-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Bar graph with simulators experienced vs last used simulators. Light red stands for an unclear amount of current users using Gazebo New (previous ignition) due to ambiguity in the answers.
+</figcaption>
+</figure>
+</div>
+<section id="simulation-past-experience" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="simulation-past-experience"><span class="header-section-number">3.4.1</span> Simulation Past Experience</h3>
+<p>Participants listed all simulators they had previously used, as shown in <a href="#fig-sim-experience" class="quarto-xref">Figure&nbsp;4</a>. The two most common were Gazebo (New) with 94 responses and Gazebo Classic with 79 responses, the two officially supported simulators for PX4 autopilot. Usage drops significantly after these, with Simulink (29), Isaac Sim (28), and AirSim (26) following. The “Other” category included X-Plane, Webots, CoppeliaSim, SIH, and several custom-built simulators.</p>
+</section>
+<section id="simulation-current-use" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="simulation-current-use"><span class="header-section-number">3.4.2</span> Simulation Current Use</h3>
+<p><a href="#fig-sim-experience" class="quarto-xref">Figure&nbsp;4</a> also shows current simulator usage based on an open-ended question. Due to ambiguity about which version of Gazebo participants were using, the following post-processing classifications were applied:</p>
+<ul>
+<li>Participants with experience only in Gazebo Classic were classified as currently using Gazebo Classic</li>
+<li>Participants with experience only in Gazebo New were classified as currently using Gazebo New</li>
+<li>Participants who specified “gz sim,” version names (Harmonic/Ionic), or clarified in comments were classified as Gazebo New</li>
+</ul>
+<p>After this classification, 30 participants who had used both versions could not be definitively categorized. These are shown in light red in <a href="#fig-sim-experience" class="quarto-xref">Figure&nbsp;4</a>, with the assumption they likely use the most current and recommended simulator (Gazebo New), though this metric should be interpreted with caution. Overall, Gazebo New remains the most widely used simulator (46 confirmed users), followed by Gazebo Classic (19). AirSim and its forks account for 5 current users, while Simulink and JSBSim each have 4 users.</p>
+</section>
+<section id="summary-of-comments-on-gazebo-new" class="level3" data-number="3.4.3">
+<h3 data-number="3.4.3" class="anchored" data-anchor-id="summary-of-comments-on-gazebo-new"><span class="header-section-number">3.4.3</span> Summary of Comments on Gazebo New</h3>
+<p>Since Gazebo New is the most widely used simulator, the following summarizes user feedback on its strengths and weaknesses. Users appreciate the versatility of Gazebo New and its seamless integration with both PX4 SITL and ROS 2. They value the wide variety of available sensors—a feature lacking in many other simulators—as well as its open-source nature and large community support. Users also noted significant improvements in the physics model compared to Gazebo Classic.</p>
+<p>However, users identified several areas needing improvement. Multiple participants reported instability on operating systems other than Ubuntu, particularly macOS. Many prefer Gazebo Classic’s GUI, describing it as less complex to work with. Adding custom sensors through the plugin framework and creating custom vehicle models pose significant challenges for many developers, particularly due to inadequate documentation. Beginners especially struggle to find appropriate documentation.</p>
+<p>Academic researchers (P3) specifically noted that Gazebo is not well-suited for reinforcement learning applications, leading them to use alternative simulators for this purpose. They also requested better multi-vehicle simulation support, such as the ability to simplify or disable physics for certain vehicles. Additionally, while some users praised the updated physics, others reported that flight dynamics and environmental variables still fall short of requirements.</p>
+</section>
+<section id="simulated-vehicles" class="level3" data-number="3.4.4">
+<h3 data-number="3.4.4" class="anchored" data-anchor-id="simulated-vehicles"><span class="header-section-number">3.4.4</span> Simulated Vehicles</h3>
+<p>Participants indicated which vehicle types and payloads they typically simulate (<a href="#fig-simulated-robots" class="quarto-xref">Figure&nbsp;5</a>). Quadcopters are the most commonly simulated vehicle type (104), followed by multicopters (52), with fixed-wing and VTOL vehicles tied for third (50 each). For payloads, cameras are most prevalent (103), followed by range sensors such as LiDAR/ToF sensors (88), with gimbals and communication equipment sharing third place.</p>
+<p>Regarding the number of vehicles simulated simultaneously, the majority simulate only one vehicle (63%), followed by those who typically simulate 5-10 vehicles (26%), and 7% who simulate teams of 2-4 vehicles (see <a href="#fig-swarms" class="quarto-xref">Figure&nbsp;6</a>).</p>
+<div id="fig-simulated-robots" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-simulated-robots-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/5a_bar_simulated_vehicles.png" class="img-fluid figure-img"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/5b_bar_simulated_payloads.png" class="img-fluid figure-img"></p>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-simulated-robots-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: (Left) Bar graph with the different types simulated vehicles and (right) bar graph with the distribution of type of payloads simulated.
+</figcaption>
+</figure>
+</div>
+<div id="fig-swarms" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-swarms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/6_pie_swarms.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-swarms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: Pie-chart of the amount of simulated vehicles that participants usually simulate.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="simulation-host-specifications" class="level3" data-number="3.4.5">
+<h3 data-number="3.4.5" class="anchored" data-anchor-id="simulation-host-specifications"><span class="header-section-number">3.4.5</span> Simulation Host Specifications</h3>
+<p>The survey also asked questions about the host computers running the simulation, including GPU-enabled systems, OS distribution, and whether the simulation runs locally or remotely. <a href="#fig-simulation-hosts" class="quarto-xref">Figure&nbsp;7</a> shows the hardware specifications participants use to run their simulators. The majority use PCs with dedicated GPUs, with Ubuntu as the dominant operating system. Most participants run simulators locally on their machines rather than on remote servers.</p>
+<div id="fig-simulation-hosts" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-simulation-hosts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="images/7a_GPU.png" class="img-fluid figure-img"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="images/7b_os.png" class="img-fluid figure-img"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="images/7c_locally_remotely.png" class="img-fluid figure-img"></p>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-simulation-hosts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: Pie-charts with the (left) GPU-enabled machines, the OS distribution (middle) and running location of the simulation (right).
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="purpose-and-goals" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="purpose-and-goals"><span class="header-section-number">3.5</span> Purpose and Goals</h2>
+<section id="purpose-for-using-simulators" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="purpose-for-using-simulators"><span class="header-section-number">3.5.1</span> Purpose for Using Simulators</h3>
+<p><a href="#fig-purposes" class="quarto-xref">Figure&nbsp;8</a> displays the reasons and purposes for using simulators. Participants most commonly use simulators for testing before real flights (89), followed by algorithm development (84) and robot prototyping and design (59).</p>
+<p>The radar graph on the right of <a href="#fig-purposes" class="quarto-xref">Figure&nbsp;8</a> shows that both academic researchers and students also emphasize academic research and education/learning. Senior engineers (P1) strongly prioritize commercial product development, followed by junior engineers (P2) and independent developers/hobbyists (P5). Students (P4) and hobbyists (P5) also occasionally use simulation for competition preparation.</p>
+<div id="fig-purposes" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-purposes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/8a_bar_purposes.png" class="img-fluid figure-img"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/8b_radar_purposes_persona.png" class="img-fluid figure-img"></p>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-purposes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: (Left) The bar graph with the count of indicated purposes of using simulators for all participants and (right) the radar graph with the purposes plotted per persona.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="goals-of-using-simulators" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="goals-of-using-simulators"><span class="header-section-number">3.5.2</span> Goals of Using Simulators</h3>
+<p>The bar graph on the left of <a href="#fig-goals" class="quarto-xref">Figure&nbsp;9</a> shows that all participants use simulators as development tools for their robotic systems, followed by mission planning and validation (74) and quality assurance in continuous integration (48). The radar graph on the right reveals that senior engineers (P1) drive the high CI/QA scores, while academic researchers (P3) and independent hobbyists (P5) also use simulators for generating machine learning training data. A portion of students (P4) and hobbyists (P5) additionally indicated using simulation for safety testing.</p>
+<div id="fig-goals" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-goals-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/9a_bar_goals.png" class="img-fluid figure-img"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/9a_bar_goals_personas.png" class="img-fluid figure-img"></p>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-goals-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9: (Left) A bar graph of the goals of using simulators for all participants and (right) the radar graph with goals plotted per persona.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="features-and-priorities" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="features-and-priorities"><span class="header-section-number">3.6</span> Features and Priorities</h2>
+<p>Participants rated the perceived importance of simulator features on a scale from 1 (least important) to 5 (very important) across four categories: technical capabilities, platform &amp; compatibility, usability and accessibility, and advanced features. These ratings are also analyzed by persona, as defined in the previous section.</p>
+<section id="technical-capabilities" class="level3" data-number="3.6.1">
+<h3 data-number="3.6.1" class="anchored" data-anchor-id="technical-capabilities"><span class="header-section-number">3.6.1</span> Technical Capabilities</h3>
+<p><a href="#tbl-tech" class="quarto-xref">Table&nbsp;1</a> presents the importance ratings for technical capabilities. Software-in-the-loop (SITL) is considered most important with a score of 4.63, followed by realistic physics simulation (4.38) and hardware-in-the-loop (3.82). Junior engineers (P2) showed a slightly different preference profile, rating failure mode simulation (3.96) and simulated networking capabilities (4.00) higher than other technical capabilities beyond SITL.</p>
+<div id="tbl-tech" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-tech-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: The average perceived importance of technical capabilities of simulators per profile and for all participants overall. The scale goes from 0 (not important) to 5 (very important).
+</figcaption>
+<div aria-describedby="tbl-tech-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/tab1_technical_capabilities.png" class="img-fluid figure-img">
+</div>
+</figure>
+</div>
+</section>
+<section id="platform-and-compatibility" class="level3" data-number="3.6.2">
+<h3 data-number="3.6.2" class="anchored" data-anchor-id="platform-and-compatibility"><span class="header-section-number">3.6.2</span> Platform and Compatibility</h3>
+<p><a href="#tbl-plat" class="quarto-xref">Table&nbsp;2</a> shows that the highest-rated platform and compatibility feature is ROS/ROS2 integration (3.92), followed by network capabilities and version compatibility between different PX4 releases (both 3.82). Researchers (P3) prioritized this category more than any other persona profiles. Notable deviations include senior engineers (P1), who rated Docker/containerization support (3.81) higher than network capabilities, and independent developers/hobbyists (P5), who rated network capabilities significantly higher than all other platform and compatibility features.</p>
+<div id="tbl-plat" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-plat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: The average perceived importance of platform and compatibility of simulators per profile and for all participants overall.
+</figcaption>
+<div aria-describedby="tbl-plat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/tab2_platform_compatibility.png" class="img-fluid figure-img">
+</div>
+</figure>
+</div>
+</section>
+<section id="usability-and-accessibility" class="level3" data-number="3.6.3">
+<h3 data-number="3.6.3" class="anchored" data-anchor-id="usability-and-accessibility"><span class="header-section-number">3.6.3</span> Usability and Accessibility</h3>
+<p><a href="#tbl-use" class="quarto-xref">Table&nbsp;3</a> presents importance ratings for usability and accessibility features. Participants rated template and example library availability as most important (4.14), followed by real-time debugging support and easy installation process. Academic students (P4) prioritized this category more than any other persona. Academic researchers (P3), students (P4), and independent developers/hobbyists (P5) all rated real-time parameter tuning higher than easy installation process, deviating from the overall ranking.</p>
+<div id="tbl-use" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-use-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3: The average perceived importance of usability and accessibility of simulators per profile and for all participants overall.
+</figcaption>
+<div aria-describedby="tbl-use-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/tab3_usability_accessibility.png" class="img-fluid figure-img">
+</div>
+</figure>
+</div>
+</section>
+<section id="advanced-features" class="level3" data-number="3.6.4">
+<h3 data-number="3.6.4" class="anchored" data-anchor-id="advanced-features"><span class="header-section-number">3.6.4</span> Advanced Features</h3>
+<p><a href="#tbl-adv" class="quarto-xref">Table&nbsp;4</a> lists the importance ratings for advanced simulation features. Across all participants, custom sensor model creation was rated most important (4.17), followed by easy robot model creation (4.13) and scenario scripting and automation (3.94). Academic researchers (P3) prioritized this category more than any other persona. Ratings were relatively consistent across personas, with the notable exception that independent developers/hobbyists (P5) also rated swarm simulation as highly important.</p>
+<div id="tbl-adv" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-adv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4: The average perceived importance of advanced features of simulation per profile and for all participants overall.
+</figcaption>
+<div aria-describedby="tbl-adv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/tab4_advanced.png" class="img-fluid figure-img">
+</div>
+</figure>
+</div>
+</section>
+<section id="top-wanted-functionalities" class="level3" data-number="3.6.5">
+<h3 data-number="3.6.5" class="anchored" data-anchor-id="top-wanted-functionalities"><span class="header-section-number">3.6.5</span> Top Wanted Functionalities</h3>
+<p>Across all personas, the top 5 most important features are:</p>
+<ol type="1">
+<li>Software-in-the-loop support</li>
+<li>Realistic physics simulation</li>
+<li>Custom sensor model creation</li>
+<li>Template/example library availability</li>
+<li>Easy robot model creation</li>
+</ol>
+<p><a href="#tbl-top" class="quarto-xref">Table&nbsp;5</a> breaks down the top 5 features by persona. Software-in-the-loop capabilities are considered essential by all personas except students (P4), who prioritize template and example library availability and real-time parameter tuning more highly. Realistic physics simulation is universally valued, though independent developers/hobbyists (P5) rated network capabilities and template availability higher. ROS/ROS2 integration is more important to advanced simulator users (senior engineers (P1) and academic researchers (P3)), while both junior (P2) and senior engineers (P1) rated custom sensor creation and easy robot model creation as equally important.</p>
+<div id="tbl-top" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-top-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5: Top 5 wanted features per profile.
+</figcaption>
+<div aria-describedby="tbl-top-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/tab5_top5_persona.png" class="img-fluid figure-img">
+</div>
+</figure>
+</div>
+</section>
+</section>
+<section id="final-choice-for-priority-roadmap" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="final-choice-for-priority-roadmap"><span class="header-section-number">3.7</span> Final Choice for Priority Roadmap</h2>
+<p>In a final single-choice question, participants selected the one feature they would prioritize if only one item could be on the roadmap (see <a href="#fig-final" class="quarto-xref">Figure&nbsp;10</a>). The largest group (18%) requested improvements to the current Gazebo integration with PX4 autopilot. Another 17% prioritized better documentation and examples for existing simulators, while 16% wanted more realistic physics and higher-quality sensor models.</p>
+<div id="fig-final" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-final-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/10_final_priority_question.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-final-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10: Pie-chart with the distribution of the final priority question of all participants.
+</figcaption>
+</figure>
+</div>
+<p><a href="#fig-final-per" class="quarto-xref">Figure&nbsp;11</a> presents a bar chart showing how each persona influenced the roadmap priorities. Professional engineers, both senior (P1) and junior (P2), voted for improved Gazebo integration with PX4. Academic researchers (P3) prioritized more realistic sensor and physics models along with better multi-vehicle/swarm simulation support. A significant portion of senior engineers (P1) also voted for reducing the sim-to-real gap, while some advocated for a new PX4-optimized simulator. Junior engineers (P2) emphasized enhanced simulation creation capabilities. Both junior engineers (P2) and academic students (P4), representing novice and intermediate users, indicated they would benefit most from better documentation and examples for existing PX4 simulation integrations. Finally, both senior engineers (P1) and academic students (P4) requested improved ROS/ROS2 integration with PX4 simulation.</p>
+<div id="fig-final-per" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-final-per-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/11_final_priority_question_personas.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-final-per-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11: Bar chart to indicate the differences per persona on the final roadmap priority choice of the survey.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="brief-discussion-and-recommendation" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Brief Discussion and Recommendation</h1>
+<p>This section reflects on the survey’s results and provides general recommendations for next steps. This survey was designed to identify the main priorities of simulation users. Of the 120 participants and an estimated community size of 15,000 developers, the margin of error is approximately 8-9%. While this is higher than the commonly recommended 5%, the results show significant preferences that can serve as guidelines.</p>
+<section id="reflections-on-the-survey-results" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="reflections-on-the-survey-results"><span class="header-section-number">4.1</span> Reflections on the Survey Results</h2>
+<p>Overall, participants agreed that software-in-the-loop support is essential and must remain a priority. While there were few direct comments about SITL functionality itself, several respondents noted that it was unclear what happens in the background or how to adjust features and sensors. This suggests the SITL documentation could benefit from review.</p>
+<p>One surprising result was the difference in perceived importance between realistic physics models and photorealistic rendering. These two features were nearly opposite on the importance scale. This is unexpected given that AirSim and Isaac Sim, both celebrated for their rendering capabilities, were mentioned as popular alternatives to Gazebo. However, users of these simulators represented only a small portion of respondents. An interesting suggestion from the survey was to explore JSBSim integration for flight dynamics in Gazebo New. That said, it is difficult to evaluate “how realistic” physics models need to be without widely accepted benchmarks for simulator evaluation.</p>
+<p>Documentation emerged as a significant pain point. Many participants reported difficulty finding proper documentation, though they did not always specify where. Several mentions pointed to Gazebo’s physics plugins, such as the multicopter plugin, environment plugins like wind, and physics integration, as being poorly documented. These are areas where the PX4 community could contribute directly to Gazebo.</p>
+<p>A clear difference emerged between the needs of more experienced developers (P1 and P3) and those with limited experience (P2, P4). The latter group showed stronger preference for better examples and tutorials, which is also reflected in the feature importance scores. Senior engineers and researchers expressed more interest in improving simulator realism, primarily related to physics. Senior engineers (P1) additionally emphasized improving the overall PX4-Gazebo integration.</p>
+<p>Regarding which simulator to prioritize: Gazebo New is both the most used and the most requested for improvement. A substantial portion of users (the second-largest group) still relies on Gazebo Classic despite growing compatibility issues. Since Gazebo Classic is end-of-life, there will be limited support from the maintenance team to address these. For issues with Gazebo New, this survey lacked the granularity to create specific tickets, so additional effort is needed within the community to properly document problems and create minimal reproducible examples.</p>
+</section>
+<section id="recommendation" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="recommendation"><span class="header-section-number">4.2</span> Recommendation</h2>
+<p>The following recommendations are offered by this report’s author; final decisions should be made in consultation with the PX4 simulation maintenance team based on their availability and capabilities.</p>
+<p>Based on the survey results, the recommendation is not to focus efforts on building a new simulator or integrating with community simulators like AirSim forks or Isaac Sim. Instead, development efforts should focus solely on improving the current PX4 and Gazebo New integration. Gazebo Classic should no longer be recommended, as it is end-of-life and out of scope.</p>
+<p>The most immediate opportunity is improving documentation. The quick-start guide appears sufficient for most users, as basic setup runs mostly out-of-the-box. However, users struggle to understand the underlying workflows. When junior developers and students need to customize their frame or model, they encounter difficulties due to a lack of examples. These could be developed through structured efforts similar to ROS’s and Gazebo’s tutorial parties.</p>
+<p>For advanced developers, there is a need for better troubleshooting guides and more comprehensive API documentation-contributions that would also benefit Gazebo’s plugin documentation. Additionally, a version compatibility matrix documenting tested combinations of ROS, PX4, and Gazebo versions would address a frequently cited frustration. Given the complexity of these version combinations, it must remain possible for developers to contribute fixes and documentation to either the PX4 or Gazebo teams.</p>
+<p>The next priority should be custom model and sensor creation, which was consistently mentioned as a pain point. This is challenging both from the Gazebo side and the PX4 integration side. Junior engineers would benefit most from improvements here.</p>
+<p>Finally, there is clear interest in better physics simulation. However, as in aerial robotics more broadly, it is difficult to define what “better physics” means without knowing the application. Swarm simulations may require minimal physics fidelity, while a quadcopter carrying a payload demands much more. An investigation into benchmarking techniques (perhaps drawn from the game development industry) could help establish evaluation criteria for physics simulation quality.</p>
+<!-- Appendices -->
+</section>
+</section>
+<section id="sec-pilot" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> A. PX4 Simulator Community Survey - Pilot</h1>
+<p>This survey aims to understand the developer needs of PX4 users and their simulation experiences. We’re hoping to improve the current situation and make things better for everyone.</p>
+<p>This survey should take only 10-15 minutes to fill in.</p>
+<hr>
+<p style="font-size: 1.2em;">
+<strong>Getting to Know You</strong>
+</p>
+<p><em>We’d like to understand your background and experience level to better contextualize your feedback.</em></p>
+<p><strong>1. What is your primary profession?</strong></p>
+<ul>
+<li>Student (BSc/MSc)</li>
+<li>Researcher (Academic/Industry)</li>
+<li>Educator/Teacher</li>
+<li>Professional Engineer / Technical Consultant</li>
+<li>Other: ___________</li>
+</ul>
+<p><strong>2. What is your level of expertise regarding robotic simulators?</strong></p>
+<ul>
+<li>Novice</li>
+<li>Intermediate</li>
+<li>Advanced</li>
+<li>Expert</li>
+</ul>
+<p><strong>3. How long have you been working with PX4?</strong></p>
+<ul>
+<li>I haven’t worked with PX4</li>
+<li>I just started working with PX4 (&lt; 1 month)</li>
+<li>1 month - 1 year</li>
+<li>1-3 years</li>
+<li>3-5 years</li>
+<li>5+ years</li>
+</ul>
+<hr>
+<p style="font-size: 1.2em;">
+<strong>Current Simulator Usage</strong>
+</p>
+<p><em>This section helps us understand which tools you’re using and how you’re using them in your current workflow.</em></p>
+<p><strong>4. Which simulators have you worked with in your setup? (Select all that apply)</strong></p>
+<ul>
+<li>Nvidia Isaac Sim</li>
+<li>Gazebo (formerly known as Ignition)</li>
+<li>Gazebo Classic</li>
+<li>AirSim</li>
+<li>MuJoCo</li>
+<li>Pybullet</li>
+<li>FlightGear</li>
+<li>JSBSim</li>
+<li>Other: ___________</li>
+</ul>
+<p><strong>5. What was your primary purpose for using simulators? (Select all that apply)</strong></p>
+<ul>
+<li>Academic research</li>
+<li>Education/learning</li>
+<li>Robot prototyping/design</li>
+<li>Algorithm development</li>
+<li>Testing before real flights</li>
+<li>Demonstration/presentation</li>
+<li>Competition preparation</li>
+<li>Commercial product development</li>
+<li>Flight tooling design</li>
+<li>Other: ___________</li>
+</ul>
+<p><strong>6. For which goals are you using simulators? (Select all that apply)</strong></p>
+<ul>
+<li>Development tool for robotic systems</li>
+<li>Quality assurance in continuous integration</li>
+<li>Data generation for machine learning</li>
+<li>Mission planning and validation</li>
+<li>Training pilots/operators</li>
+<li>Safety</li>
+<li>Regulatory compliance testing</li>
+<li>Other: ___________</li>
+</ul>
+<p><strong>7. What type of aerial robotic vehicle are you working with?</strong></p>
+<ul>
+<li>Helicopter</li>
+<li>Quadcopter</li>
+<li>Multicopters (more than 4 propellers)</li>
+<li>Fixed wing</li>
+<li>Hybrid / VTOL vehicles</li>
+<li>Blimps</li>
+<li>Other: ___________</li>
+</ul>
+<p><strong>8. Does your platform have additional equipment or payloads? (Select all that apply)</strong></p>
+<ul>
+<li>Manipulator arm</li>
+<li>Gripper/claw</li>
+<li>Gimbal</li>
+<li>Camera</li>
+<li>Cargo hook/winch</li>
+<li>Perception Sensors (lidar, sonar, etc.)</li>
+<li>Communication equipment</li>
+<li>None of the above</li>
+<li>Other: ___________</li>
+</ul>
+<p><strong>9. How many robots/UAVs do you typically simulate simultaneously?</strong></p>
+<ul>
+<li>Just one (1)</li>
+<li>2-4</li>
+<li>5-10</li>
+<li>10-100</li>
+<li>100+</li>
+</ul>
+<hr>
+<p style="font-size: 1.2em;">
+<strong>Technical Setup &amp; Constraints</strong>
+</p>
+<p><em>Understanding your hardware setup and limitations helps us design tools that work for everyone’s environment.</em></p>
+<p><strong>10. Did you have to purchase/upgrade your computer specifically for simulation?</strong></p>
+<ul>
+<li>Yes, bought entirely new system</li>
+<li>Yes, upgraded existing system</li>
+<li>No, used existing hardware</li>
+<li>Using cloud/remote computing</li>
+<li>Other: ___________</li>
+</ul>
+<p><strong>11. What operating system do you primarily use for simulation?</strong></p>
+<ul>
+<li>Ubuntu</li>
+<li>Arch Linux</li>
+<li>Fedora Linux</li>
+<li>Windows</li>
+<li>MacOS</li>
+<li>Other: ___________</li>
+</ul>
+<p><strong>12. Which version of the operating system have you selected above?</strong> ___________</p>
+<p><strong>13. Do you use a GPU enabled computer, and if so, what kind of specifications does it have?</strong> ___________</p>
+<p><strong>14. What’s your biggest hardware limitation?</strong></p>
+<ul>
+<li>CPU performance</li>
+<li>GPU/graphics performance</li>
+<li>RAM capacity</li>
+<li>Storage space</li>
+<li>Network bandwidth</li>
+<li>No significant limitations</li>
+<li>Other: ___________</li>
+</ul>
+<p><strong>15. Do you find the necessary hardware/computer specifications for simulation acceptable or workable?</strong></p>
+<ul>
+<li>Yes</li>
+<li>No</li>
+</ul>
+<p><strong>16. Anything to add to any of the questions answered in this section regarding computer specifications?</strong> ___________</p>
+<hr>
+<p style="font-size: 1.2em;">
+<strong>Current Simulator Experience</strong>
+</p>
+<p><em>Here we dive deep into your experience with simulators - what works well and what doesn’t. This feedback is crucial for identifying the biggest areas for improvement.</em></p>
+<p><strong>Please fill in the survey based on your first instinct (don’t linger too long per question)</strong></p>
+<p><strong>17. Which simulator have you used most recently?</strong> ___________</p>
+<p><strong>18. Setup and Installation Experience</strong></p>
+<p>Rate on scale: 1 (I agree) to 5 (I do not agree)</p>
+<ul>
+<li>“The simulator was easy to install.”</li>
+<li>“I had to install too many external dependencies”</li>
+<li>“The error and debug messages were easy to understand”</li>
+</ul>
+<p><strong>19. User Experience</strong></p>
+<p>Rate on scale: 1 (I agree) to 5 (I do not agree)</p>
+<ul>
+<li>“I needed to use an extensive guide to navigate through the GUI”</li>
+<li>“Using the simulator was a smooth experience.”</li>
+<li>“The user interface felt cluttered and complex.”</li>
+<li>“The error/bug messages were easy to read”</li>
+</ul>
+<p><strong>20. Technical Performance</strong></p>
+<p>Rate on scale: 1 (I agree) to 5 (I do not agree)</p>
+<ul>
+<li>“Objects in the simulation didn’t behave realistically.”</li>
+<li>“The simulator can run simulations faster than real-time.”</li>
+<li>“The simulation’s graphics were very photo-realistic.”</li>
+<li>“I experienced frequent crashes and freezes.”</li>
+</ul>
+<p><strong>21. Feature Support</strong></p>
+<p>Rate on scale: 1 (I agree) to 5 (I do not agree)</p>
+<ul>
+<li>“The simulator offered a wide variety of sensors.”</li>
+<li>“I can not easily make a custom drone in this simulator”</li>
+<li>“I’m able to use this simulator easily with swarms”</li>
+</ul>
+<p><strong>22. Documentation and Tutorials</strong></p>
+<p>Rate on scale: 1 (I agree) to 5 (I do not agree)</p>
+<ul>
+<li>“The documentation/website was easy to find.”</li>
+<li>“The documentation was difficult to follow.”</li>
+<li>“There were plenty of tutorials available.”</li>
+</ul>
+<p><strong>23. Community and Support</strong></p>
+<p>Rate on scale: 1 (I agree) to 5 (I do not agree)</p>
+<ul>
+<li>“It was hard to find a clear way to get help or ask questions.”</li>
+<li>“The community and support forums were helpful.”</li>
+<li>“It took too long to get my questions answered.”</li>
+</ul>
+<p><strong>24. What do you like the most about current/latest simulator you are using?</strong> ___________</p>
+<p><strong>25. What’s your biggest frustration with current/latest simulator you are using?</strong> ___________</p>
+<p><strong>26. Anything else to add?</strong> ___________</p>
+<hr>
+<p style="font-size: 1.2em;">
+<strong>Desired Features &amp; Priorities</strong>
+</p>
+<p><em>This section helps us prioritize development efforts by understanding which features matter most to different types of users.</em></p>
+<p><strong>Please fill in the survey based on your first instinct (don’t linger too long per question)</strong></p>
+<p><strong>27. Please rate the preferred Technical Capabilities</strong></p>
+<p>Rate on scale: 1 (Not important) to 5 (Very important), or No preference/opinion</p>
+<ul>
+<li>Hardware-in-the-loop support</li>
+<li>Software-in-the-loop support</li>
+<li>Faster than real-time simulation</li>
+<li>Photorealistic rendering</li>
+<li>Realistic physics simulation</li>
+<li>Weather/environmental simulation</li>
+<li>Failure mode simulation</li>
+<li>Communication simulation</li>
+</ul>
+<p><strong>28. Please rate the preferred Platform &amp; Compatibility</strong></p>
+<p>Rate on scale: 1 (Not important) to 5 (Very important), or No opinion or preference</p>
+<ul>
+<li>Multiple OS support</li>
+<li>ROS/ROS 2 integration</li>
+<li>Cloud simulation capabilities</li>
+<li>Docker/containerization support</li>
+</ul>
+<p><strong>29. Please rate the preferred Usability &amp; Accessibility</strong></p>
+<p>Rate on scale: 1 (Not important) to 5 (Very important), or No opinion or preference</p>
+<ul>
+<li>Beginner-friendly interface</li>
+<li>Easy installation process</li>
+<li>Drag-and-drop model capability</li>
+<li>Template/example library availability</li>
+<li>Real-time parameter tuning</li>
+</ul>
+<p><strong>30. Please rate the preferred Advanced Features</strong></p>
+<p>Rate on scale: 1 (Not important) to 5 (Very important), or No opinion or preference</p>
+<ul>
+<li>Multi-agent/swarm simulation</li>
+<li>Machine learning integration</li>
+<li>Custom sensor model creation</li>
+<li>Easy robot model creation</li>
+<li>Scenario scripting/automation</li>
+<li>Performance benchmarking tools</li>
+<li>CAD program integration for custom models</li>
+</ul>
+<p><strong>31. Any more features that we should pay attention too as well?</strong> ___________</p>
+<hr>
+<p style="font-size: 1.2em;">
+<strong>Final Questions</strong>
+</p>
+<p><em>Final thoughts and opportunities for deeper engagement with our improvement efforts.</em></p>
+<p><strong>32. What’s the most important improvement needed in simulation supported in the PX4-ecosystem?</strong> ___________</p>
+<p><strong>33. Any additional comments or suggestions?</strong> ___________</p>
+<p><strong>34. Would you be willing to participate in follow-up interviews?</strong> - Yes - No</p>
+<p><strong>35. If yes, please provide on which email address we can contact you. Your email address will only be used for this exact purpose.</strong> ___________</p>
+<hr>
+<p style="font-size: 1.2em;">
+<strong>Thank you!</strong>
+</p>
+<p>Thank you for taking the time to share your experiences! Your feedback will help improve simulation tools for the entire PX4 community.</p>
+<p><strong>Please press next to submit the form</strong></p>
+</section>
+<section id="sec-final" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> B. PX4 Simulator Community Survey - Final</h1>
+<p>This survey aims to understand the developer needs of PX4 users and their simulation experiences. We’re hoping to improve the current situation and make things better for everyone.</p>
+<p><strong>This survey should take only 10-15 minutes to fill in.</strong></p>
+<section id="about-this-survey" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="about-this-survey"><span class="header-section-number">6.1</span> About This Survey</h2>
+<p>We’re gathering feedback from the PX4 community to inform our simulation integration roadmap. Your input will help us prioritize which simulators to support, what features to develop, and where to focus our documentation efforts.</p>
+<p><strong>Who should take this survey:</strong> - Anyone who has used or is interested in using simulation with PX4 - Users of any experience level, from beginners to experts - Whether you’re in academia, industry, or working as a hobbyist</p>
+<p><strong>Your responses are anonymous.</strong> We’ll only collect email addresses if you volunteer for follow-up interviews.</p>
+<hr>
+<p style="font-size: 1.2em;">
+<strong>Getting to Know You</strong>
+</p>
+<p><em>We’d like to understand your background and experience level to better contextualize your feedback.</em></p>
+<p><strong>1. What is your primary profession?</strong></p>
+<ul>
+<li>Student (BSc/MSc)</li>
+<li>Researcher (Academic/Industry)</li>
+<li>Educator/Teacher</li>
+<li>Professional Engineer / Technical Consultant</li>
+<li>Hobbyist / Independent Developer</li>
+<li>Other: ___________</li>
+</ul>
+<p><strong>2. What domain are you working in?</strong></p>
+<ul>
+<li>Academia/Education</li>
+<li>Aerospace/Drones (Commercial)</li>
+<li>Aerospace/Drones (Hobbyist)</li>
+<li>Defense/Government</li>
+<li>Research Institution</li>
+<li>Other: ___________</li>
+</ul>
+<p><strong>3. What is your level of expertise regarding robotic simulators?</strong></p>
+<ul>
+<li>Novice</li>
+<li>Intermediate</li>
+<li>Advanced</li>
+<li>Expert</li>
+</ul>
+<p><strong>4. How long have you been working with PX4?</strong></p>
+<ul>
+<li>I haven’t worked with PX4</li>
+<li>I just started working with PX4 (&lt; 1 month)</li>
+<li>1 month - 1 year</li>
+<li>1-3 years</li>
+<li>3-5 years</li>
+<li>5+ years</li>
+</ul>
+<hr>
+<p style="font-size: 1.2em;">
+<strong>Current Simulator Usage</strong>
+</p>
+<p><em>This section helps us understand which tools you’re using and how you’re using them in your current workflow.</em></p>
+<p><strong>5. Which simulators have you worked with in your setup? (Select all that apply)</strong></p>
+<ul>
+<li>Nvidia Isaac Sim</li>
+<li>Gazebo (formerly known as Ignition)</li>
+<li>Gazebo Classic</li>
+<li>JMAVSim</li>
+<li>AirSim</li>
+<li>MuJoCo</li>
+<li>Pybullet</li>
+<li>FlightGear</li>
+<li>JSBSim</li>
+<li>Simulink</li>
+<li>Other: ___________</li>
+</ul>
+<p><strong>6. What was your primary purpose for using simulators? (Select all that apply)</strong></p>
+<ul>
+<li>Academic research</li>
+<li>Education/learning</li>
+<li>Robot prototyping/design</li>
+<li>Algorithm development</li>
+<li>Testing before real flights</li>
+<li>Demonstration/presentation</li>
+<li>Competition preparation</li>
+<li>Commercial product development</li>
+<li>Flight tooling design</li>
+<li>Other: ___________</li>
+</ul>
+<p><strong>7. For which goals are you using simulators? (Select all that apply)</strong></p>
+<ul>
+<li>Development tool for robotic systems</li>
+<li>Quality assurance in continuous integration</li>
+<li>Data generation for machine learning</li>
+<li>Mission planning and validation</li>
+<li>Training pilots/operators</li>
+<li>Safety</li>
+<li>Regulatory compliance testing</li>
+<li>Other: ___________</li>
+</ul>
+<p><strong>8. What type of aerial robotic vehicle are you working with? (Select all that apply)</strong></p>
+<ul>
+<li>Helicopter</li>
+<li>Quadcopter</li>
+<li>Multicopters (more than 4 propellers)</li>
+<li>Fixed wing</li>
+<li>Hybrid / VTOL vehicles</li>
+<li>Blimps</li>
+<li>Other: ___________</li>
+</ul>
+<p><strong>9. Does your platform have additional equipment or payloads? (Select all that apply)</strong></p>
+<ul>
+<li>Manipulator arm</li>
+<li>Gripper/claw</li>
+<li>Gimbal</li>
+<li>Camera</li>
+<li>Cargo hook/winch</li>
+<li>Perception Sensors (lidar, sonar, etc.)</li>
+<li>Communication equipment</li>
+<li>None of the above</li>
+<li>Other: ___________</li>
+</ul>
+<p><strong>10. How many robots/UAVs do you typically simulate simultaneously?</strong></p>
+<ul>
+<li>Just one (1)</li>
+<li>2-4</li>
+<li>5-10</li>
+<li>10-100</li>
+<li>100+</li>
+</ul>
+<p><strong>11. How do you typically interact with your simulator? (Select all that apply)</strong></p>
+<ul>
+<li>Mainly through GUI</li>
+<li>Headless/CI environments</li>
+<li>Custom plugins/extensions</li>
+<li>ROS/ROS2 integration</li>
+<li>API/scripting</li>
+<li>Other: ___________</li>
+</ul>
+<p><strong>12. What’s do you like the most with current/latest simulator you are using?</strong></p>
+<hr>
+<p><strong>13. What’s your biggest frustration with current/latest simulator you are using?</strong></p>
+</section>
+<section id="section" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="section"><span class="header-section-number">6.2</span> ____</h2>
+<p style="font-size: 1.2em;">
+<strong>Technical Setup &amp; Constraints</strong>
+</p>
+<p><em>Understanding your hardware setup and limitations helps us design tools that work for everyone’s environment.</em></p>
+<p><strong>14. Did you have to purchase/upgrade your computer specifically for simulation?</strong></p>
+<ul>
+<li>Yes, bought entirely new system</li>
+<li>Yes, upgraded existing system</li>
+<li>No, used existing hardware</li>
+<li>Using cloud/remote computing</li>
+<li>Other: ___________</li>
+</ul>
+<p><strong>15. What operating system do you primarily use for simulation?</strong></p>
+<ul>
+<li>Ubuntu</li>
+<li>Arch Linux</li>
+<li>Fedora Linux</li>
+<li>Windows</li>
+<li>MacOS</li>
+<li>Other: ___________</li>
+</ul>
+<p><strong>16. What operating system version are you using for the above selection?</strong></p>
+<hr>
+<p><strong>17. Do you run simulations locally or remotely?</strong></p>
+<ul>
+<li>Locally on my machine</li>
+<li>On remote machines</li>
+<li>In the cloud</li>
+<li>Other: ___________</li>
+</ul>
+<p><strong>18. Is your machine on which you run your simulation GPU-enabled?</strong></p>
+<ul>
+<li>Yes</li>
+<li>No</li>
+<li>Not sure</li>
+</ul>
+<p><strong>19. What’s your biggest hardware limitation?</strong></p>
+<ul>
+<li>CPU performance</li>
+<li>GPU/graphics performance</li>
+<li>RAM capacity</li>
+<li>Storage space</li>
+<li>Network bandwidth</li>
+<li>No significant limitations</li>
+<li>Other: ___________</li>
+</ul>
+<p><strong>20. Anything to add to any of the questions answered in this section regarding computer specifications?</strong></p>
+<hr>
+<hr>
+<p style="font-size: 1.2em;">
+<strong>Desired Features &amp; Priorities</strong>
+</p>
+<p><em>This section helps us prioritize development efforts by understanding which features matter most to different types of users.</em></p>
+<p><strong>Please fill in the survey based on your first instinct (don’t linger too long per question)</strong></p>
+<p><strong>21. Please rate the preferred Technical Capabilities</strong></p>
+<p>Rate on scale: 1 (Not important) to 5 (Very important), or No preference/opinion</p>
+<ul>
+<li>Hardware-in-the-loop support</li>
+<li>Software-in-the-loop support</li>
+<li>Faster than real-time simulation</li>
+<li>Photorealistic rendering</li>
+<li>Realistic physics simulation</li>
+<li>Weather/environmental simulation</li>
+<li>Failure mode simulation</li>
+<li>Communication simulation</li>
+</ul>
+<p><strong>22. Please rate the preferred Platform &amp; Compatibility</strong></p>
+<p>Rate on scale: 1 (Not important) to 5 (Very important), or No opinion or preference</p>
+<ul>
+<li>Multiple OS support</li>
+<li>ROS/ROS 2 integration</li>
+<li>Cloud simulation capabilities</li>
+<li>Docker/containerization support</li>
+<li>Network capability (PX4 and simulator on different machines)</li>
+<li>Compatibility between different versions of PX4 and simulators</li>
+</ul>
+<p><strong>23. Please rate the preferred Usability &amp; Accessibility</strong></p>
+<p>Rate on scale: 1 (Not important) to 5 (Very important), or No opinion or preference</p>
+<ul>
+<li>Beginner-friendly interface</li>
+<li>Easy installation process</li>
+<li>Template/example library availability</li>
+<li>Real-time parameter tuning</li>
+<li>Real-time debug support (pause, step through simulation)</li>
+<li>Simulation snapshot/hotstart capability</li>
+</ul>
+<p><strong>24. Please rate the preferred Advanced Features</strong></p>
+<p>Rate on scale: 1 (Not important) to 5 (Very important), or No opinion or preference</p>
+<ul>
+<li>Multi-agent/swarm simulation</li>
+<li>Machine learning integration</li>
+<li>Custom sensor model creation</li>
+<li>Easy robot model creation</li>
+<li>Scenario scripting/automation</li>
+<li>Performance benchmarking tools</li>
+<li>CAD program integration for custom models</li>
+</ul>
+<p><strong>25. Any more features that we should pay attention to as well?</strong></p>
+<hr>
+<hr>
+<p style="font-size: 1.2em;">
+<strong>PX4 Simulation Roadmap</strong>
+</p>
+<p><em>This section helps us understand what strategic direction would best serve the PX4 community.</em></p>
+<p><strong>26. If there was one thing you’d like the PX4 simulation development team to work on, what would it be?</strong></p>
+<ul>
+<li>Improving the current Gazebo simulator intergration</li>
+<li>A new PX4-optimized simulator</li>
+<li>Add support for more simulators for PX4</li>
+<li>Better documentation and examples for existing PX4 simulation</li>
+<li>More simulation model creation capabilities (more types of vehicles)</li>
+<li>More realistic sensor/physics models</li>
+<li>Improve stability/performance of existing simulator integrations</li>
+<li>Better PX4-simulator integration (easier SITL setup, better parameter mapping)</li>
+<li>More realistic sensor/physics models (Sim2Real gap)</li>
+<li>Better multi-vehicle/swarm simulation support</li>
+<li>Improved ROS/ROS2 integration with PX4 simulation</li>
+<li>Fixing PX4 - Simulator version compatibility issues</li>
+<li>Other</li>
+</ul>
+<p><strong>27. Why is this choice your top priority?</strong></p>
+<hr>
+<hr>
+<p style="font-size: 1.2em;">
+<strong>Final Questions</strong>
+</p>
+<p><em>Final thoughts and opportunities for deeper engagement with our improvement efforts.</em></p>
+<p><strong>28. Any additional comments or suggestions?</strong></p>
+<hr>
+<p><strong>29. Would you be willing to participate in follow-up interviews? If yes, please provide an email address where we can contact you. Your email address will only be used for this exact purpose.</strong></p>
+<hr>
+<hr>
+<p style="font-size: 1.2em;">
+<strong>Thank you!</strong>
+</p>
+<p>Thank you for taking the time to share your experiences! Your feedback will help improve simulation tools for the entire PX4 community.</p>
+<p><strong>Please press next to submit the form</strong></p>
+
+
+<!-- -->
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-px4-41925" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline"><span>“Impossible custom spawn position in SITL gazebo since v1 15 0.”</span> [Online]. Available: <a href="https://discuss.px4.io/t/impossible-custom-spawn-position-in-sitl-gazebo-since-v1-15-0/41925">https://discuss.px4.io/t/impossible-custom-spawn-position-in-sitl-gazebo-since-v1-15-0/41925</a></div>
+</div>
+<div id="ref-px4-46594" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline"><span>“HIL actuators not working on PX4 v1 15 4.”</span> [Online]. Available: <a href="https://discuss.px4.io/t/hil-actuators-not-working-on-px4-v1-15-4/46594">https://discuss.px4.io/t/hil-actuators-not-working-on-px4-v1-15-4/46594</a></div>
+</div>
+<div id="ref-px4-45887" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline"><span>“PX4 setup for macOS M3 sequoia.”</span> [Online]. Available: <a href="https://discuss.px4.io/t/px4-setup-for-macos-m3-sequoia/45887">https://discuss.px4.io/t/px4-setup-for-macos-m3-sequoia/45887</a></div>
+</div>
+<div id="ref-px4-40657" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline"><span>“Unexpected imprecise attitude in SITL.”</span> [Online]. Available: <a href="https://discuss.px4.io/t/unexpected-imprecise-attitude-in-sitl/40657">https://discuss.px4.io/t/unexpected-imprecise-attitude-in-sitl/40657</a></div>
+</div>
+<div id="ref-px4-43349" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline"><span>“Drone arm but not takeoff SITL gazebo.”</span> [Online]. Available: <a href="https://discuss.px4.io/t/drone-arm-but-not-takeoff-sitl-gazebo/43349">https://discuss.px4.io/t/drone-arm-but-not-takeoff-sitl-gazebo/43349</a></div>
+</div>
+<div id="ref-px4-44266" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline"><span>“PX4 SITL drone not climbing above 0 1m during takeoff.”</span> [Online]. Available: <a href="https://discuss.px4.io/t/px4-sitl-drone-not-climbing-above-0-1m-during-takeoff/44266">https://discuss.px4.io/t/px4-sitl-drone-not-climbing-above-0-1m-during-takeoff/44266</a></div>
+</div>
+<div id="ref-px4-47188" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline"><span>“Slow simulator does not work in SITL.”</span> [Online]. Available: <a href="https://discuss.px4.io/t/slow-simulator-does-not-work-in-sitl/47188">https://discuss.px4.io/t/slow-simulator-does-not-work-in-sitl/47188</a></div>
+</div>
+<div id="ref-px4-47532" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline"><span>“Slow startup of multiple PX4 SITL instances with micro xrce DDS agent multi drone setup.”</span> [Online]. Available: <a href="https://discuss.px4.io/t/slow-startup-of-multiple-px4-sitl-instances-with-micro-xrce-dds-agent-multi-drone-setup/47532">https://discuss.px4.io/t/slow-startup-of-multiple-px4-sitl-instances-with-micro-xrce-dds-agent-multi-drone-setup/47532</a></div>
+</div>
+<div id="ref-px4-41744" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline"><span>“MAVLink ports for multiple drones using gazebo and ROS.”</span> [Online]. Available: <a href="https://discuss.px4.io/t/mavlink-ports-for-multiple-drones-using-gazebo-and-ros/41744">https://discuss.px4.io/t/mavlink-ports-for-multiple-drones-using-gazebo-and-ros/41744</a></div>
+</div>
+<div id="ref-px4-40885" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline"><span>“How to distinguish depth camera topics for multiple drones in gazebo harmonic.”</span> [Online]. Available: <a href="https://discuss.px4.io/t/how-to-distinguish-depth-camera-topics-for-multiple-drones-in-gazebo-harmonic/40885/3">https://discuss.px4.io/t/how-to-distinguish-depth-camera-topics-for-multiple-drones-in-gazebo-harmonic/40885/3</a></div>
+</div>
+<div id="ref-px4-40847" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline"><span>“Setting custom home location in multi vehicle simulation.”</span> [Online]. Available: <a href="https://discuss.px4.io/t/setting-custom-home-location-in-multi-vehicle-simulation/40847">https://discuss.px4.io/t/setting-custom-home-location-in-multi-vehicle-simulation/40847</a></div>
+</div>
+<div id="ref-px4-42697" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline"><span>“Unable to arm drones in multi vehicle SITL setup with PX4 and microxrceagent.”</span> [Online]. Available: <a href="https://discuss.px4.io/t/unable-to-arm-drones-in-multi-vehicle-sitl-setup-with-px4-and-microxrceagent/42697">https://discuss.px4.io/t/unable-to-arm-drones-in-multi-vehicle-sitl-setup-with-px4-and-microxrceagent/42697</a></div>
+</div>
+<div id="ref-px4-44693" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline"><span>“MAVSDK multiple drones problem.”</span> [Online]. Available: <a href="https://discuss.px4.io/t/mavsdk-multiple-drones-problem/44693">https://discuss.px4.io/t/mavsdk-multiple-drones-problem/44693</a></div>
+</div>
+<div id="ref-px4-44447" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[14] </div><div class="csl-right-inline"><span>“ROS gazebo bridge not working unable to use RViz2 to fetch PX4 X500 mono cam image topic.”</span> [Online]. Available: <a href="https://discuss.px4.io/t/ros-gz-bridge-not-working-unable-to-use-rviz2-to-fetch-px4-x500-mono-cam-image-topic/44447">https://discuss.px4.io/t/ros-gz-bridge-not-working-unable-to-use-rviz2-to-fetch-px4-x500-mono-cam-image-topic/44447</a></div>
+</div>
+<div id="ref-px4-47421" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[15] </div><div class="csl-right-inline"><span>“Why is my ROS2 scan topic not publishing any messages SLAM toolbox lifecycle fails python subscriber inactive.”</span> [Online]. Available: <a href="https://discuss.px4.io/t/why-is-my-ros2-scan-topic-not-publishing-any-messages-slam-toolbox-lifecycle-fails-python-subscriber-inactive/47421">https://discuss.px4.io/t/why-is-my-ros2-scan-topic-not-publishing-any-messages-slam-toolbox-lifecycle-fails-python-subscriber-inactive/47421</a></div>
+</div>
+<div id="ref-px4-45073" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[16] </div><div class="csl-right-inline"><span>“ROS2 offboard control direct actuator control not working.”</span> [Online]. Available: <a href="https://discuss.px4.io/t/ros2-offboard-control-direct-actuator-control-not-working/45073">https://discuss.px4.io/t/ros2-offboard-control-direct-actuator-control-not-working/45073</a></div>
+</div>
+<div id="ref-px4-44630" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[17] </div><div class="csl-right-inline"><span>“Offset issue in offboard mode with mav frame body NED and MAVLink.”</span> [Online]. Available: <a href="https://discuss.px4.io/t/offset-issue-in-offboard-mode-with-mav-frame-body-ned-and-mavlink/44630">https://discuss.px4.io/t/offset-issue-in-offboard-mode-with-mav-frame-body-ned-and-mavlink/44630</a></div>
+</div>
+<div id="ref-px4-42508" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[18] </div><div class="csl-right-inline"><span>“Integrate PX4 and unity.”</span> [Online]. Available: <a href="https://discuss.px4.io/t/integrate-px4-and-unity/42508">https://discuss.px4.io/t/integrate-px4-and-unity/42508</a></div>
+</div>
+<div id="ref-px4-45970" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[19] </div><div class="csl-right-inline"><span>“Cant make MAVSDK commuincate with PX4 SITL in airsim unreal engine.”</span> [Online]. Available: <a href="https://discuss.px4.io/t/cant-make-mavsdk-commuincate-with-px4-sitl-in-airsim-unreal-engine/45970">https://discuss.px4.io/t/cant-make-mavsdk-commuincate-with-px4-sitl-in-airsim-unreal-engine/45970</a></div>
+</div>
+<div id="ref-px4-42303" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[20] </div><div class="csl-right-inline"><span>“PX4 SITL with simulink gazebo.”</span> [Online]. Available: <a href="https://discuss.px4.io/t/px4-sitl-with-simulink-gazebo/42303">https://discuss.px4.io/t/px4-sitl-with-simulink-gazebo/42303</a></div>
+</div>
+<div id="ref-px4-43417" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[21] </div><div class="csl-right-inline"><span>“PX4 SITL gazebo harmonic modify physical properties.”</span> [Online]. Available: <a href="https://discuss.px4.io/t/px4-sitl-gazebo-harmonic-modify-physical-properties/43417">https://discuss.px4.io/t/px4-sitl-gazebo-harmonic-modify-physical-properties/43417</a></div>
+</div>
+<div id="ref-px4-46132" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[22] </div><div class="csl-right-inline"><span>“Potential bug in PX4 gazebo bridge ESC interface.”</span> [Online]. Available: <a href="https://discuss.px4.io/t/potential-bug-in-px4-gz-bridge-esc-interface/46132">https://discuss.px4.io/t/potential-bug-in-px4-gz-bridge-esc-interface/46132</a></div>
+</div>
+<div id="ref-px4-46487" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[23] </div><div class="csl-right-inline"><span>“Tiltrotor VTOL dive on transition.”</span> [Online]. Available: <a href="https://discuss.px4.io/t/tiltrotor-vtol-dive-on-transition/46487">https://discuss.px4.io/t/tiltrotor-vtol-dive-on-transition/46487</a></div>
+</div>
+<div id="ref-px4-46582" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[24] </div><div class="csl-right-inline"><span>“Tri tiltrotor VTOL dive on transition.”</span> [Online]. Available: <a href="https://discuss.px4.io/t/tri-tiltrotor-vtol-dive-on-transition/46582">https://discuss.px4.io/t/tri-tiltrotor-vtol-dive-on-transition/46582</a></div>
+</div>
+<div id="ref-px4-42909" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[25] </div><div class="csl-right-inline"><span>“PX4 SITL video stream unavailable.”</span> [Online]. Available: <a href="https://discuss.px4.io/t/px4-sitl-video-stream-unavailable/42909">https://discuss.px4.io/t/px4-sitl-video-stream-unavailable/42909</a></div>
+</div>
+<div id="ref-px4-43683" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[26] </div><div class="csl-right-inline"><span>“Terrain following not working in PX4 gazebo simulation environment.”</span> [Online]. Available: <a href="https://discuss.px4.io/t/terrain-following-not-working-in-px4-gazebo-simulation-environment/43683">https://discuss.px4.io/t/terrain-following-not-working-in-px4-gazebo-simulation-environment/43683</a></div>
+</div>
+<div id="ref-px4-45696" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[27] </div><div class="csl-right-inline"><span>“Unable to simulate wind via make PX4 SITL gazebo X500 windy.”</span> [Online]. Available: <a href="https://discuss.px4.io/t/unable-to-simulate-wind-via-make-px4-sitl-gz-x500-windy/45696">https://discuss.px4.io/t/unable-to-simulate-wind-via-make-px4-sitl-gz-x500-windy/45696</a></div>
+</div>
+<div id="ref-px4-46990" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[28] </div><div class="csl-right-inline"><span>“QGC does not connect to PX4 SITL in custom world.”</span> [Online]. Available: <a href="https://discuss.px4.io/t/qgc-does-not-connect-to-px4-sitl-in-custom-world/46990">https://discuss.px4.io/t/qgc-does-not-connect-to-px4-sitl-in-custom-world/46990</a></div>
+</div>
+<div id="ref-px4-47409" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[29] </div><div class="csl-right-inline"><span>“Using a custom world environment in PX4 v1 16.”</span> [Online]. Available: <a href="https://discuss.px4.io/t/using-a-custom-world-environment-in-px4-v1-16/47409/4">https://discuss.px4.io/t/using-a-custom-world-environment-in-px4-v1-16/47409/4</a></div>
+</div>
+<div id="ref-px4-46059" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[30] </div><div class="csl-right-inline"><span>“Issue running PX4 SITL in a container.”</span> [Online]. Available: <a href="https://discuss.px4.io/t/issue-running-px4-sitl-in-a-container/46059">https://discuss.px4.io/t/issue-running-px4-sitl-in-a-container/46059</a></div>
+</div>
+<div id="ref-px4-45983" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[31] </div><div class="csl-right-inline"><span>“Running sim on a VM in a docker container.”</span> [Online]. Available: <a href="https://discuss.px4.io/t/running-sim-on-a-vm-in-a-docker-container/45983">https://discuss.px4.io/t/running-sim-on-a-vm-in-a-docker-container/45983</a></div>
+</div>
+<div id="ref-px4-44619" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[32] </div><div class="csl-right-inline"><span>“Gazebo entities not rendered.”</span> [Online]. Available: <a href="https://discuss.px4.io/t/gazebo-entities-not-rendered/44619/3">https://discuss.px4.io/t/gazebo-entities-not-rendered/44619/3</a></div>
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "PX4 Simulation Integration Survey"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> Report on survey and investigation into the PX4 community’s preferences for robotic simulation intergration</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Kimberly McGuire"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> today</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-depth: 2</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="an">bibliography:</span><span class="co"> references.bib</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="an">link-citations:</span><span class="co"> true</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/front_image.jpg)</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; This work has been sponsored by Dronecode Foundation </span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; </span><span class="al">![Dronecode](images/dronecode.png)</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introduction</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>This report describes the research efforts conducted to assess user experiences of PX4 and simulation integration. The purpose of the survey study is to identify the most pressing developer goals for the PX4 simulation integration roadmap, based on the needs of the PX4 user community.</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu">## Changelog Report</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Date <span class="pp">|</span> Changes <span class="pp">|</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="pp">|------|---------|</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> December 10, 2025 <span class="pp">|</span> All preperation in single chapter (including forum) <span class="pp">|</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> November 28, 2025 <span class="pp">|</span>   Forum to appendix, written recommendations. <span class="pp">|</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> November 26, 2025 <span class="pp">|</span>   Adding evaluation of results <span class="pp">|</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> November 24, 2025 <span class="pp">|</span>   Adjusting of figures and tables <span class="pp">|</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> November 20, 2025 <span class="pp">|</span>   Final result ROS-aerial group <span class="pp">|</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> November 11, 2025 <span class="pp">|</span>   Preliminary results PX4 summit <span class="pp">|</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>October 15, 2025 |  Send out final survey |</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> October 14, 2025 <span class="pp">|</span> Improved editing pilot survey results <span class="pp">|</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> October 13, 2025 <span class="pp">|</span> Added final survey changes and justifications <span class="pp">|</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> October 9, 2025 <span class="pp">|</span> Analysis pilot survey <span class="pp">|</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> September 30, 2025 <span class="pp">|</span> Forum analysis report <span class="pp">|</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> September 23, 2025 <span class="pp">|</span> Send out pilot survey <span class="pp">|</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> September 7, 2025 <span class="pp">|</span> Improvements to pilot survey (Jay) <span class="pp">|</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> August 28, 2025 <span class="pp">|</span> Started draft pilot survey <span class="pp">|</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> July 31, 2025 <span class="pp">|</span> Project description formalized <span class="pp">|</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>{{&lt; include preperation_survey.md &gt;}}</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>{{&lt; include results.md &gt;}}</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>{{&lt; include conclusion.md &gt;}}</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Appendices --&gt;</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>{{&lt; include survey_content_pilot.md &gt;}}</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>{{&lt; include survey_content_final.md &gt;}}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
