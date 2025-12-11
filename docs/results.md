@@ -1,8 +1,10 @@
-# Final Results
+# Survey Results
 
 The survey ran for approximately one month (October 14 – November 16, 2025) and received 120 responses. Only 2 participants submitted incomplete forms, representing a 98.3% completion rate.
 
 With an estimated PX4 autopilot user base of 15,000, this sample size yields a margin of error of 9% at a 95% confidence interval. This exceeds the commonly recommended 5% margin of error for surveys, which should be considered when interpreting results and developing recommendations.
+
+> Out of privacy considerations, the survey results will only be shown in the form of the graphs presented in this report. If you'd like extra clarification or any specific results, please reach out to the author.
 
 ## Professions and Domains
 

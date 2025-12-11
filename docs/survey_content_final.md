@@ -265,6 +265,7 @@ ___________
 *This section helps us understand what strategic direction would best serve the PX4 community.*
 
 **26. If there was one thing you'd like the PX4 simulation development team to work on, what would it be?**
+
 - Improving the current Gazebo simulator intergration
 - A new PX4-optimized simulator
 - Add support for more simulators for PX4

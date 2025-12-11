@@ -2,26 +2,16 @@
 title: "PX4 Simulation Intergration Survey"
 author: "Kimberly McGuire"
 date: today
-pdf:
-  documentclass: scrreprt
-  include-in-header: 
-    text: |
-      \usepackage{makeidx}
-      \makeindex
-  include-after-body: 
-    text: |
-      \printindex
 format:
   html:
     toc: true
     toc-depth: 2
     number-sections: true
-  pdf:
-    toc: true
-    number-sections: true
 bibliography: references.bib
 link-citations: true
 ---
+
+![](images/front_image.jpg)
 
 
 # Introduction
