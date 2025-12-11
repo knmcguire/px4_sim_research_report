@@ -1,6 +1,6 @@
 # Brief Discussion and Recommendation
 
-The section will reflect  the survey’s results and give out a general recommendation of the next steps. Mind that this survey is written in mind to figure out the main priorities of the users of simulation and to find next steps. Of the 120 participants and an estimated community size of 15000 developers, the margin of error is about 8-9 %. That means that the results need to be taken with slight caution as that is higher than the recommend 5%, however the results give a significant preference that it is recommended to use it as a guide line.
+This section reflects on the survey's results and provides general recommendations for next steps. This survey was designed to identify the main priorities of simulation users. Of the 120 participants and an estimated community size of 15,000 developers, the margin of error is approximately 8-9%. While this is higher than the commonly recommended 5%, the results show significant preferences that can serve as guidelines.
 
 ## Reflections on the Survey Results
 

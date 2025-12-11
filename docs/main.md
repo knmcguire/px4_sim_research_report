@@ -1,5 +1,5 @@
 ---
-title: "PX4 Simulation Intergration Survey"
+title: "PX4 Simulation Integration Survey"
 author: "Kimberly McGuire"
 date: today
 format:
@@ -16,7 +16,7 @@ link-citations: true
 
 # Introduction
 
-This reports describe the research efforts conducted to the user experiences of the PX4 and simulation intergration. The purpose of the survey study is to find the next and most pressing developer goals for the PX4 simulation integration roadmap, based on the needs of the PX4 user community.
+This report describes the research efforts conducted to assess user experiences of PX4 and simulation integration. The purpose of the survey study is to identify the most pressing developer goals for the PX4 simulation integration roadmap, based on the needs of the PX4 user community.
 
 ## Changelog Report
 

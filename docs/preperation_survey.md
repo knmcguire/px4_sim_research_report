@@ -1,10 +1,10 @@
-# Survey Preperation
+# Survey Preparation
 
 ## Survey Design and Methodology
 
 ### Survey Structure
 
-The PX4 Simulator Community Survey was designed to gather feedback from users across all aspects of their simulation experience. The survey is setup in six main sections: demographic background, current simulator usage patterns, technical infrastructure, simulator experience evaluation, feature priorities, and strategic recommendations. The survey uses a mixed-methods approach combining quantitative Likert-scale ratings with qualitative open-ended questions.
+The PX4 Simulator Community Survey was designed to gather feedback from users across all aspects of their simulation experience. The survey is set up in six main sections: demographic background, current simulator usage patterns, technical infrastructure, simulator experience evaluation, feature priorities, and strategic recommendations. The survey uses a mixed-methods approach combining quantitative Likert-scale ratings with qualitative open-ended questions.
 
 
 The survey begins by establishing user segments through profession, simulator expertise level, and PX4 experience duration. This segmentation allows analysis of how different user groups (students, researchers, commercial engineers) experience simulation and what improvements they prioritize.
@@ -91,7 +91,7 @@ Posts describe camera streams failing to initialize properly[@px4-42909], docume
 
 Posts report Docker-based deployment issues including connection failures, missing video feeds, and rendering problems[@px4-46059; @px4-45983; @px4-44619].
 
-## Changes and Aditions for Final Version Survey
+## Changes and Additions for Final Version Survey
 
 The final version of the PX4 Simulator Community Survey incorporates changes based on pilot feedback and forum analysis. The survey was reduced from approximately 35 questions with over 70 individual items to 29 questions with fewer than 40 items for participants to answer.
 
