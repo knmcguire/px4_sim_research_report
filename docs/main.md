@@ -1,5 +1,6 @@
 ---
 title: "PX4 Simulation Integration Survey"
+subtitle: Report on survey and investigation into the PX4 community’s preferences for robotic simulation intergration
 author: "Kimberly McGuire"
 date: today
 format:
@@ -12,6 +13,9 @@ link-citations: true
 ---
 
 ![](images/front_image.jpg)
+
+> This work has been sponsored by Dronecode Foundation 
+> ![Dronecode](images/dronecode.png)
 
 
 # Introduction
