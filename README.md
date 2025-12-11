@@ -6,7 +6,7 @@ Here is the report of the PX4 intergration survey done in (October 14 – Novemb
 
 The report is organized across multiple markdown files in the `docs/` directory:
 
-- `main.md` - Main entry point with metadata and includes
+- `index.md` - Main entry point with metadata and includes
 - `preperation_survey.md` - Survey design, pilot analysis, and forum analysis
 - `results.md` - Survey results and analysis
 - `conclusion.md` - Discussion and recommendations
@@ -40,5 +40,5 @@ This will open a browser with live preview that updates as you edit the markdown
 pixi run render
 ```
 
-Output will be in `_output/docs/main.html`
+Output will be in `_output/docs/index.html`
 

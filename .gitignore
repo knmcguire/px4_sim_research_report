@@ -3,6 +3,8 @@ _output/
 *.pdf
 *.tex
 
+_site/*
+
 # Python
 __pycache__/
 *.py[cod]
