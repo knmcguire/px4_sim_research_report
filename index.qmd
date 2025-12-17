@@ -2,7 +2,8 @@
 title: "PX4 Simulation Integration Survey"
 subtitle: Report on survey and investigation into the PX4 community’s preferences for robotic simulation intergration
 author: "Kimberly McGuire"
-date: today
+date: 12/10/2025
+date-modified: today
 format:
   html:
     theme: materia
@@ -13,7 +14,8 @@ bibliography: docs/references.bib
 csl: https://www.zotero.org/styles/ieee
 link-citations: true
 title-block-banner: "#27788b"
-title-block-banner-color: "#ffffffff" 
+title-block-banner-color: "#ffffffff"
+license: CC BY 4.0
 ---
 
 ![](/docs/images/front_image.jpg)

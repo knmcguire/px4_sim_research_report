@@ -36,6 +36,8 @@ pixi run preview
 
 This will open a browser with live preview that updates as you edit the markdown files.
 
+  This works only if you resave the index.qmd file.
+
 ### Render to HTML
 
 ```bash
