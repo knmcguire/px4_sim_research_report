@@ -1,6 +1,10 @@
 project:
-  type: website
+  type: default
   output-dir: _site
+  render: 
+    - index.qmd
+  resources:
+    - /docs/images  
 
 format:
   html:
@@ -11,6 +15,7 @@ format:
     code-fold: true
     code-tools: true
     css: styles.css
+    self-contained: false
 
 bibliography: docs/references.bib
 csl: https://www.zotero.org/styles/ieee

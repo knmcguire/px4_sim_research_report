@@ -40,5 +40,5 @@ This will open a browser with live preview that updates as you edit the markdown
 pixi run render
 ```
 
-Output will be in `_output/docs/index.html`
+Output will be in `_site/index.html`
 

@@ -8,14 +8,14 @@ format:
     toc: true
     toc-depth: 2
     number-sections: true
-bibliography: references.bib
+bibliography: docs/references.bib
 link-citations: true
 ---
 
-![](images/front_image.jpg)
+![](/docs/images/front_image.jpg)
 
 > This work has been sponsored by Dronecode Foundation 
-> ![Dronecode](images/dronecode.png)
+> ![Dronecode](/docs/images/dronecode.png)
 
 
 # Introduction
@@ -43,14 +43,14 @@ October 15, 2025 |	Send out final survey |
 | July 31, 2025 | Project description formalized |
 
 
-{{< include preperation_survey.md >}}
+{{< include docs/preperation_survey.md >}}
 
-{{< include results.md >}}
+{{< include docs/results.md >}}
 
-{{< include conclusion.md >}}
+{{< include docs/conclusion.md >}}
 
 <!-- Appendices -->
-{{< include survey_content_pilot.md >}}
+{{< include docs/survey_content_pilot.md >}}
 
-{{< include survey_content_final.md >}}
+{{< include docs/survey_content_final.md >}}
 

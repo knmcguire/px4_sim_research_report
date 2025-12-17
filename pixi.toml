@@ -14,7 +14,7 @@ pandoc = ">=3.0"
 
 [tasks]
 # Render the report to HTML
-render = "quarto render docs/index.md --to html"
+render = "quarto render --to html"
 
 # Preview with live reload
-preview = "quarto preview docs/index.md"
+preview = "quarto preview"

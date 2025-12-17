@@ -12,9 +12,9 @@ The survey revealed that the largest respondent group consisted of "Professional
 
 ::: {#fig-proffdomains layout-ncol=2}
 
-![](images/1a_pie_primary_professions.png)
+![](/docs/images/1a_pie_primary_professions.png)
 
-![](images/1b_pi_domains.png)
+![](/docs/images/1b_pi_domains.png)
 
 (Left) Pie-chart showing the primary professions of the survey's participants and (right) pie-chart with the distribution of domains of the survey participants.
 :::
@@ -25,9 +25,9 @@ In terms of PX4 autopilot experience, the largest group of participants had 1-3 
 
 ::: {#fig-experience layout-ncol=2}
 
-![](images/2a_pi_px4_experience.png)
+![](/docs/images/2a_pi_px4_experience.png)
 
-![](images/2b_simulation_experience.png)
+![](/docs/images/2b_simulation_experience.png)
 
 (Left) Pie-chart showing the PX4 experience of the participants and (right) pie-chart showing the robot simulation experience.
 :::
@@ -37,7 +37,7 @@ In terms of PX4 autopilot experience, the largest group of participants had 1-3 
 Based on these responses, we identified five distinct user personas depicted in @fig-personas: "Senior Engineers (P1)," "Junior Engineers (P2)," "Academic Researchers (P3)," "Academic Students (P4)," and "Independent Hobbyists (P5)."
 These personas will be used to analyze and interpret the survey results in subsequent sections.
 
-![Pie-chart with the types of personas selected from the profiles.](images/3_pie_personas.png){#fig-personas}
+![Pie-chart with the types of personas selected from the profiles.](/docs/images/3_pie_personas.png){#fig-personas}
 
 ### P1 - Senior Engineers
 Highly experienced professional engineers with advanced to expert-level simulation expertise. These are the power users who deploy PX4 simulators in production environments for commercial products, defense systems, and critical applications.
@@ -78,7 +78,7 @@ Drone enthusiasts, hobbyists, and independent developers exploring PX4 for perso
 
 This section presents results on participants' past simulation experience and currently used simulators, as well as data on simulated vehicle types and hardware specifications. 
 
-![Bar graph with simulators experienced vs last used simulators. Light red stands for an unclear amount of current users using Gazebo New (previous ignition) due to ambiguity in the answers.](images/4_bar_simulator_experienced.png){#fig-sim-experience}
+![Bar graph with simulators experienced vs last used simulators. Light red stands for an unclear amount of current users using Gazebo New (previous ignition) due to ambiguity in the answers.](/docs/images/4_bar_simulator_experienced.png){#fig-sim-experience}
 
 ### Simulation Past Experience
 
@@ -112,14 +112,14 @@ Regarding the number of vehicles simulated simultaneously, the majority simulate
 
 ::: {#fig-simulated-robots layout-ncol=2}
 
-![](images/5a_bar_simulated_vehicles.png)
+![](/docs/images/5a_bar_simulated_vehicles.png)
 
-![](images/5b_bar_simulated_payloads.png)
+![](/docs/images/5b_bar_simulated_payloads.png)
 
 (Left) Bar graph with the different types simulated vehicles and (right) bar graph with the distribution of type of payloads simulated.
 :::
 
-![Pie-chart of the amount of simulated vehicles that participants usually simulate.](images/6_pie_swarms.png){#fig-swarms}
+![Pie-chart of the amount of simulated vehicles that participants usually simulate.](/docs/images/6_pie_swarms.png){#fig-swarms}
 
 ### Simulation Host Specifications
 
@@ -127,11 +127,11 @@ The survey also asked questions about the host computers running the simulation,
 
 ::: {#fig-simulation-hosts layout-ncol=3}
 
-![](images/7a_GPU.png)
+![](/docs/images/7a_GPU.png)
 
-![](images/7b_os.png)
+![](/docs/images/7b_os.png)
 
-![](images/7c_locally_remotely.png)
+![](/docs/images/7c_locally_remotely.png)
 
 
 Pie-charts with the (left) GPU-enabled machines, the OS distribution (middle) and running location of the simulation (right).
@@ -148,9 +148,9 @@ The radar graph on the right of @fig-purposes shows that both academic researche
 
 ::: {#fig-purposes layout-ncol=2}
 
-![](images/8a_bar_purposes.png)
+![](/docs/images/8a_bar_purposes.png)
 
-![](images/8b_radar_purposes_persona.png)
+![](/docs/images/8b_radar_purposes_persona.png)
 
 
 
@@ -164,9 +164,9 @@ The bar graph on the left of @fig-goals shows that all participants use simulato
 
 ::: {#fig-goals layout-ncol=2}
 
-![](images/9a_bar_goals.png)
+![](/docs/images/9a_bar_goals.png)
 
-![](images/9a_bar_goals_personas.png)
+![](/docs/images/9a_bar_goals_personas.png)
 
 
 (Left) A bar graph of the goals of using simulators for all participants and (right) the radar graph with goals plotted per persona.
@@ -181,7 +181,7 @@ Participants rated the perceived importance of simulator features on a scale fro
 
 @tbl-tech presents the importance ratings for technical capabilities. Software-in-the-loop (SITL) is considered most important with a score of 4.63, followed by realistic physics simulation (4.38) and hardware-in-the-loop (3.82). Junior engineers (P2) showed a slightly different preference profile, rating failure mode simulation (3.96) and simulated networking capabilities (4.00) higher than other technical capabilities beyond SITL.
 
-![The average perceived importance of technical capabilities of simulators per profile and for all participants overall. The scale goes from 0 (not important) to 5 (very important).](images/tab1_technical_capabilities.png){#tbl-tech}
+![The average perceived importance of technical capabilities of simulators per profile and for all participants overall. The scale goes from 0 (not important) to 5 (very important).](/docs/images/tab1_technical_capabilities.png){#tbl-tech}
 
 
 
@@ -189,19 +189,19 @@ Participants rated the perceived importance of simulator features on a scale fro
 
 @tbl-plat shows that the highest-rated platform and compatibility feature is ROS/ROS2 integration (3.92), followed by network capabilities and version compatibility between different PX4 releases (both 3.82). Researchers (P3) prioritized this category more than any other persona profiles. Notable deviations include senior engineers (P1), who rated Docker/containerization support (3.81) higher than network capabilities, and independent developers/hobbyists (P5), who rated network capabilities significantly higher than all other platform and compatibility features. 
 
-![The average perceived importance of platform and compatibility of simulators per profile and for all participants overall.](images/tab2_platform_compatibility.png){#tbl-plat}
+![The average perceived importance of platform and compatibility of simulators per profile and for all participants overall.](/docs/images/tab2_platform_compatibility.png){#tbl-plat}
 
 ### Usability and Accessibility
 
 @tbl-use presents importance ratings for usability and accessibility features. Participants rated template and example library availability as most important (4.14), followed by real-time debugging support and easy installation process. Academic students (P4) prioritized this category more than any other persona. Academic researchers (P3), students (P4), and independent developers/hobbyists (P5) all rated real-time parameter tuning higher than easy installation process, deviating from the overall ranking.
 
-![The average perceived importance of usability and accessibility of simulators per profile and for all participants overall.](images/tab3_usability_accessibility.png){#tbl-use}
+![The average perceived importance of usability and accessibility of simulators per profile and for all participants overall.](/docs/images/tab3_usability_accessibility.png){#tbl-use}
 
 ### Advanced Features
 
 @tbl-adv lists the importance ratings for advanced simulation features. Across all participants, custom sensor model creation was rated most important (4.17), followed by easy robot model creation (4.13) and scenario scripting and automation (3.94). Academic researchers (P3) prioritized this category more than any other persona. Ratings were relatively consistent across personas, with the notable exception that independent developers/hobbyists (P5) also rated swarm simulation as highly important.
 
-![The average perceived importance of advanced features of simulation per profile and for all participants overall.](images/tab4_advanced.png){#tbl-adv}
+![The average perceived importance of advanced features of simulation per profile and for all participants overall.](/docs/images/tab4_advanced.png){#tbl-adv}
 
 ### Top Wanted Functionalities
 
@@ -215,14 +215,14 @@ Across all personas, the top 5 most important features are:
 
 @tbl-top breaks down the top 5 features by persona. Software-in-the-loop capabilities are considered essential by all personas except students (P4), who prioritize template and example library availability and real-time parameter tuning more highly. Realistic physics simulation is universally valued, though independent developers/hobbyists (P5) rated network capabilities and template availability higher. ROS/ROS2 integration is more important to advanced simulator users (senior engineers (P1) and academic researchers (P3)), while both junior (P2) and senior engineers (P1) rated custom sensor creation and easy robot model creation as equally important.
 
-![Top 5 wanted features per profile.](images/tab5_top5_persona.png){#tbl-top}
+![Top 5 wanted features per profile.](/docs/images/tab5_top5_persona.png){#tbl-top}
 
 ## Final Choice for Priority Roadmap
 
 In a final single-choice question, participants selected the one feature they would prioritize if only one item could be on the roadmap (see @fig-final). The largest group (18%) requested improvements to the current Gazebo integration with PX4 autopilot. Another 17% prioritized better documentation and examples for existing simulators, while 16% wanted more realistic physics and higher-quality sensor models.
 
-![Pie-chart with the distribution of the final priority question of all participants.](images/10_final_priority_question.png){#fig-final}
+![Pie-chart with the distribution of the final priority question of all participants.](/docs/images/10_final_priority_question.png){#fig-final}
 
 @fig-final-per presents a bar chart showing how each persona influenced the roadmap priorities. Professional engineers, both senior (P1) and junior (P2), voted for improved Gazebo integration with PX4. Academic researchers (P3) prioritized more realistic sensor and physics models along with better multi-vehicle/swarm simulation support. A significant portion of senior engineers (P1) also voted for reducing the sim-to-real gap, while some advocated for a new PX4-optimized simulator. Junior engineers (P2) emphasized enhanced simulation creation capabilities. Both junior engineers (P2) and academic students (P4), representing novice and intermediate users, indicated they would benefit most from better documentation and examples for existing PX4 simulation integrations. Finally, both senior engineers (P1) and academic students (P4) requested improved ROS/ROS2 integration with PX4 simulation.
 
-![Bar chart to indicate the differences per persona on the final roadmap priority choice of the survey.](images/11_final_priority_question_personas.png){#fig-final-per}
+![Bar chart to indicate the differences per persona on the final roadmap priority choice of the survey.](/docs/images/11_final_priority_question_personas.png){#fig-final-per}
