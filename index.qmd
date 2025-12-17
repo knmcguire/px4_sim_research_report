@@ -30,6 +30,7 @@ This report describes the research efforts conducted to assess user experiences 
 
 | Date | Changes |
 |------|---------|
+| December 17, 2025 | Last adjustment for website rendering |
 | December 10, 2025 | All preperation in single chapter (including forum) |
 | November 28, 2025 |	Forum to appendix, written recommendations. |
 | November 26, 2025 |	Adding evaluation of results |

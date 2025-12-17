@@ -56,7 +56,7 @@ Realistic physics models received higher importance ratings than photorealistic 
 
 Participants showed preference for the ability to create custom sensor models and easily create robot models. GUI features such as drag-and-drop capabilities or beginner-friendly interfaces scored lower on importance ratings.
 
-## Forum Analysis: PX4 Simulation Integration Issues {#sec-forum}
+## Forum Analysis {#sec-forum}
 
 
 This analysis examines 152 forum posts from the PX4 discussion forum (discuss.px4.io) spanning September 2024 through September 2025 to identify pressing issues in simulation integration. Several representative forum messages are referenced throughout this text, but the full list of forum posts evaluated is available upon request.
@@ -91,7 +91,7 @@ Posts describe camera streams failing to initialize properly[@px4-42909], docume
 
 Posts report Docker-based deployment issues including connection failures, missing video feeds, and rendering problems[@px4-46059; @px4-45983; @px4-44619].
 
-## Changes and Additions for Final Version Survey
+## Final Survey Preperation
 
 The final version of the PX4 Simulator Community Survey incorporates changes based on pilot feedback and forum analysis. The survey was reduced from approximately 35 questions with over 70 individual items to 29 questions with fewer than 40 items for participants to answer.
 
