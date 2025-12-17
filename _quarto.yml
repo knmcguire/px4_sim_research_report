@@ -7,6 +7,8 @@ project:
     - /docs/images  
 website:
   favicon: logo-teal.svg
+  open-graph: true
+  site-url: https://www.mcguirerobotics.com/px4_sim_research_report/
   navbar:
     background: "#27788b"
     search: true
