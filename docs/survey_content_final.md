@@ -1,10 +1,12 @@
-# B. PX4 Simulator Community Survey - Final {#sec-final}
+# Appendix B. Survey Content - Final {#sec-final}
 
 This survey aims to understand the developer needs of PX4 users and their simulation experiences. We're hoping to improve the current situation and make things better for everyone.
 
 **This survey should take only 10-15 minutes to fill in.**
 
-## About This Survey
+
+<p style="font-size: 1.2em;"><strong>About This Survey</strong></p>
+
 
 We're gathering feedback from the PX4 community to inform our simulation integration roadmap. Your input will help us prioritize which simulators to support, what features to develop, and where to focus our documentation efforts.
 
@@ -145,7 +147,6 @@ ____
 **13. What's your biggest frustration with current/latest simulator you are using?**
 
 ____ 
----
 
 <p style="font-size: 1.2em;"><strong>Technical Setup & Constraints</strong></p>
 

@@ -1,4 +1,4 @@
-# A. PX4 Simulator Community Survey - Pilot {#sec-pilot}
+# Appendix A. Survey Content - Pilot {#sec-pilot}
 
 This survey aims to understand the developer needs of PX4 users and their simulation experiences. We're hoping to improve the current situation and make things better for everyone.
 
