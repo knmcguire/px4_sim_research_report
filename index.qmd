@@ -59,3 +59,6 @@ October 15, 2025 |	Send out final survey |
 
 {{< include docs/survey_content_final.md >}}
 
+
+<script data-goatcounter="https://knmcguire.goatcounter.com/count"
+async src="//gc.zgo.at/count.js"></script>
