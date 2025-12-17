@@ -1,22 +1,8 @@
 project:
-  type: default
+  type: website
   output-dir: _site
   render: 
     - index.qmd
   resources:
     - /docs/images  
 
-format:
-  html:
-    theme: cosmo
-    toc: true
-    toc-depth: 2
-    number-sections: true
-    code-fold: true
-    code-tools: true
-    css: styles.css
-    self-contained: false
-
-bibliography: docs/references.bib
-csl: https://www.zotero.org/styles/ieee
-link-citations: true

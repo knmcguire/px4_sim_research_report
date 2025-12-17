@@ -5,11 +5,15 @@ author: "Kimberly McGuire"
 date: today
 format:
   html:
+    theme: materia
     toc: true
     toc-depth: 2
     number-sections: true
 bibliography: docs/references.bib
+csl: https://www.zotero.org/styles/ieee
 link-citations: true
+title-block-banner: "#27788b"
+title-block-banner-color: "#ffffffff" 
 ---
 
 ![](/docs/images/front_image.jpg)
