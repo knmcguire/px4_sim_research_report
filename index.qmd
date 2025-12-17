@@ -13,8 +13,6 @@ format:
 bibliography: docs/references.bib
 csl: https://www.zotero.org/styles/ieee
 link-citations: true
-title-block-banner: "#27788b"
-title-block-banner-color: "#ffffffff"
 license: CC BY 4.0
 ---
 
@@ -28,7 +26,10 @@ license: CC BY 4.0
 
 This report describes the research efforts conducted to assess user experiences of PX4 and simulation integration. The purpose of the survey study is to identify the most pressing developer goals for the PX4 simulation integration roadmap, based on the needs of the PX4 user community.
 
-  The source of this report can be found in <https://github.com/knmcguire/px4_sim_research_report>. The raw data of the generated plots are not made public for privacy purposes, but please reach out if you'd like to know more about anything else!
+::: {#TOC}
+:::
+
+> The source of this report can be found in <https://github.com/knmcguire/px4_sim_research_report>. The raw data of the generated plots are not made public for privacy purposes, but please reach out if you'd like to know more about anything else!
 
 ## Changelog Report
 

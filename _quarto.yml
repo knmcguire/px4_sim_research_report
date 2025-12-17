@@ -5,4 +5,20 @@ project:
     - index.qmd
   resources:
     - /docs/images  
+website:
+  favicon: logo-teal.svg
+  navbar:
+    background: "#27788b"
+    search: true
+    left:
+      - text: "Introduction"
+        href: index.qmd
+      - text: "Preperations"
+        href: "#survey-preparation"
+      - text: "Results"
+        href: "#survey-results"
+      - text: "Discussion"
+        href: "#brief-discussion-and-recommendation"
+      - text: "Appendix"
+        href: "#sec-pilot"
 
